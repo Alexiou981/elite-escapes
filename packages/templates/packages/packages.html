@@ -1,18 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container package-list">
     <h1>Our Packages</h1>
-    <div>
+    <div class="row mt-5">
         {% for package in packages %}
-        <div>
-            <h2>{{ package.name }}</h2>
-            <p>{{ package.description }}</p>
-            <p>Price pp: ${{ package.price }}</p>
-            <p>Duration: {{ package.duration_days }} days</p>
-            {% if package.image %}
-            <img src="{{ package.image.url }}" alt="{{ package.name }}">
-            {% endif %}
-        </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    {% if package.image %}
+                        <img src="{{ package.image.url }}" class="card-img-top" alt="{{ package.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ package.name }}</h5>
+                        <p class="card-text">{{ package.description }}</p>
+                        <p class="card-text"><strong>Price pp:</strong> ${{ package.price }}</p>
+                        <p class="card-text"><strong>Duration:</strong> {{ package.duration_days }} days</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No packages available.</p>
         {% endfor %}
     </div>
+</div>
 {% endblock %}

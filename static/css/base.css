@@ -4,11 +4,14 @@ html {
 }
 
 body {
+    color: #555;
+    font-family: 'Lato';
+}
+
+.hero-background {
     background: url('/media/hero-image.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    color: #555;
-    font-family: 'Lato';
 }
 
 /* from Bulma */
@@ -57,6 +60,10 @@ body {
     border: 1px solid black !important;
 }
 
+/* Style rule for the package list container */
+.container.package-list {
+    margin-top: 15%;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

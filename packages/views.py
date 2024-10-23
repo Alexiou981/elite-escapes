@@ -5,4 +5,4 @@ from .models import Package
 
 def packages(request):
     packages = Package.objects.all()
-    return render(request, 'packages/packages.html')
+    return render(request, 'packages/packages.html', {'packages': packages})
