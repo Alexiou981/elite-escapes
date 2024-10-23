@@ -1,6 +1,18 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
-    <h1 class="display-4 text-success">It Works for Packages too!</h1>
+    <h1>Our Packages</h1>
+    <div>
+        {% for package in packages %}
+        <div>
+            <h2>{{ package.name }}</h2>
+            <p>{{ package.description }}</p>
+            <p>Price pp: ${{ package.price }}</p>
+            <p>Duration: {{ package.duration_days }} days</p>
+            {% if package.image %}
+            <img src="{{ package.image.url }}" alt="{{ package.name }}">
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
