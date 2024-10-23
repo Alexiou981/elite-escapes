@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Package
 
-# Register your models here.
+# Registration of Package model for the admin
+admin.site.register(Package)
