@@ -22,6 +22,10 @@
                     <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Add to Bag</a>
                     {% else %}
                     <a href="{% url 'account_signup' %}" class="btn btn-success">Login or Register to Book!</a>
+                    <div class="text-center">
+                       <h5>or</h5> 
+                    </div>
+                    <a href="{% url 'add_to_bag' package.id %}" class="btn btn-light text-green">Continue as a Guest!</a>
                     {% endif %}
                 </div>
             </div>
