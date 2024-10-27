@@ -16,6 +16,7 @@
             <p><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
             <p><strong>Location:</strong> {{ package.destination }}</p>
         </div>
+        <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Add to Bag</a>
     </div>
 </div>
 {% endblock %}
