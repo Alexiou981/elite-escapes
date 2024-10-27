@@ -11,10 +11,12 @@
                         <img src="{{ package.image.url }}" class="card-img-top" alt="{{ package.name }}">
                     {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title">{{ package.name }}</h5>
+                        <a href="">
+                            <h5 class="card-title text-black">{{ package.name }}</h5>
+                        </a>
                         <p class="card-text">{{ package.description }}</p>
                         <p class="card-text"><strong>Price pp:</strong> ${{ package.price }}</p>
-                        <p class="card-text"><strong>Duration:</strong> {{ package.duration_days }} days</p>
+                        <p class="card-text"><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
                     </div>
                 </div>
             </div>
