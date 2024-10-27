@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% load custom_filters %}
+
 {% block content %}
 <div class="container package-list">
     <h1>Your Shopping Bag</h1>
@@ -26,7 +29,7 @@
                 </form>
             </td>
             <td>${{ item.package.price|floatformat:2 }}</td>
-            <td>${{ total|floatformat:2 }}</td>
+            <td>${{ item.package.price|multiply:item.quantity|floatformat:2 }}</td>
             <td>
                 <a href="{% url 'remove_from_bag' item.package_id %}" class="btn btn-danger">Remove</a>  <!-- Use item.package_id -->
             </td>
