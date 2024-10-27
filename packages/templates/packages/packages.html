@@ -18,6 +18,7 @@
                         <p class="card-text"><strong>Price pp:</strong> ${{ package.price }}</p>
                         <p class="card-text"><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
                     </div>
+                    <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Add to Bag</a>
                 </div>
             </div>
         {% empty %}

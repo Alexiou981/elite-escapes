@@ -1,6 +1,44 @@
 {% extends "base.html" %}
-{% load static %}
-
 {% block content %}
-    <h1 class="display-4 text-success">This will be your shopping bag view.</h1>
+<div class="container package-list">
+    <h1>Your Shopping Bag</h1>
+    
+    {% if items %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.package.name }}</td>
+                        <td>
+                            <form action="{% url 'update_bag_quantity' item.id %}" method="POST">
+                                {% csrf_token %}
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" style="width: 80px; display: inline;">
+                                <button type="submit" class="btn btn-info">Update</button>
+                            </form>
+                        </td>
+                        <td>${{ item.package.price|floatformat:2 }}</td>
+                        <td>${{ item.get_total_price|floatformat:2 }}</td>
+                        <td>
+                            <a href="{% url 'remove_from_bag' item.id %}" class="btn btn-danger">Remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <h3>Total: ${{ total|floatformat:2 }}</h3>
+        <a href="" class="btn btn-success">Proceed to Checkout</a>
+    {% else %}
+        <p>Your shopping bag is empty.</p>
+    {% endif %}
+</div>
 {% endblock %}
