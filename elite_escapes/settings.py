@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'home',
     'customers',
     'bag',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
