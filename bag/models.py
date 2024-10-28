@@ -1,5 +1,5 @@
 from django.db import models
-from packages.models import Package
+from home.models import Package
 from django.contrib.auth.models import User
 
 class ShoppingCart(models.Model):
