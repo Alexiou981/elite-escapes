@@ -9,9 +9,11 @@ body {
 }
 
 .hero-background {
-    background: url('/media/hero-image.jpg') no-repeat center center fixed;
+    background: url('/media/hero-image.jpg');
     background-size: cover;
-    height: calc(100vh - 164px);
+    background-position: center;
+    height: 100vh;
+    color: white;  
 }
 
 /* from Bulma */
@@ -63,6 +65,8 @@ body {
 /* Style rule for the package list container */
 .container.package-list {
     margin-top: 10%;
+    background-color:darkgrey;
+    padding: 20px 0;
 }
 /* -------------------------------- Media Queries */
 
