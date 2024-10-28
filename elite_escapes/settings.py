@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     # Custom Apps
     'home',
-    'packages',
     'bag',
 ]
 
