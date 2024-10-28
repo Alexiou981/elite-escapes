@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import ShoppingCart, ShoppingCartItem
-from packages.models import Package
+from home.models import Package
 
 def bag(request):
     if request.user.is_authenticated:
