@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('packages', '0003_rename_description_package_brief_description_and_more'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -29,7 +28,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('quantity', models.PositiveIntegerField(default=1)),
                 ('cart', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='bag.shoppingcart')),
-                ('package', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='packages.package')),
+                ('package', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.package')),
             ],
         ),
     ]
