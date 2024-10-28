@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Package
 
-# Register your models here.
+# Registration of Package model for the admin
+class PackageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'destination', 'price', 'date')
+
+admin.site.register(Package, PackageAdmin)
+
