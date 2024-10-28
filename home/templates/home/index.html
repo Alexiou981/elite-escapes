@@ -18,9 +18,6 @@
                 <h1 class="display-4 logo-font text-black">
                     New holiday packages have arrived
                 </h1>
-                <div>
-                    <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Book Now</a>
-                </div>
             </div>
         </div>
     </div>
@@ -41,15 +38,7 @@
                             <p class="card-text"><strong>Price pp:</strong> ${{ package.price }}</p>
                             <p class="card-text"><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
                         </div>
-                        {% if user.is_authenticated %}
-                        <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Add to Bag</a>
-                        {% else %}
-                        <a href="{% url 'account_signup' %}" class="btn btn-success">Login or Register to Book!</a>
-                        <div class="text-center">
-                           <h5>or</h5> 
-                        </div>
-                        <a href="{% url 'add_to_bag' package.id %}" class="btn btn-light text-green">Continue as a Guest!</a>
-                        {% endif %}
+                        <a href="{% url 'package_details' package.id %}" class="btn btn-info">View Details</a>
                     </div>
                 </div>
             {% empty %}
