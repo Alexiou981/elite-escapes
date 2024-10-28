@@ -12,7 +12,7 @@
             <div class="p-3 bg-white shadow-sm rounded" style="height: auto;">
                 <form method="post" class="customer-details-form">
                     {% csrf_token %}
-                    
+
                     <!-- Reduce field margins and padding to save space -->
                     <div class="form-row">
                         <div class="form-group col-12 mb-2">
@@ -24,7 +24,7 @@
                             {{ form.last_name|add_class:"form-control-sm" }}
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-12 mb-2">
                             <label for="id_email" class="small-text">Email</label>
@@ -65,5 +65,15 @@
             </div>
         </div>
     </div>
+    {% if messages %}
+    <div id="message-container">
+        {% for message in messages %}
+        <div class="alert alert-success">
+            <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
