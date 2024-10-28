@@ -68,7 +68,47 @@ body {
     background-color:darkgrey;
     padding: 20px 0;
 }
+
+.customer-form {
+    margin-top: 10vh;
+}
+
+.customer-details-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.customer-details-form label {
+    font-weight: bold;
+}
+
+.customer-details-form input, 
+.customer-details-form textarea {
+    width: 100%;
+}
+
 /* -------------------------------- Media Queries */
+
+/* Reduce padding and margin on small screens */
+@media (max-height: 700px) {
+    .customer-details-form label {
+        font-size: 0.85rem; /* Make labels smaller */
+    }
+    .customer-details-form .form-control-sm {
+        padding: 0.25rem 0.5rem;
+    }
+    .customer-details-form .form-group {
+        margin-bottom: 0.5rem;
+    }
+    .btn-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* General small-text label style for compact layout */
+.small-text {
+    font-size: 0.9rem;
+}
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
