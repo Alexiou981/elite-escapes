@@ -10,7 +10,7 @@ def bag(request):
         items = cart.items.all()
     else:
         # For non-authenticated users, retrieve items from session
-        cart = request.session.get('cart', {})
+        cart = request.session.get('bag', {})
         items = []
         total = 0
 
@@ -49,14 +49,14 @@ def add_to_bag(request, package_id):
             item.save()
     else:
         # For non-authenticated users, store in session
-        cart = request.session.get('cart', {})
+        cart = request.session.get('bag', {})
         if str(package_id) in cart:
             cart[package_id]['quantity'] += 1
         else:
             cart[package_id] = {'quantity': 1}
         
         # Save cart back to session
-        request.session['cart'] = cart
+        request.session['bag'] = cart
 
     return redirect('bag')
 
