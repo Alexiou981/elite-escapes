@@ -24,5 +24,38 @@
             </div>
         </div>
     </div>
+    <div class="container package-list">
+        <h1>Our Packages</h1>
+        <div class="row mt-2">
+            {% for package in packages %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        {% if package.image %}
+                            <img src="{{ package.image.url }}" class="card-img-top" alt="{{ package.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <a href="{% url 'package_details' package.id %}">
+                                <h5 class="card-title text-black">{{ package.name }}</h5>
+                            </a>
+                            <p class="card-text">{{ package.brief_description }}</p>
+                            <p class="card-text"><strong>Price pp:</strong> ${{ package.price }}</p>
+                            <p class="card-text"><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
+                        </div>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Add to Bag</a>
+                        {% else %}
+                        <a href="{% url 'account_signup' %}" class="btn btn-success">Login or Register to Book!</a>
+                        <div class="text-center">
+                           <h5>or</h5> 
+                        </div>
+                        <a href="{% url 'add_to_bag' package.id %}" class="btn btn-light text-green">Continue as a Guest!</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>No packages available.</p>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 {% endblock %}
