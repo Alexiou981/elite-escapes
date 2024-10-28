@@ -3,7 +3,7 @@ from .models import Package
 
 # Registration of Package model for the admin
 class PackageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'destination', 'price', 'date')
+    list_display = ('name', 'price', 'date')
 
 admin.site.register(Package, PackageAdmin)
 
