@@ -3,6 +3,6 @@ from .models import Customer
 
 # Register your models here.
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'phone', 'address')
+    list_display = ('user', 'first_name', 'last_name', 'email', 'phone', 'address')
 
 admin.site.register(Customer, CustomerAdmin)
