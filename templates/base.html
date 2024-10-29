@@ -52,9 +52,7 @@
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <a href="{% url 'personal_details' %}" class="dropdown-item">Personal Details</a>
-                                {% endif %}
+                                <a href="{% url 'personal_details' %}" class="dropdown-item">Personal Details</a>
                                 <a href="" class="dropdown-item">Bookings</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
