@@ -1,6 +1,7 @@
 # views.py
 from django.shortcuts import render, redirect
 from .forms import CustomerForm
+from .models import Customer
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -21,3 +22,15 @@ def customer_details(request):
         form = CustomerForm()
     
     return render(request, 'customers/customer_details.html', {'form': form})
+
+
+def personal_details(request):
+    # Try to fetch the customer's information for the logged-in user
+    try:
+        customer = Customer.objects.get(user=request.user)
+    except Customer.DoesNotExist:
+        customer = None  # No details exist for this user yet
+
+    return render(request, 'customers/personal_details.html', {
+        'customer': customer
+    })
