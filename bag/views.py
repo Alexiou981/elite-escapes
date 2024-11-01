@@ -51,16 +51,9 @@ def add_to_bag(request, package_id):
             item.quantity += 1
             item.save()
     else:
-        # For non-authenticated users, store in session
-        cart = request.session.get('bag', {})
-        if str(package_id) in cart:
-            cart[package_id]['quantity'] += 1
-        else:
-            cart[package_id] = {'quantity': 1}
+        # Clear session-based cart for non-authenticated users
+        request.session['bag'] = {str(package_id): {'quantity': 1}}
         
-        # Save cart back to session
-        request.session['bag'] = cart
-
     return redirect('bag')
 
 def remove_from_bag(request, package_id):
