@@ -14,7 +14,7 @@
             <p><strong>Description:</strong> {{ package.detailed_description }}</p>
             <p><strong>Price:</strong> ${{ package.price }}</p>
             <p><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
-            <a href="{% url 'customer_details' %}" class="btn btn-primary">Book Now</a>
+            <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Book Now</a>
         </div>
         
     </div>

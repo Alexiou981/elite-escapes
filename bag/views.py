@@ -41,6 +41,9 @@ def add_to_bag(request, package_id):
     if request.user.is_authenticated:
         # For authenticated users
         cart, created = ShoppingCart.objects.get_or_create(user=request.user)
+        
+        # Delete any existing items from the bag
+        cart.items.all().delete()
 
         # Add item to cart or update quantity if it exists
         item, item_created = ShoppingCartItem.objects.get_or_create(cart=cart, package=package)
