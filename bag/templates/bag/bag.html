@@ -39,7 +39,7 @@
         </table>
         
         <h3>Total: ${{ total|floatformat:2 }}</h3>
-        <a href="" class="btn btn-success">Proceed to Checkout</a>
+        <a href="{% url 'customer_details' %}" class="btn btn-success">Continue to Customer Details</a>
     {% else %}
         <p>Your shopping bag is empty.</p>
     {% endif %}
