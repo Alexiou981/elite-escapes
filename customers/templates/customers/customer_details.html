@@ -64,16 +64,27 @@
                 </form>
             </div>
         </div>
+        <div id="message-container" class="alert" style="display: none;"></div>
     </div>
-    {% if messages %}
-    <div id="message-container">
-        {% for message in messages %}
-        <div class="alert alert-success">
-            <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
-            {{ message }}
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-</div>
+
+    <script>
+        // Grab the form and message container elements
+        const form = document.getElementById('customer-details-form');
+        const messageContainer = document.getElementById('message-container');
+    
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevents immediate submission to allow message display
+    
+            // Show the message
+            messageContainer.style.display = 'block';
+            messageContainer.className = 'alert alert-success';
+            messageContainer.innerText = 'Your details have been saved successfully!';
+    
+            // Delay and then submit the form
+            setTimeout(() => {
+                form.submit();
+            }, 1000);  // Adjust delay as needed
+        });
+    </script>
+    
 {% endblock %}
