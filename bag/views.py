@@ -56,23 +56,6 @@ def add_to_bag(request, package_id):
         
     return redirect('bag')
 
-def remove_from_bag(request, package_id):
-    if request.user.is_authenticated:
-        # Retrieve the user's shopping cart
-        cart = get_object_or_404(ShoppingCart, user=request.user)
-
-        # Get the specific item from the cart
-        item = get_object_or_404(ShoppingCartItem, package_id=package_id, cart=cart)
-        item.delete()  # Remove the item from the shopping cart
-    else:
-        # For non-authenticated users, remove from session cart
-        bag = request.session.get('bag', {})
-        if str(package_id) in bag:
-            del bag[str(package_id)]
-            request.session['bag'] = bag
-
-    return redirect('bag')
-
 def update_bag_quantity(request, package_id):
     if request.user.is_authenticated:
         # Authenticated user handling
