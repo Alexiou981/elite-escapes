@@ -15,7 +15,8 @@
         <li>{{ item.package.name }} - Quantity: {{ item.quantity }}</li>
         <h3>Total Amount: ${{ total_price }}</h3>
         {% if item.package %}
-            <a href="{% url 'checkout' item.package.id %}" class="btn btn-primary">Proceed to Checkout</a>
+            <a href="{% url 'checkout' total_price=total_price|stringformat:"d" %}" class="btn btn-success">Proceed to Checkout</a>
+
         {% else %}
             <p>Package not found.</p>
         {% endif %}
