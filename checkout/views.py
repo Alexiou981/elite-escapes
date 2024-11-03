@@ -2,6 +2,7 @@ import stripe
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from home.models import Package
+from bag.views import ShoppingCart
 
 stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
 
@@ -15,6 +16,8 @@ stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
 def checkout(request, total_price):
     # Ensure the total is an integer representing cents
     amount_in_cents = int(float(total_price) * 100)
+    cart = get_object_or_404(ShoppingCart, user=request.user)
+    cart.items.all().delete
 
     # Create a new Stripe Checkout Session
     session = stripe.checkout.Session.create(
