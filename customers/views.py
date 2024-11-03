@@ -5,14 +5,25 @@ from .models import Customer
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-@login_required  # Ensure the user is logged in
+@login_required 
 def customer_details(request):
+    # Check if the current user already has a saved customer record
+    try:
+        customer = Customer.objects.get(user=request.user)
+    except Customer.DoesNotExist:
+        customer = None
+
     if request.method == 'POST':
+        if customer:
+            # If customer details already exist, prevent re-saving
+            messages.warning(request, "You have already saved your details.")
+            return redirect('personal_details')  
+            
         form = CustomerForm(request.POST)
         if form.is_valid():
-            customer = form.save(commit=False)  # Do not save yet
-            customer.user = request.user  # Assign the logged-in user
-            customer.save()  # Now save to the database
+            customer = form.save(commit=False) 
+            customer.user = request.user  
+            customer.save()  
 
             messages.success(request, "Thank you! \
                 Your details have been saved successfully!")
