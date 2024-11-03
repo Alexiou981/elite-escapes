@@ -1,5 +1,6 @@
 # views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from bag.views import ShoppingCart, ShoppingCartItem
 from .forms import CustomerForm
 from .models import Customer
 from django.contrib.auth.decorators import login_required
@@ -8,16 +9,13 @@ from django.contrib import messages
 @login_required 
 def customer_details(request):
     # Check if the current user already has a saved customer record
-    try:
-        customer = Customer.objects.get(user=request.user)
-    except Customer.DoesNotExist:
-        customer = None
+    customer = Customer.objects.filter(user=request.user).first()
 
     if request.method == 'POST':
         if customer:
             # If customer details already exist, prevent re-saving
             messages.warning(request, "You have already saved your details.")
-            return redirect('personal_details')  
+            return redirect('order_overview')  # Redirect to order overview
             
         form = CustomerForm(request.POST)
         if form.is_valid():
@@ -25,14 +23,28 @@ def customer_details(request):
             customer.user = request.user  
             customer.save()  
 
-            messages.success(request, "Thank you! \
-                Your details have been saved successfully!")
+            messages.success(request, "Thank you! Your details have been saved successfully!")
 
-            return redirect('customer_details')
+            return redirect('order_overview')  # Redirect to order overview
     else:
-        form = CustomerForm()
-    
+        form = CustomerForm(instance=customer) if customer else CustomerForm()
+
     return render(request, 'customers/customer_details.html', {'form': form})
+
+
+@login_required
+def order_overview(request):
+    customer = Customer.objects.get(user=request.user)
+    cart_items = ShoppingCartItem.objects.filter(cart__user=request.user)
+
+    # Debugging prints
+    for item in cart_items:
+        print(f"Item: {item}, Package ID: {item.package.id if item.package else 'None'}")
+
+    return render(request, 'customers/order_overview.html', {
+        'customer': customer,
+        'cart_items': cart_items
+    })
 
 
 def personal_details(request):
