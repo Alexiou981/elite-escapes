@@ -14,7 +14,6 @@
                     <th>Number of Travelers</th>
                     <th>Unit Price</th>
                     <th>Total Price</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,9 +37,6 @@
             </td>
             <td>${{ item.package.price|floatformat:2 }}</td>
             <td>${{ item.package.price|multiply:item.quantity|floatformat:2 }}</td>
-            <td>
-                <a href="{% url 'remove_from_bag' item.package_id %}" class="btn btn-danger">Remove</a>  <!-- Use item.package_id -->
-            </td>
         </tr>
     {% endfor %}
             </tbody>
