@@ -36,6 +36,7 @@ def customer_details(request):
 def order_overview(request):
     customer = Customer.objects.get(user=request.user)
     cart_items = ShoppingCartItem.objects.filter(cart__user=request.user)
+    total_price = sum(item.package.price * item.quantity for item in cart_items)
 
     # Debugging prints
     for item in cart_items:
@@ -43,7 +44,8 @@ def order_overview(request):
 
     return render(request, 'customers/order_overview.html', {
         'customer': customer,
-        'cart_items': cart_items
+        'cart_items': cart_items,
+        'total_price': total_price
     })
 
 
