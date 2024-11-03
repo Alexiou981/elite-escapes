@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Order Overview</h1>
+
+<h2>Your Details</h2>
+<p>First Name: {{ customer.first_name }}</p>
+<p>Last Name: {{ customer.last_name }}</p>
+<p>Email: {{ customer.email }}</p>
+<p>Address: {{ customer.address }}</p>
+
+<h2>Your Cart Items</h2>
+<ul>
+    {% for item in cart_items %}
+        <li>{{ item.package.name }} - Quantity: {{ item.quantity }}</li>
+        <h3>Total Amount</h3>
+        <li>$$</li>
+        {% if item.package %}
+            <a href="{% url 'checkout' item.package.id %}" class="btn btn-primary">Proceed to Checkout</a>
+        {% else %}
+            <p>Package not found.</p>
+        {% endif %}
+    {% empty %}
+        <li>Your cart is empty.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

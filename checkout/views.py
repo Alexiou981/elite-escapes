@@ -1,8 +1,6 @@
-# checkout/views.py
-
 import stripe
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from home.models import Package
 
 stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
