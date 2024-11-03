@@ -24,8 +24,16 @@
             <td>
                 <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST">  <!-- Use item.package_id -->
                     {% csrf_token %}
-                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" style="width: 80px; display: inline;">
-                    <button type="submit" class="btn btn-info">Update</button>
+                    <input 
+                        type="number" 
+                        name="quantity" 
+                        value="{{ item.quantity }}" 
+                        min="1" 
+                        class="form-control quantity-input" 
+                        style="width: 80px; display: inline;"
+                        data-original="{{ item.quantity }}"
+                    >
+                    <button type="submit" class="btn btn-info update-button" disabled>Update</button>
                 </form>
             </td>
             <td>${{ item.package.price|floatformat:2 }}</td>
@@ -44,4 +52,25 @@
         <p>Your shopping bag is empty.</p>
     {% endif %}
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all quantity input fields and their corresponding buttons
+        const quantityInputs = document.querySelectorAll('.quantity-input');
+        
+        quantityInputs.forEach(input => {
+            const originalQuantity = input.dataset.original;
+            const updateButton = input.closest('form').querySelector('.update-button');
+            
+            // Enable the button only if quantity changes
+            input.addEventListener('input', () => {
+                if (input.value !== originalQuantity) {
+                    updateButton.disabled = false;
+                } else {
+                    updateButton.disabled = true;
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
