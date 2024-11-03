@@ -5,33 +5,39 @@ from home.models import Package
 
 stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
 
-def checkout(request, package_id):
-    package = Package.objects.get(id=package_id)  # Fetch the package details
-    if request.method == 'POST':
-        # Create a new Checkout Session for the order
-        session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[
-                {
-                    'price_data': {
-                        'currency': 'usd',
-                        'product_data': {
-                            'name': package.name,  # Package name
-                        },
-                        'unit_amount': int(package.price * 100),  # Price in cents
+import stripe
+from django.conf import settings
+from django.shortcuts import redirect
+from django.urls import reverse
+
+stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
+
+def checkout(request, total_price):
+    # Ensure the total is an integer representing cents
+    amount_in_cents = int(float(total_price) * 100)
+
+    # Create a new Stripe Checkout Session
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[
+            {
+                'price_data': {
+                    'currency': 'usd',
+                    'product_data': {
+                        'name': 'Total Order',
                     },
-                    'quantity': 1,
+                    'unit_amount': amount_in_cents,  # Total price in cents
                 },
-            ],
-            mode='payment',
-            success_url=request.build_absolute_uri('/success/'),
-            cancel_url=request.build_absolute_uri('/cancel/'),
-        )
-        return redirect(session.url, code=303)
+                'quantity': 1,
+            },
+        ],
+        mode='payment',
+        success_url=request.build_absolute_uri(reverse('success')),
+        cancel_url=request.build_absolute_uri(reverse('cancel')),
+    )
+    return redirect(session.url, code=303)
 
-    return render(request, 'checkout/checkout.html', {'package': package})
-
-
+    
 def success_view(request):
     return render(request, 'checkout/success.html')
 

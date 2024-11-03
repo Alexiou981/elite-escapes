@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Checkout for {{ package.name }}</h1>
-    <form action="{% url 'checkout' package.id %}" method="POST">
+    <form action="{% url 'checkout' total_price=total_price %}" method="POST">
         {% csrf_token %}
         <button type="submit">Pay Now</button>
     </form>
