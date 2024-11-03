@@ -95,7 +95,6 @@ def update_bag_quantity(request, package_id):
         # Update the quantity and save
         item.quantity = new_quantity
         item.save()
-
         messages.success(request, "Quantity updated successfully!")
     else:
         # Non-authenticated user handling
