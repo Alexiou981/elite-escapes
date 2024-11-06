@@ -31,6 +31,7 @@
                             <p class="card-text">{{ package.brief_description }}</p>
                             <p class="card-text"><strong>Price pp:</strong> ${{ package.price }}</p>
                             <p class="card-text"><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
+                            <p class="card-text">Ideal for {{ package.holiday_type }} holidays</p>
                         </div>
                         <a href="{% url 'package_details' package.id %}" class="btn btn-info">View Details</a>
                     </div>
