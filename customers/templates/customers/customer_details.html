@@ -27,6 +27,13 @@
 
                     <div class="form-row">
                         <div class="form-group col-12 mb-2">
+                            <label for="id_date_of_birth" class="small-text">Date of Birth</label>
+                            {{ form.date_of_birth|add_class:"form-control-sm" }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-12 mb-2">
                             <label for="id_email" class="small-text">Email</label>
                             {{ form.email|add_class:"form-control-sm" }}
                         </div>
