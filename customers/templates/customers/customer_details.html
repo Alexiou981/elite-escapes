@@ -70,8 +70,12 @@
 
                     <!-- Smaller submit button -->
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary mt-2 px-4 btn-sm">Save Details</button>
-                    </div>
+                        {% if customer %}
+                            <a href="{% url 'order_overview' %}" class="btn btn-success mt-2 px-4 btn-sm">Continue to Order Overview</a>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary mt-2 px-4 btn-sm">Save Details</button>
+                        {% endif %}
+                    </div>                    
                 </form>
             </div>
         </div>
