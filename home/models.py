@@ -25,7 +25,7 @@ class Package(models.Model):
     date = models.DateField()
     image = models.ImageField(upload_to='package_images/', blank=True, null=True)
     holiday_type = models.CharField(max_length=25, choices=HOLIDAY_TYPE_CHOICES, default=ENTERTAINMENT)
-
+    females_only = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
