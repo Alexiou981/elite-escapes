@@ -10,6 +10,9 @@
                 <h4>Personal Information</h4>
                 <p><strong>First Name:</strong> {{ customer.first_name }}</p>
                 <p><strong>Last Name:</strong> {{ customer.last_name }}</p>
+                {% if customer.gender != 'Prefer not to say' %}
+                    <p><strong>Gender:</strong> {{ customer.gender }}</p>
+                {% endif %}
                 <p><strong>Date of Birth:</strong> {{ customer.date_of_birth }}</p>
                 <p><strong>Email:</strong> {{ customer.email }}</p>
                 <p><strong>Phone:</strong> {{ customer.phone }}</p>

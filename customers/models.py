@@ -5,10 +5,10 @@ from django.forms.widgets import SelectDateWidget
 
 class Customer(models.Model):
     GENDER_CHOICES = [
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('N', 'Prefer not to say'),
-        ('O', 'Other')
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Prefer not to say', 'Prefer not to say'),
+        ('Other', 'Other')
     ]
     
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -21,7 +21,7 @@ class Customer(models.Model):
     country = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=10)
     date_of_birth = models.DateField()
-    gender = models.CharField(max_length=2, choices=GENDER_CHOICES, default='N')
+    gender = models.CharField(max_length=25, choices=GENDER_CHOICES, default='Prefer not to Say')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
