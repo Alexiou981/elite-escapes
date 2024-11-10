@@ -34,7 +34,10 @@ def customer_details(request):
     else:
         form = CustomerForm(instance=customer) if customer else CustomerForm()
 
-    return render(request, 'customers/customer_details.html', {'form': form})
+    return render(request, 'customers/customer_details.html', {
+        'form': form,
+        'customer': customer
+        })
 
 
 @login_required
