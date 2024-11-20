@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h2 class="text-center mb-3" style="font-size: 1.5rem;">Customer Details</h2>
+
+            <!-- Compact form container to fit on any screen -->
+            <div class="p-3 bg-white shadow-sm rounded" style="height: auto;">
+                <form method="post" class="customer-details-form">
+                    {% csrf_token %}
+
+                    <!-- Reduce field margins and padding to save space -->
+                    <div class="form-row">
+                        <div class="form-group col-12 mb-2">
+                            <label for="id_first_name" class="small-text">First Name</label>
+                            {{ form.first_name|add_class:"form-control-sm" }}
+                        </div>
+                        <div class="form-group col-12 mb-2">
+                            <label for="id_last_name" class="small-text">Last Name</label>
+                            {{ form.last_name|add_class:"form-control-sm" }}
+                        </div>
+                        <div class="form-group col-12 mb-2 text-center mt-2">
+                            <label for="id_gender" class="small-text">Gender</label>
+                            {{ form.gender|add_class:"form-control-sm" }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-12 mb-2">
+                            <label for="id_email" class="small-text">Email</label>
+                            {{ form.email|add_class:"form-control-sm" }}
+                        </div>
+                        <div class="form-group col-12 mb-2">
+                            <label for="id_phone" class="small-text">Phone</label>
+                            {{ form.phone|add_class:"form-control-sm" }}
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="id_address" class="small-text">Address</label>
+                        {{ form.address|add_class:"form-control-sm" }}
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-6 mb-2">
+                            <label for="id_city" class="small-text">City</label>
+                            {{ form.city|add_class:"form-control-sm" }}
+                        </div>
+                        <div class="form-group col-6 mb-2">
+                            <label for="id_country" class="small-text">Country</label>
+                            {{ form.country|add_class:"form-control-sm" }}
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="id_postal_code" class="small-text">Postal Code</label>
+                        {{ form.postal_code|add_class:"form-control-sm" }}
+                    </div>
+
+                    <div class="form-row"></div>
+                        <div class="form-group col-12 mb-2">
+                            <label for="id_date_of_birth" class="small-text">Date of Birth</label>
+                            {{ form.date_of_birth|add_class:"form-control-sm" }}
+                        </div>
+                    </div>
+
+                    <!-- Smaller submit button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <a href="{% url 'personal_details' %}" class="btn btn-secondary">Cancel</a>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+        <div id="message-container" class="alert" style="display: none;"></div>
+    </div>
+    
+</form>
+{% endblock %}
