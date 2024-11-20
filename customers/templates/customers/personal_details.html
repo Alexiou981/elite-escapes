@@ -23,6 +23,10 @@
                 <p><strong>Country:</strong> {{ customer.country }}</p>
                 <p><strong>Postal Code:</strong> {{ customer.postal_code }}</p>
             </div>
+            <div class="mt-3">
+                <a href="{% url 'edit_customer_details' %}" class="btn btn-primary">Edit Details</a>
+                <a href="{% url 'delete_customer_details' %}" class="btn btn-danger">Delete Details</a>
+            </div>
     {% else %}
         <p>No personal details found. <a href="{% url 'customer_details' %}">Add your details here</a>.</p>
     {% endif %}

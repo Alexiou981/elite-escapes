@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Delete Customer Details</h2>
+<p>Are you sure you want to delete your saved details? This action cannot be undone.</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+<a href="{% url 'personal_details' %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}
