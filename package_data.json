@@ -1,0 +1,182 @@
+[
+{
+  "model": "home.package",
+  "pk": 2,
+  "fields": {
+    "name": "Ski Adventure - Banff, Canada",
+    "brief_description": "Explore the snowy landscapes of Banff, Canada, with skiing, snowboarding, and winter activities in the beautiful Canadian Rockies.",
+    "detailed_description": "",
+    "price": "2500.00",
+    "holiday_duration": 8,
+    "date": "2025-01-01",
+    "image": "",
+    "holiday_type": "Adventure",
+    "females_only": false
+  }
+},
+{
+  "model": "home.package",
+  "pk": 3,
+  "fields": {
+    "name": "Historical Wonders - Rome, Italy",
+    "brief_description": "Delve into the rich history of Rome with visits to the Colosseum, Vatican, and ancient ruins. Perfect for history lovers and foodies alike.",
+    "detailed_description": "",
+    "price": "2400.00",
+    "holiday_duration": 8,
+    "date": "2025-07-15",
+    "image": "",
+    "holiday_type": "Entertainment",
+    "females_only": false
+  }
+},
+{
+  "model": "home.package",
+  "pk": 4,
+  "fields": {
+    "name": "Culture and Beaches - Bali, Indonesia",
+    "brief_description": "Discover the beautiful beaches, temples, and unique culture of Bali. Includes a guided tour to Ubud, a visit to the Sacred Monkey Forest, and beach relaxation.",
+    "detailed_description": "",
+    "price": "1900.00",
+    "holiday_duration": 8,
+    "date": "2025-09-05",
+    "image": "",
+    "holiday_type": "Relaxation",
+    "females_only": true
+  }
+},
+{
+  "model": "home.package",
+  "pk": 5,
+  "fields": {
+    "name": "Safari - Cape Town & Kruger, South Africa",
+    "brief_description": "Experience South Africa’s stunning landscapes and wildlife on a safari tour. Includes visits to Cape Town, Table Mountain, and Kruger National Park.",
+    "detailed_description": "",
+    "price": "4200.00",
+    "holiday_duration": 11,
+    "date": "2025-08-10",
+    "image": "",
+    "holiday_type": "Adventure",
+    "females_only": true
+  }
+},
+{
+  "model": "home.package",
+  "pk": 6,
+  "fields": {
+    "name": "Inca Trail - Machu Picchu, Peru",
+    "brief_description": "Embark on a guided trek along the historic Inca Trail, leading to the ancient city of Machu Picchu. Ideal for adventure seekers and history buffs.",
+    "detailed_description": "",
+    "price": "3000.00",
+    "holiday_duration": 9,
+    "date": "2025-04-10",
+    "image": "",
+    "holiday_type": "Education",
+    "females_only": false
+  }
+},
+{
+  "model": "home.package",
+  "pk": 7,
+  "fields": {
+    "name": "Luxury Shopping & Desert Safari - Dubai, UAE",
+    "brief_description": "Enjoy a blend of modern luxury and traditional Arabian culture. Highlights include a desert safari, Burj Khalifa, and luxury shopping.",
+    "detailed_description": "",
+    "price": "2200.00",
+    "holiday_duration": 7,
+    "date": "2025-11-01",
+    "image": "",
+    "holiday_type": "Entertainment",
+    "females_only": true
+  }
+},
+{
+  "model": "home.package",
+  "pk": 8,
+  "fields": {
+    "name": "Holiday Season Spectacular -New York, USA",
+    "brief_description": "Spend Christmas in the bustling city of New York, with festive lights, ice skating at Rockefeller Center, and holiday shopping.",
+    "detailed_description": "",
+    "price": "2600.00",
+    "holiday_duration": 8,
+    "date": "2025-12-20",
+    "image": "",
+    "holiday_type": "Entertainment",
+    "females_only": false
+  }
+},
+{
+  "model": "home.package",
+  "pk": 9,
+  "fields": {
+    "name": "Northern Lights Adventure - Iceland",
+    "brief_description": "Witness the magical Northern Lights and explore Iceland’s natural wonders, including waterfalls, geysers, and glaciers.",
+    "detailed_description": "",
+    "price": "3800.00",
+    "holiday_duration": 8,
+    "date": "2025-01-10",
+    "image": "",
+    "holiday_type": "Adventure",
+    "females_only": false
+  }
+},
+{
+  "model": "home.package",
+  "pk": 10,
+  "fields": {
+    "name": "Luxury Beach Retreat - Maldives",
+    "brief_description": "Unwind in a private villa in the Maldives, with crystal-clear waters and luxurious amenities. Perfect for those looking to relax in paradise.",
+    "detailed_description": "",
+    "price": "4500.00",
+    "holiday_duration": 8,
+    "date": "2025-12-10",
+    "image": "",
+    "holiday_type": "Relaxation",
+    "females_only": false
+  }
+},
+{
+  "model": "home.package",
+  "pk": 11,
+  "fields": {
+    "name": "Art & Cuisine Tour - Paris",
+    "brief_description": "Indulge in the culinary and artistic delights of Paris. Tour includes visits to the Louvre, Eiffel Tower, and cooking classes with local chefs.",
+    "detailed_description": "",
+    "price": "2800.00",
+    "holiday_duration": 8,
+    "date": "2025-06-05",
+    "image": "",
+    "holiday_type": "Entertainment",
+    "females_only": true
+  }
+},
+{
+  "model": "home.package",
+  "pk": 12,
+  "fields": {
+    "name": "Cherry Blossom Season - Kyoto,Japan",
+    "brief_description": "Discover the ancient temples and colourful cherry blossoms of Kyoto. Includes visits to historic sites and guided cherry blossom viewing tours.",
+    "detailed_description": "",
+    "price": "3200.00",
+    "holiday_duration": 10,
+    "date": "2025-03-20",
+    "image": "",
+    "holiday_type": "Education",
+    "females_only": false
+  }
+},
+{
+  "model": "home.package",
+  "pk": 13,
+  "fields": {
+    "name": "Romantic Getaway - Santorini, Greece",
+    "brief_description": "Experience the breathtaking sunsets, white-washed buildings, and crystal-clear waters of Santorini. Ideal for couples seeking a romantic escape.",
+    "detailed_description": "",
+    "price": "2500.00",
+    "holiday_duration": 7,
+    "date": "2025-05-15",
+    "image": "",
+    "holiday_type": "Relaxation",
+    "females_only": false
+  }
+}
+]
