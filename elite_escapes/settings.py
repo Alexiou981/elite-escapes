@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-2tugz+ck*_d3i+7)il(g&9r1s+q&n2d%-7xigao@3t14sk0fwv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['elite-escapes.herokuapp.com', '8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -115,12 +116,21 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.cod
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
+        }
+    }
+
+# DATABASES = {
+#      'default': dj_database_url.parse('postgres://neondb_owner:h5xUk9RLiptX@ep-white-recipe-a2um1za5.eu-central-1.aws.neon.tech/spied_heave_glue_826000')
+#  }
 
 
 # Password validation
