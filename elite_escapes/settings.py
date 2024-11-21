@@ -24,9 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2tugz+ck*_d3i+7)il(g&9r1s+q&n2d%-7xigao@3t14sk0fwv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['elite-escapes.herokuapp.com', '8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = [
+    'elite-escapes-6cd7f36ee2af.herokuapp.com', 
+    '8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net',
+    '.herokuapp.com',
+    ]
 
 
 # Application definition
@@ -110,7 +114,9 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'elite_escapes.wsgi.application'
 
 # Trused urls for csrf authorisation
-CSRF_TRUSTED_ORIGINS = ['https://8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net']
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net',
+    'https://elite-escapes-6cd7f36ee2af.herokuapp.com',]
 
 
 # Database
