@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'customers',
     'bag',
     'checkout',
+    'orders',
     'widget_tweaks',
 ]
 
