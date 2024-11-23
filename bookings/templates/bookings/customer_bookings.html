@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Your Bookings
+{% endblock %}
+
+{% block content %}
+    <h1>Your Bookings</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                <strong>{{ booking.package.name }}</strong> - ${{ booking.amount }}
+            </li>
+            <li>
+                Booked on: ({{ booking.created_at|date:"Y-m-d" }})
+            </li>
+        {% empty %}
+            <li>No bookings found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
