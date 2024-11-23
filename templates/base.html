@@ -46,7 +46,7 @@
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 <a href="{% url 'personal_details' %}" class="dropdown-item">Personal Details</a>
-                                <a href="" class="dropdown-item">Bookings</a>
+                                <a href="{% url 'customer_bookings' %}" class="dropdown-item">Bookings</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
                                 <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
