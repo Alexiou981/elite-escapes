@@ -14,6 +14,12 @@ Your Bookings
             <li>
                 Booked on: ({{ booking.created_at|date:"Y-m-d" }})
             </li>
+            <li>
+                Departure Date: ({{ booking.package.date|date:"F j, Y" }})
+            </li>
+            <li>
+                Duration: ({{ booking.package.holiday_duration }} days)
+            </li>
         {% empty %}
             <li>No bookings found.</li>
         {% endfor %}
