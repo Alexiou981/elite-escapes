@@ -5,23 +5,32 @@ Your Bookings
 {% endblock %}
 
 {% block content %}
-    <h1>Your Bookings</h1>
-    <ul>
-        {% for booking in bookings %}
-            <li>
-                <strong>{{ booking.package.name }}</strong> - ${{ booking.amount }}
-            </li>
-            <li>
-                Booked on: ({{ booking.created_at|date:"Y-m-d" }})
-            </li>
-            <li>
-                Departure Date: ({{ booking.package.date|date:"F j, Y" }})
-            </li>
-            <li>
-                Duration: ({{ booking.package.holiday_duration }} days)
-            </li>
-        {% empty %}
-            <li>No bookings found.</li>
-        {% endfor %}
-    </ul>
+    
+    <div class="container package-list">
+        <h1 class="text-white">Your Bookings</h1>
+        <div class="row mt-2">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <ul>
+                        {% for booking in bookings %}
+                            <li>
+                                <strong>{{ booking.package.name }}</strong> - ${{ booking.amount }}
+                            </li>
+                            <li>
+                                Booked on: ({{ booking.created_at|date:"Y-m-d" }})
+                            </li>
+                            <li>
+                                Departure Date: ({{ booking.package.date|date:"F j, Y" }})
+                            </li>
+                            <li>
+                                Duration: ({{ booking.package.holiday_duration }} days)
+                            </li>
+                        {% empty %}
+                            <li>No bookings found.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
