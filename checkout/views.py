@@ -5,10 +5,11 @@ from home.models import Package
 from bag.views import ShoppingCart
 from bookings.models import Booking
 
-stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
-
 
 def checkout(request, total_price, package_id):
+    
+    stripe.api_key = settings.STRIPE_TEST_PUBLIC_KEY
+    stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
     # Retrieve the selected package
     package = get_object_or_404(Package, id=package_id)
 
