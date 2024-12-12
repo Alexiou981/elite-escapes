@@ -21,36 +21,19 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        """
-        Handle the payment_intent.succeeded webhook from Stripe
-        """
-        intent = event.data.object
-        customer_email = intent['charges']['data'][0]['billing_details']['email']
-        metadata = intent.get('metadata', {})
-        package_id = metadata.get('package_id')
-        total_price = metadata.get('total_price')
-        user_id = metadata.get('user_id')
+        intent = event['data']['object']  # Extract the object
+        print("Payment Intent:", intent)  # Debug log
 
-        if package_id and total_price and user_id:
-            try:
-                package = Package.objects.get(id=package_id)
-                user = User.objects.get(id=user_id)
-                Booking.objects.create(
-                    user=user,
-                    package=package,
-                    amount=total_price,
-                )
+        # Check the structure
+        customer_email = intent.get('charges', {}).get('data', [{}])[0].get('billing_details', {}).get('email', None)
+        print("Customer Email:", customer_email)
 
-                # Send confirmation email
-                send_booking_confirmation_email(
-                    user_email=customer_email,
-                    package_name=package.name,
-                    total_price=total_price,
-                )
-            except (Package.DoesNotExist, User.DoesNotExist) as e:
-                return HttpResponse(content=f"Error creating booking: {e}", status=500)
+        # Add further logic here
+        return HttpResponse(
+            content=f'Webhook received: {event["type"]}',
+            status=200
+        )
 
-        return HttpResponse(content=f"Webhook received: {event['type']}", status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """
