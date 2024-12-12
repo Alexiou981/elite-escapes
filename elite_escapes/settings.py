@@ -101,11 +101,11 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'escapeselite79.gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'escapeselite79@gmail.com'
-EMAIL_HOST_PASSWORD = 'EliteGmail1!'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'Elite Escapes <escapeselite79@gmail.com>'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
