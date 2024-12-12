@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from home.models import Package
 from bag.views import ShoppingCart
 from bookings.models import Booking
+from .utils import send_booking_confirmation_email
 
 
 def checkout(request, total_price, package_id):
@@ -38,6 +39,11 @@ def checkout(request, total_price, package_id):
         mode='payment',
         success_url=request.build_absolute_uri(reverse('success')),
         cancel_url=request.build_absolute_uri(reverse('cancel')),
+        metadata={
+            'package_id': package.id,
+            'total_price': total_price,
+            'user_id': request.user.id,
+        },
     )
     return redirect(session.url, code=303)
 
@@ -55,6 +61,14 @@ def success_view(request):
             package=package,
             amount=total_price,
         )
+
+        # Send confirmation email
+        send_booking_confirmation_email(
+            user_email=request.user.email,
+            package_name=package.name,
+            total_price=total_price,
+        )
+
 
     # Clear session data (optional)
     request.session.pop('total_price', None)
