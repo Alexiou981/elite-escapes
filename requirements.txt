@@ -19,6 +19,7 @@ kombu==5.4.2
 phonenumbers==8.13.49
 pillow==11.0.0
 psycopg2==2.9.10
+python-dotenv==1.0.1
 pytz==2024.2
 sqlparse==0.5.1
 stripe==11.1.1

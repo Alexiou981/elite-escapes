@@ -12,16 +12,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hh(fhcax(7l)e04%$0@$75ymr%hx$559_sjv3fz0txe3ap2^vx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -108,8 +108,6 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'Elite Escapes <escapeselite79@gmail.com>'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 # Settings boutique_ado/settings.py by ckz8780
 # https://github.com/Code-Institute-Solutions/boutique_ado_v1/blob/ea7fe2688a0d97db4e469b672d5cb35e5835ff69/boutique_ado/settings.py
@@ -143,10 +141,6 @@ else:
             'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
         }
     }
-
-# DATABASES = {
-#      'default': dj_database_url.parse('postgres://neondb_owner:h5xUk9RLiptX@ep-white-recipe-a2um1za5.eu-central-1.aws.neon.tech/spied_heave_glue_826000')
-#  }
 
 
 # Password validation
@@ -199,6 +193,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-STRIPE_TEST_PUBLIC_KEY = os.getenv('STRIPE_TEST_PUBLIC_KEY', 'pk_test_51Q5PyQF7pIi0BdtOjAuxVDEzaegySI1uHUXFNxZzGrfm6wHh2P8f0FpXhtVVrgOg0oimij74Y81GlUAdMf4RCQpw0074umPnWy')
-STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY', 'sk_test_51Q5PyQF7pIi0BdtOQWVvPL5pO1oAzCCpSi5bDnSRYMnXtUKFRVXZlfzFXbT6nxBlMbU5BlHoptGg7dz8eGf28s7I00FzZoN8vP')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'whsec_KY0kUYPQ34yvZEefIeEqM11NQ5C6ua2V')
+STRIPE_TEST_PUBLIC_KEY = os.getenv('STRIPE_TEST_PUBLIC_KEY', 'STR_PK')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'SK_DJ')  
+STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY', 'STR_TST_SK')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'STR_WH_S')
