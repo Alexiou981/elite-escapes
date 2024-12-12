@@ -100,7 +100,16 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'escapeselite79.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'escapeselite79@gmail.com'
+EMAIL_HOST_PASSWORD = 'EliteGmail1!'
+DEFAULT_FROM_EMAIL = 'Elite Escapes <escapeselite79@gmail.com>'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Settings boutique_ado/settings.py by ckz8780
 # https://github.com/Code-Institute-Solutions/boutique_ado_v1/blob/ea7fe2688a0d97db4e469b672d5cb35e5835ff69/boutique_ado/settings.py
