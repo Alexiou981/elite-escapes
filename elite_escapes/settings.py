@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -192,7 +193,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-STRIPE_TEST_PUBLIC_KEY = os.getenv('STRIPE_TEST_PUBLIC_KEY', 'STR_PK')
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'SK_DJ')  
-STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY', 'STR_TST_SK')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'STR_WH_S')
+SECRET_KEY = config('DJANGO_SECRET_KEY', default='fallback-secret-key')
+STRIPE_TEST_PUBLIC_KEY = config('STRIPE_TEST_PUBLIC_KEY', default='')
+STRIPE_TEST_SECRET_KEY = config('STRIPE_TEST_SECRET_KEY', default='')
+STRIPE_WH_SECRET = config('STRIPE_WH_SECRET', default='')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
