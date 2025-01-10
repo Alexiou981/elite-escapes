@@ -12,10 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
-from dotenv import load_dotenv
-
-# Load environment variables from the .env file
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +24,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'elite-escapes-6cd7f36ee2af.herokuapp.com', 
-    '8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net',
+    '8000-alexiou981-eliteescapes-mvwa1r65uzl.ws.codeinstitute-ide.net',
     '.herokuapp.com',
     ]
 
@@ -126,7 +122,7 @@ WSGI_APPLICATION = 'elite_escapes.wsgi.application'
 
 # Trused urls for csrf authorisation
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-alexiou981-eliteescapes-s0j2fj64fvb.ws.codeinstitute-ide.net',
+    'https://8000-alexiou981-eliteescapes-mvwa1r65uzl.ws.codeinstitute-ide.net',
     'https://elite-escapes-6cd7f36ee2af.herokuapp.com',]
 
 
