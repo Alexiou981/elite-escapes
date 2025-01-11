@@ -201,11 +201,3 @@ STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY', default='')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', default='')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', default='')
-
-
-print(os.environ.get('DJANGO_SECRET_KEY', default='fallback-secret-key'))
-print(os.environ.get('STRIPE_TEST_PUBLIC_KEY', default=''))
-print(os.environ.get('STRIPE_TEST_SECRET_KEY', default=''))
-print(os.environ.get('STRIPE_WH_SECRET', default=''))
-print(os.environ.get('EMAIL_HOST_USER', default=''))
-print(os.environ.get('EMAIL_HOST_PASSWORD', default=''))
