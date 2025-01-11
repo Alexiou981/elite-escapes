@@ -1,6 +1,6 @@
-pip3 install amqp==5.3.1
-pip3 install asgiref==3.8.1
-pip3 install billiard==4.2.1
+install amqp==5.3.1
+install asgiref==3.8.1
+install billiard==4.2.1
 celery==5.4.0
 click==8.1.7
 click-didyoumean==0.3.1
