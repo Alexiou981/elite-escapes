@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -199,3 +201,11 @@ STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY', default='')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', default='')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', default='')
+
+
+print(os.environ.get('DJANGO_SECRET_KEY', default='fallback-secret-key'))
+print(os.environ.get('STRIPE_TEST_PUBLIC_KEY', default=''))
+print(os.environ.get('STRIPE_TEST_SECRET_KEY', default=''))
+print(os.environ.get('STRIPE_WH_SECRET', default=''))
+print(os.environ.get('EMAIL_HOST_USER', default=''))
+print(os.environ.get('EMAIL_HOST_PASSWORD', default=''))
