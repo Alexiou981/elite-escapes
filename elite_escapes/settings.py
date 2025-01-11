@@ -123,7 +123,7 @@ WSGI_APPLICATION = 'elite_escapes.wsgi.application'
 
 # Trused urls for csrf authorisation
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-alexiou981-eliteescapes-mvwa1r65uzl.ws.codeinstitute-ide.net',
+    'https://8000-alexiou981-eliteescapes-2scg4syfday.ws.codeinstitute-ide.net',
     'https://elite-escapes-6cd7f36ee2af.herokuapp.com',]
 
 
