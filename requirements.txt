@@ -1,28 +1,28 @@
-amqp==5.3.1
-asgiref==3.8.1
-billiard==4.2.1
-celery==5.4.0
-click==8.1.7
-click-didyoumean==0.3.1
-click-plugins==1.1.1
-click-repl==0.3.0
-dj-database-url==0.5.0
-Django==5.1.2
-django-allauth==65.0.2
-django-appconf==1.0.6
-django-celery-email==3.0.0
-django-celery-results==2.5.1
-django-phonenumber-field==8.0.0
-django-widget-tweaks==1.5.0
-gunicorn==23.0.0
-kombu==5.4.2
-phonenumbers==8.13.49
-pillow==11.0.0
-psycopg2==2.9.10
-python-dotenv==1.0.1
-pytz==2024.2
-sqlparse==0.5.1
-stripe==11.1.1
-tzdata==2024.2
-vine==5.1.0
-whitenoise==6.8.2
+pip3 install amqp==5.3.1
+pip3 install asgiref==3.8.1
+pip3 install billiard==4.2.1
+pip3 install celery==5.4.0
+pip3 install click==8.1.7
+pip3 install click-didyoumean==0.3.1
+pip3 install click-plugins==1.1.1
+pip3 install click-repl==0.3.0
+pip3 install dj-database-url==0.5.0
+pip3 install Django==5.1.2
+pip3 install django-allauth==65.0.2
+pip3 install django-appconf==1.0.6
+pip3 install django-celery-email==3.0.0
+pip3 install django-celery-results==2.5.1
+pip3 install django-phonenumber-field==8.0.0
+pip3 install django-widget-tweaks==1.5.0
+pip3 install gunicorn==23.0.0
+pip3 install kombu==5.4.2
+pip3 install phonenumbers==8.13.49
+pip3 install pillow==11.0.0
+pip3 install psycopg2==2.9.10
+pip3 install python-dotenv==1.0.1
+pip3 install pytz==2024.2
+pip3 install sqlparse==0.5.1
+pip3 install stripe==11.1.1
+pip3 install tzdata==2024.2
+pip3 install vine==5.1.0
+pip3 install whitenoise==6.8.2

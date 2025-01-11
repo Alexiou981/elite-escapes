@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
-from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +25,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'elite-escapes-6cd7f36ee2af.herokuapp.com', 
-    '8000-alexiou981-eliteescapes-mvwa1r65uzl.ws.codeinstitute-ide.net',
+    '8000-alexiou981-eliteescapes-2scg4syfday.ws.codeinstitute-ide.net',
     '.herokuapp.com',
     ]
 
@@ -193,9 +193,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-SECRET_KEY = config('DJANGO_SECRET_KEY', default='fallback-secret-key')
-STRIPE_TEST_PUBLIC_KEY = config('STRIPE_TEST_PUBLIC_KEY', default='')
-STRIPE_TEST_SECRET_KEY = config('STRIPE_TEST_SECRET_KEY', default='')
-STRIPE_WH_SECRET = config('STRIPE_WH_SECRET', default='')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default='fallback-secret-key')
+STRIPE_TEST_PUBLIC_KEY = os.environ.get('STRIPE_TEST_PUBLIC_KEY', default='')
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY', default='')
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', default='')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', default='')
