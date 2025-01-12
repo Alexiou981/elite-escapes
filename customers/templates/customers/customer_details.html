@@ -10,7 +10,7 @@
 
             <!-- Compact form container to fit on any screen -->
             <div class="p-3 bg-white shadow-sm rounded" style="height: auto;">
-                <form method="post" class="customer-details-form">
+                <form method="post"  id="customer-details-form" class="customer-details-form">
                     {% csrf_token %}
 
                     <!-- Reduce field margins and padding to save space -->
@@ -83,23 +83,28 @@
     </div>
 
     <script>
-        // Grab the form and message container elements
-        const form = document.getElementById('customer-details-form');
-        const messageContainer = document.getElementById('message-container');
-    
+        document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('customer-details-form');
+    const messageContainer = document.getElementById('message-container'); 
+
+    if (form && messageContainer) {
         form.addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevents immediate submission to allow message display
-    
+            event.preventDefault();  
             // Show the message
             messageContainer.style.display = 'block';
             messageContainer.className = 'alert alert-success';
             messageContainer.innerText = 'Your details have been saved successfully!';
-    
+
             // Delay and then submit the form
             setTimeout(() => {
                 form.submit();
             }, 1000);  // Adjust delay as needed
         });
+    } else {
+        console.error('Form or message container not found');
+    }
+});
+
     </script>
     
 {% endblock %}
