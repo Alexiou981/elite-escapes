@@ -68,11 +68,14 @@ def success_view(request):
             package_name=package.name,
             total_price=total_price,
         )
+    
 
+    ShoppingCart.objects.filter(user=request.user).delete()
 
     # Clear session data (optional)
     request.session.pop('total_price', None)
     request.session.pop('package_id', None)
+
 
     return render(request, 'checkout/success.html')
 
