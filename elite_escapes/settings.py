@@ -106,6 +106,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'Elite Escapes <escapeselite79@gmail.com>'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
 
 
 # Settings boutique_ado/settings.py by ckz8780
