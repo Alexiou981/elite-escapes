@@ -31,3 +31,6 @@ class Package(models.Model):
         return self.name
 
 
+class PackageImages(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='package_images/')
