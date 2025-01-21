@@ -4,9 +4,18 @@
 <div class="container package-list">
     <h1>{{ package.name }}</h1>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
+            <!-- Carousel Section -->
             {% if package.images.all %}
-                <div id="packageCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="packageCarousel" class="carousel slide mb-4" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        {% for image in package.images.all %}
+                            <li data-target="#packageCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                        {% endfor %}
+                    </ol>
+
+                    <!-- Carousel Items -->
                     <div class="carousel-inner">
                         {% for image in package.images.all %}
                             <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -14,32 +23,37 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#packageCarousel" data-bs-slide="prev">
+
+                    <!-- Controls -->
+                    <a class="carousel-control-prev" href="#packageCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#packageCarousel" data-bs-slide="next">
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#packageCarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-            {% else %}
-                <p>No images available for this package.</p>
             {% endif %}
         </div>
-        <div class="col-md-6">
+        
+        <div class="col-md-12">
+            <!-- Details Section -->
             <h3>Details</h3>
             <p><strong>Description:</strong> {{ package.detailed_description }}</p>
             <p><strong>Price:</strong> ${{ package.price }}</p>
             <p><strong>Duration:</strong> {{ package.holiday_duration }} days</p>
+            
+            <!-- Buttons Section -->
             {% if user.is_authenticated %}
-                <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Book Now</a>
+                <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary mt-3">Book Now</a>
             {% else %}
-                <a href="{% url 'account_login' %}" class="btn btn-light">Login or Register</a>
+                <a href="{% url 'account_login' %}" class="btn btn-light mt-3">Login or Register</a>
                 <h5>or</h5>
                 <a href="{% url 'add_to_bag' package.id %}" class="btn btn-info">Continue as guest</a>
             {% endif %}
         </div>
     </div>
 </div>
+
 {% endblock %}
