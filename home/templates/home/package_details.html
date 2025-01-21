@@ -5,8 +5,26 @@
     <h1>{{ package.name }}</h1>
     <div class="row">
         <div class="col-md-6">
-            {% if package.image %}
-                <img src="{{ package.image.url }}" class="img-fluid" alt="{{ package.name }}">
+            {% if package.images.all %}
+                <div id="packageCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for image in package.images.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ image.image.url }}" class="d-block w-100" alt="Image for {{ package.name }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#packageCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#packageCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            {% else %}
+                <p>No images available for this package.</p>
             {% endif %}
         </div>
         <div class="col-md-6">
@@ -17,12 +35,11 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary">Book Now</a>
             {% else %}
-            <a href="{% url 'account_login' %}" class="btn btn-light">Login or Register</a>
-            <h5>or</h5>
-            <a href="{% url 'add_to_bag' package.id %}" class="btn btn-info">Continue as guest</a>
-            {% endif%}
+                <a href="{% url 'account_login' %}" class="btn btn-light">Login or Register</a>
+                <h5>or</h5>
+                <a href="{% url 'add_to_bag' package.id %}" class="btn btn-info">Continue as guest</a>
+            {% endif %}
         </div>
-        
     </div>
 </div>
 {% endblock %}
