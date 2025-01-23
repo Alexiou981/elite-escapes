@@ -7,33 +7,34 @@
         <div class="col-md-12">
             <!-- Carousel Section -->
             {% if package.images.all %}
-                <div id="packageCarousel" class="carousel slide mb-4" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        {% for image in package.images.all %}
-                            <li data-target="#packageCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
-                        {% endfor %}
-                    </ol>
-
-                    <!-- Carousel Items -->
-                    <div class="carousel-inner">
-                        {% for image in package.images.all %}
-                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                <img src="{{ image.image.url }}" class="d-block w-100" alt="Image for {{ package.name }}">
-                            </div>
-                        {% endfor %}
-                    </div>
-
-                    <!-- Controls -->
-                    <a class="carousel-control-prev" href="#packageCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#packageCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+            <div id="packageCarousel" class="carousel slide mb-4" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    {% for image in package.images.all %}
+                        <li data-target="#packageCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                    {% endfor %}
+                </ol>
+            
+                <!-- Carousel Items -->
+                <div class="carousel-inner">
+                    {% for image in package.images.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ image.image.url }}" class="d-block w-100" alt="Image for {{ package.name }}">
+                        </div>
+                    {% endfor %}
                 </div>
+            
+                <!-- Controls -->
+                <a class="carousel-control-prev" href="#packageCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#packageCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            
             {% endif %}
         </div>
         
