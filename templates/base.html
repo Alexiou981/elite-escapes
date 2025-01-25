@@ -27,21 +27,19 @@
     <title>Elite Escapes {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top">
-        <div id="topnav" class="row bg-white pt-lg-2 d-lg-flex">
-            <div class="col-12 col-lg-6 my-auto py-1 py-lg-0 text-center text-lg-left">
+    <header class="container-fluid fixed-top mt-3">
+        <div id="topnav" class="row bg-white pt-lg-2 d-flex">
+            <div class="col-12 col-sm-6 text-center text-sm-left py-1">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2 class="logo-font text-black my-0">Elite <strong>Escapes</strong></h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-6 my-auto py-1 py-lg-0">
-                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+            <div class="col-12 col-sm-6 text-center text-sm-right py-1">
+                <ul class="list-inline list-unstyled my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0">My Account</p>
-                            </div>
+                        <a class="text-black nav-link d-flex flex-column align-items-center" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user fa-lg mb-2"></i>
+                            <p class="my-0">My Account</p>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
@@ -54,9 +52,11 @@
                             {% endif %}
                         </div>
                     </li>
+                    
                 </ul>
             </div>
         </div>
+        
     </header>
 
     <!-- Message container and main content spacing -->

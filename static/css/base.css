@@ -29,8 +29,18 @@ body {
     text-transform: uppercase;
 }
 
-.main-logo-link {
-    width: fit-content;
+
+#topnav .main-logo-link {
+    padding: 0;
+}
+
+#topnav .list-inline {
+    margin: 0;
+    padding: 0;
+}
+
+#topnav .list-inline-item {
+    padding: 0 5px; /* Adjust spacing between items */
 }
 
 .shop-now-button {
@@ -143,3 +153,4 @@ body {
         padding-top: 164px;
     }
 }
+
