@@ -27,8 +27,8 @@
     <title>Elite Escapes {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top mt-3">
-        <div id="topnav" class="row bg-white pt-lg-2 d-flex">
+    <header class="container-fluid fixed-top">
+        <div id="topnav" class="row bg-white d-flex">
             <div class="col-12 col-sm-6 text-center text-sm-left py-1">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2 class="logo-font text-black my-0">Elite <strong>Escapes</strong></h2>
@@ -36,7 +36,7 @@
             </div>
             <div class="col-12 col-sm-6 text-center text-sm-right py-1">
                 <ul class="list-inline list-unstyled my-0">
-                    <li class="list-inline-item dropdown">
+                    <li class="list-inline-item dropdown pt-1">
                         <a class="text-black nav-link d-flex flex-column align-items-center" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user fa-lg mb-2"></i>
                             <p class="my-0">My Account</p>
@@ -59,21 +59,22 @@
         
     </header>
 
-    <!-- Message container and main content spacing -->
-        <div class="container mt-5 pt-5">
-            {% if messages %}
-            <div class="alert-container mt-3">
-                {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    {% if messages %}
+    <div class="alert-container fixed-top mt-5 pt-3">
+        <div class="container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                {% endfor %}
+                </button>
             </div>
-            {% endif %}
+            {% endfor %}
         </div>
+    </div>
+    {% endif %}
+
+
 
     {% block page_header %}
     {% endblock %}
