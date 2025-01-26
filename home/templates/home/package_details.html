@@ -42,11 +42,13 @@
             
             <p>{{ package.detailed_description|safe }}</p>
             <p>{{ package.getaway_highlights_description|safe }}</p>
-            <div>
-                <p>{{ package.included|safe }}</p>
-                <h3 class="font-weight-bold mb-3">Details</h3>
-                <p><strong>Price:</strong> <span class="text-success font-weight-bold">${{ package.price }}</span></p>
-                <p><strong>Duration:</strong> <span class="badge badge-secondary">{{ package.holiday_duration }} days</span></p>
+            <div class="d-flex">
+                <div class="col-md-7"><p>{{ package.included|safe }}</p></div>
+                <div class="col-md-5">
+                    <h3 class="font-weight-bold mb-3">Details</h3>
+                    <p><strong>Price:</strong> <span class="text-success font-weight-bold">${{ package.price }}</span></p>
+                    <p><strong>Duration:</strong> <span class="badge badge-secondary">{{ package.holiday_duration }} days</span></p>
+                </div>
             </div>
             <!-- Buttons Section -->
             {% if user.is_authenticated %}
