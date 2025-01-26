@@ -146,6 +146,14 @@ html, body {
     object-fit: cover; 
 }
 
+/* Confitmation question about deleting personal details */
+.delete-details {
+    max-height: 100vh;
+    position: relative;
+    text-align: center;
+    padding-top: 30vh;
+}
+
 /* -------------------------------- Media Queries */
 
 /* General small-text label style for compact layout */
