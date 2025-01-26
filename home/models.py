@@ -19,6 +19,7 @@ class Package(models.Model):
 
     name = models.CharField(max_length=255)
     brief_description = models.TextField()
+    detailed_description = models.TextField(blank=True)
     getaway_highlights = models.TextField(blank=True)
     included = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
