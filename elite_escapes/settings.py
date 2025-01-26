@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'checkout',
     'bookings',
     'widget_tweaks',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
