@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'elite-escapes-6cd7f36ee2af.herokuapp.com', 
-    '8000-alexiou981-eliteescapes-2scg4syfday.ws.codeinstitute-ide.net',
+    '127.0.0.1',
     '.herokuapp.com',
     ]
 
