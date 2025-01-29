@@ -22,7 +22,7 @@ kombu==5.4.2
 Markdown==3.7
 phonenumbers==8.13.49
 pillow==11.0.0
-psycopg2==2.9.10
+psycopg2-binary==2.9.10
 python-decouple==3.8
 python-dotenv==1.0.1
 pytz==2024.2
