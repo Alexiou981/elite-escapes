@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'checkout',
     'bookings',
     'widget_tweaks',
-    'ckeditor',
+    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [

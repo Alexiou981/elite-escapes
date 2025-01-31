@@ -1,6 +1,5 @@
 from django.db import models
-from django.conf import settings
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 
 class Package(models.Model):
     ENTERTAINMENT = "Entertainment"
@@ -19,9 +18,9 @@ class Package(models.Model):
 
     name = models.CharField(max_length=255)
     brief_description = models.TextField()
-    detailed_description = RichTextField(blank=True)
-    getaway_highlights = RichTextField(blank=True)
-    included = RichTextField(blank=True)
+    detailed_description = CKEditor5Field(blank=True)
+    getaway_highlights = CKEditor5Field(blank=True)
+    included = CKEditor5Field(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     holiday_duration = models.PositiveIntegerField()
     date = models.DateField()
