@@ -40,10 +40,10 @@
         <div class="col-md-12 mt-5">
             <!-- Details Section -->
             
-            <p>{{ package.detailed_description }}</p>
+            <p>{{ package.detailed_description|safe }}</p>
             <hr>
             <br>
-            <p>{{ package.getaway_highlights }}</p>
+            <p>{{ package.getaway_highlights|safe }}</p>
             <div class="d-flex">
                 <div class="col-md-7"><p>{{ package.included|safe }}</p></div>
                 <div class="col-md-5">

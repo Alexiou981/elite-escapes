@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from checkout.views import success_view, cancel_view
+from django_ckeditor_5 import urls as ck_editor_5_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('success/', success_view, name='success'),
     path('cancel/', cancel_view, name='cancel'),
     path('bookings/', include('bookings.urls')),
+    path('ckeditor5/', include(ck_editor_5_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

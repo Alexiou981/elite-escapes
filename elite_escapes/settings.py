@@ -128,6 +128,23 @@ CSRF_TRUSTED_ORIGINS = [
     'https://elite-escapes-6cd7f36ee2af.herokuapp.com',]
 
 
+# CKEditor 5 Configuration
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            {'name': 'document', 'items': ['Source']},
+            {'name': 'clipboard', 'items': ['Undo', 'Redo']},
+            {'name': 'styles', 'items': ['Bold', 'Italic', 'Underline', 'Strike']},
+            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent']},
+            {'name': 'insert', 'items': ['Image', 'Link', 'Unlink', 'Table', 'HorizontalRule']},
+            {'name': 'editing', 'items': ['Scayt']},
+        ],
+        'height': 300,
+        'width': '100%',
+    }
+}
+
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
