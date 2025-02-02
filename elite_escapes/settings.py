@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'widget_tweaks',
-    'django_summernote',
+    'tinymce',
 
     # Custom Apps
     'home',
@@ -128,21 +128,14 @@ CSRF_TRUSTED_ORIGINS = [
     'https://elite-escapes-6cd7f36ee2af.herokuapp.com',]
 
 
-# CKEditor 5 Configuration
-CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': [
-            {'name': 'document', 'items': ['Source']},
-            {'name': 'clipboard', 'items': ['Undo', 'Redo']},
-            {'name': 'styles', 'items': ['Bold', 'Italic', 'Underline', 'Strike']},
-            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent']},
-            {'name': 'insert', 'items': ['Image', 'Link', 'Unlink', 'Table', 'HorizontalRule']},
-            {'name': 'editing', 'items': ['Scayt']},
-        ],
-        'height': 300,
-        'width': '100%',
-    }
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 400,
+    'width': '100%',
+    'plugins': 'advlist autolink lists link image charmap print preview anchor',
+    'toolbar': 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help',
 }
+
 
 
 # Database
