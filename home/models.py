@@ -1,5 +1,5 @@
 from django.db import models
-from django_ckeditor_5.fields import CKEditor5Field
+from django_summernote.fields import SummernoteTextField
 
 class Package(models.Model):
     ENTERTAINMENT = "Entertainment"
@@ -18,9 +18,9 @@ class Package(models.Model):
 
     name = models.CharField(max_length=255)
     brief_description = models.TextField()
-    detailed_description = CKEditor5Field(blank=True)
-    getaway_highlights = CKEditor5Field(blank=True)
-    included = CKEditor5Field(blank=True)
+    detailed_description = SummernoteTextField(blank=True)
+    getaway_highlights = SummernoteTextField(blank=True)
+    included = SummernoteTextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     holiday_duration = models.PositiveIntegerField()
     date = models.DateField()

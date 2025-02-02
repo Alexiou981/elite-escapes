@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'widget_tweaks',
+    'django_summernote',
 
     # Custom Apps
     'home',
@@ -52,8 +54,6 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'bookings',
-    'widget_tweaks',
-    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [
