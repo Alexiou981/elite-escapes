@@ -15,7 +15,7 @@ def add_review(request, package_id):
             review.user = request.user
             review.package = package
             review.save()
-            return redirect('package_detail', package_id=package.id)
+            return redirect('package_details', package_id=package.id)
     else:
         form = ReviewForm()
 
