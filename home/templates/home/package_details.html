@@ -56,9 +56,7 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary mt-4 ml-4 shadow-sm">Book Now</a>
             {% else %}
-                <a href="{% url 'account_login' %}" class="btn btn-light mt-4 shadow-sm">Login or Register</a>
-                <h5 class="my-3">or</h5>
-                <a href="{% url 'add_to_bag' package.id %}" class="btn btn-info shadow-sm">Continue as guest</a>
+                <a href="{% url 'account_login' %}" class="btn btn-primary mt-4 ml-4 shadow-sm">Login/Register to Book!</a>
             {% endif %}
         </div>
     </div>
