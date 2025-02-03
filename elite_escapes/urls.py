@@ -29,5 +29,6 @@ urlpatterns = [
     path('success/', success_view, name='success'),
     path('cancel/', cancel_view, name='cancel'),
     path('bookings/', include('bookings.urls')),
+    path('reviews/', include('reviews.urls')),
     path('tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
