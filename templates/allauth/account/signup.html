@@ -8,26 +8,71 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card border-0 shadow">
-                <div class="card-header bg-white text-center">
-                    <h1 class="h4 mb-0">{% trans "Sign Up" %}</h1>
+            <div class="card shadow-lg p-4">
+                <div class="card-header bg-white text-center border-0">
+                    <h2 class="h4 font-weight-bold">{% trans "Sign Up" %}</h2>
                 </div>
                 <div class="card-body">
                     <p class="text-center">
                         {% blocktranslate %}
                             Already have an account? Then please 
-                            <a href="{{ login_url }}">sign in</a>.
+                            <a href="{{ login_url }}" class="text-primary font-weight-bold">sign in</a>.
                         {% endblocktranslate %}
                     </p>
+
                     {% if not SOCIALACCOUNT_ONLY %}
                         {% url 'account_signup' as action_url %}
                         <form method="post" action="{{ action_url }}">
                             {% csrf_token %}
-                            {{ form.as_p }}
+
+                            <!-- Username Field -->
+                            <div class="form-group">
+                                <label for="id_username"><strong>Username</strong></label>
+                                <input type="text" name="username" id="id_username" class="form-control" required>
+                                {% if form.username.errors %}
+                                    <div class="text-danger mt-1">{{ form.username.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label for="id_email"><strong>Email</strong></label>
+                                <input type="email" name="email" id="id_email" class="form-control" required>
+                                {% if form.email.errors %}
+                                    <div class="text-danger mt-1">{{ form.email.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Password Field -->
+                            <div class="form-group">
+                                <label for="id_password1"><strong>Password</strong></label>
+                                <input type="password" name="password1" id="id_password1" class="form-control" required>
+                                {% if form.password1.errors %}
+                                    <div class="text-danger mt-1">{{ form.password1.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Confirm Password Field -->
+                            <div class="form-group">
+                                <label for="id_password2"><strong>Confirm Password</strong></label>
+                                <input type="password" name="password2" id="id_password2" class="form-control" required>
+                                {% if form.password2.errors %}
+                                    <div class="text-danger mt-1">{{ form.password2.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- General Error Display (For Password Mismatch, Invalid Data, etc.) -->
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger mt-3">
+                                    {{ form.non_field_errors.0 }}
+                                </div>
+                            {% endif %}
+
                             {{ redirect_field }}
+
                             <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-primary btn-block">
-                                    {% trans "Sign Up" %}
+                                <button type="submit" class="btn btn-primary btn-lg btn-block shadow-sm">
+                                    <i class="fas fa-user-plus"></i> {% trans "Sign Up" %}
                                 </button>
                             </div>
                         </form>
