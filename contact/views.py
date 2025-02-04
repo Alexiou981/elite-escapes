@@ -1,8 +1,8 @@
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ContactForm
 from django.conf import settings
+from .forms import ContactForm
 
 def contact_view(request):
     if request.method == "POST":
@@ -10,14 +10,27 @@ def contact_view(request):
         if form.is_valid():
             contact_message = form.save()
 
-            # Send email notification
-            send_mail(
-                subject=f"New Contact Form Submission: {contact_message.subject}",
-                message=f"Message from {contact_message.name} ({contact_message.email}):\n\n{contact_message.message}",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=['your-website-email@example.com'],  # Change to your website's email
-                fail_silently=False,  # If set to True, it will suppress errors (for debugging, keep it False)
+            # Custom email with sender's name
+            email_subject = f"New Contact Form Submission: {contact_message.subject}"
+            email_body = f"""
+            You have received a new contact form submission:
+
+            Name: {contact_message.name}
+            Email: {contact_message.email}
+            Subject: {contact_message.subject}
+            
+            Message:
+            {contact_message.message}
+            """
+
+            email = EmailMessage(
+                subject=email_subject,
+                body=email_body,
+                from_email=f"{contact_message.name} via My Website <{settings.EMAIL_HOST_USER}>",  # Custom sender name
+                to=['escapeselite79@gmail.com'], 
+                reply_to=[contact_message.email],  # Ensures replies go to the user
             )
+            email.send(fail_silently=False)
 
             messages.success(request, "Your message has been sent successfully!")
             return redirect("contact")
