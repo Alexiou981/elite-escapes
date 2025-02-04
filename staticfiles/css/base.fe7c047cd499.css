@@ -1,0 +1,194 @@
+/* base.css taken from ckz8780 from https://github.com/Code-Institute-Solutions/boutique_ado_v1/blob/e3ce173e7475dd8e9c7f51a3af3eaa888c29cb79/static/css/base.css */
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Lato';
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    padding-top: 2rem;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%;
+}
+
+.hero-background {
+    background: url("/static/images/hero-image.d561360ab00e.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;  
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+
+#topnav .main-logo-link {
+    padding: 0;
+}
+
+#topnav .list-inline {
+    margin: 0;
+    padding: 0;
+}
+
+#topnav .list-inline-item {
+    padding: 0 5px; /* Adjust spacing between items */
+}
+
+.shop-now-button {
+    background: black;
+    color: white;
+    min-width: 260px;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+.alert-container {
+    position: fixed;
+    top: 70px; 
+    left: 0;
+    width: 100%; 
+    z-index: 1050; 
+    pointer-events: none; 
+}
+
+.alert-container .alert {
+    pointer-events: auto; /* Enable interaction with the alert buttons */
+}
+
+
+/* Style rule for the package list container */
+.container.package-list {
+    margin-top: 10%;
+    background-color:darkgrey;
+    padding: 20px 0;
+}
+
+.customer-form {
+    margin-top: 10vh;
+}
+
+.customer-details-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.customer-details-form label {
+    font-weight: bold;
+}
+
+.customer-details-form input, 
+.customer-details-form textarea {
+    width: 100%;
+}
+
+/* Style rule for success message upon form submission */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+.close:hover {
+    color: #000;
+    text-decoration: none;
+}
+.carousel-inner img {
+    width: 100%; 
+    height: 500px;  
+    object-fit: cover; 
+}
+
+/* Confitmation question about deleting personal details */
+.delete-details {
+    max-height: 100vh;
+    position: relative;
+    text-align: center;
+    padding-top: 30vh;
+}
+
+/* -------------------------------- Media Queries */
+
+/* General small-text label style for compact layout */
+.small-text {
+    font-size: 0.9rem;
+}
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
+
+@media (max-width: 425px) {
+    html, body {
+        padding-top: 4rem;
+    }
+
+    ul .list-inline-item.dropdown {
+        padding-top: 1.5rem !important; /* Add pt-3 (Bootstrap's padding-top equivalent is 1rem) */
+    }
+}

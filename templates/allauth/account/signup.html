@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load allauth i18n %}
 {% block head_title %}
-    {% trans "Signup" %}
+    {% trans "Sign Up" %}
 {% endblock head_title %}
 
 {% block content %}
@@ -13,14 +13,25 @@
                     <h2 class="h4 font-weight-bold">{% trans "Sign Up" %}</h2>
                 </div>
                 <div class="card-body">
-                    <p class="text-center">
-                        {% blocktranslate %}
-                            Already have an account? Then please 
-                            <a href="{{ login_url }}" class="text-primary font-weight-bold">sign in</a>.
-                        {% endblocktranslate %}
-                    </p>
+                    {% if user.is_authenticated %}
+                        <div class="alert alert-success text-center">
+                            <p>You have already signed up and are logged in.</p>
+                            <a href="{% url 'home' %}" class="btn btn-primary">Go to Home</a>
+                        </div>
+                    {% else %}
+                        <p class="text-center">
+                            {% blocktranslate %}
+                                Already have an account? Then please 
+                                <a href="{{ login_url }}" class="text-primary font-weight-bold">sign in</a>.
+                            {% endblocktranslate %}
+                        </p>
 
-                    {% if not SOCIALACCOUNT_ONLY %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-success">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+
                         {% url 'account_signup' as action_url %}
                         <form method="post" action="{{ action_url }}">
                             {% csrf_token %}
@@ -61,7 +72,7 @@
                                 {% endif %}
                             </div>
 
-                            <!-- General Error Display (For Password Mismatch, Invalid Data, etc.) -->
+                            <!-- General Error Display -->
                             {% if form.non_field_errors %}
                                 <div class="alert alert-danger mt-3">
                                     {{ form.non_field_errors.0 }}
@@ -76,19 +87,6 @@
                                 </button>
                             </div>
                         </form>
-                    {% endif %}
-                    
-                    {% if PASSKEY_SIGNUP_ENABLED %}
-                        <hr>
-                        <a href="{{ signup_by_passkey_url }}" 
-                           class="btn btn-outline-primary btn-block">
-                            {% trans "Sign up using a passkey" %}
-                        </a>
-                    {% endif %}
-                    
-                    {% if SOCIALACCOUNT_ENABLED %}
-                        <hr>
-                        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
                     {% endif %}
                 </div>
             </div>
