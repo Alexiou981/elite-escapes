@@ -183,6 +183,7 @@ html, body {
     }
 }
 
+
 @media (max-width: 425px) {
     html, body {
         padding-top: 4rem;
