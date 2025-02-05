@@ -1,64 +1,98 @@
 {% extends "base.html" %}
-
 {% load custom_filters %}
 
 {% block content %}
 <div class="container package-list">
-    <h1>Booking Overview</h1>
-    
+    <h1 class="text-center mt-4">Booking Overview</h1>
+
     {% if items %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Package</th>
-                    <th>Number of Travelers</th>
-                    <th>Unit Price</th>
-                    <th>Total Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
-        <tr>
-            <td>{{ item.package.name }}</td>
-            <td>
-                <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST">  <!-- Use item.package_id -->
-                    {% csrf_token %}
-                    <input 
-                        type="number" 
-                        name="quantity" 
-                        value="{{ item.quantity }}" 
-                        min="1" 
-                        class="form-control quantity-input" 
-                        style="width: 80px; display: inline;"
-                        data-original="{{ item.quantity }}"
-                    >
-                    <button type="submit" class="btn btn-info update-button" disabled>Update</button>
-                </form>
-            </td>
-            <td>${{ item.package.price|floatformat:2 }}</td>
-            <td>${{ item.package.price|multiply:item.quantity|floatformat:2 }}</td>
-        </tr>
-    {% endfor %}
-            </tbody>
-        </table>
-        
-        <h3>Total: ${{ total|floatformat:2 }}</h3>
-        <a href="{% url 'customer_details' %}" class="btn btn-success">Continue to Customer Details</a>
+        <!-- Regular Table for Large Screens -->
+        <div class="d-none d-md-block">
+            <table class="table table-bordered text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Package</th>
+                        <th>Number of Travelers</th>
+                        <th>Unit Price</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td class="align-middle">{{ item.package.name }}</td>
+                            <td class="align-middle">
+                                <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="input-group">
+                                        <input 
+                                            type="number" 
+                                            name="quantity" 
+                                            value="{{ item.quantity }}" 
+                                            min="1" 
+                                            class="form-control quantity-input text-center"
+                                            style="max-width: 80px;"
+                                            data-original="{{ item.quantity }}"
+                                        >
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-info update-button" disabled>Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="align-middle">${{ item.package.price|floatformat:2 }}</td>
+                            <td class="align-middle">${{ item.package.price|multiply:item.quantity|floatformat:2 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile-Friendly Vertical Cards for Small Screens -->
+        <div class="d-md-none">
+            {% for item in items %}
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">{{ item.package.name }}</h5>
+                        <p><strong>Unit Price:</strong> ${{ item.package.price|floatformat:2 }}</p>
+                        <p><strong>Total Price:</strong> ${{ item.package.price|multiply:item.quantity|floatformat:2 }}</p>
+                        <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST" class="d-flex align-items-center">
+                            {% csrf_token %}
+                            <input 
+                                type="number" 
+                                name="quantity" 
+                                value="{{ item.quantity }}" 
+                                min="1" 
+                                class="form-control quantity-input text-center mr-2"
+                                style="max-width: 80px;"
+                                data-original="{{ item.quantity }}"
+                            >
+                            <button type="submit" class="btn btn-info update-button" disabled>Update</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Total & Continue Button -->
+        <div class="text-center mt-4">
+            <h3 class="font-weight-bold">Total: ${{ total|floatformat:2 }}</h3>
+            <a href="{% url 'customer_details' %}" class="btn btn-success btn-lg mt-2">Continue to Customer Details</a>
+        </div>
+
     {% else %}
-        <p>Your shopping bag is empty.</p>
+        <p class="text-center text-muted mt-5">Your shopping bag is empty.</p>
     {% endif %}
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Select all quantity input fields and their corresponding buttons
         const quantityInputs = document.querySelectorAll('.quantity-input');
         
         quantityInputs.forEach(input => {
             const originalQuantity = input.dataset.original;
             const updateButton = input.closest('form').querySelector('.update-button');
             
-            // Enable the button only if quantity changes
             input.addEventListener('input', () => {
                 if (input.value !== originalQuantity) {
                     updateButton.disabled = false;
@@ -69,4 +103,5 @@
         });
     });
 </script>
+
 {% endblock %}
