@@ -2,6 +2,8 @@ amqp==5.3.1
 asgiref==3.8.1
 billiard==4.2.1
 bleach==5.0.1
+boto3==1.37.7
+botocore==1.37.7
 celery==5.4.0
 certifi==2025.1.31
 charset-normalizer==3.4.1
@@ -9,6 +11,7 @@ click==8.1.7
 click-didyoumean==0.3.1
 click-plugins==1.1.1
 click-repl==0.3.0
+cloudinary==1.42.1
 decouple==0.0.7
 dj-database-url==0.5.0
 Django==4.2.18
@@ -18,12 +21,15 @@ django-celery-email==3.0.0
 django-celery-results==2.5.1
 django-ckeditor==6.7.2
 django-ckeditor-5==0.2.15
+django-cloudinary-storage==0.3.0
 django-js-asset==3.0.1
 django-phonenumber-field==8.0.0
+django-storages==1.14.5
 django-tinymce==4.1.0
 django-widget-tweaks==1.5.0
 gunicorn==23.0.0
 idna==3.10
+jmespath==1.0.1
 kombu==5.4.2
 Markdown==3.7
 packaging==24.2
@@ -36,6 +42,7 @@ python-decouple==3.8
 python-dotenv==1.0.1
 pytz==2024.2
 requests==2.32.3
+s3transfer==0.11.4
 setuptools==75.8.0
 six==1.17.0
 sqlparse==0.5.1
