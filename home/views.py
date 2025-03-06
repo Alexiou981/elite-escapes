@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, send_mail
 from django.contrib import messages
+from django.conf import settings
 from .models import Package
 from .forms import NewsletterSignupForm
 # Create your views here.
