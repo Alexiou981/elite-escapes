@@ -7,7 +7,10 @@ from .forms import NewsletterSignupForm
 def index(request):
     """ A view to return the index page and packages """
     packages = Package.objects.all()
-    return render(request, 'home/index.html', {'packages': packages})
+    return render(request, 'home/index.html', {
+        'packages': packages,
+        'MEDIA_URL': settings.MEDIA_URL
+        })
 
 
 def package_details(request, package_id):
