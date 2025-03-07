@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <div class="container">
     <h1 class="text-center">{{ package.name }}</h1>
@@ -19,7 +20,7 @@
                 <div class="carousel-inner">
                     {% for image in package.images.all %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{ MEDIA_URL}}{{ image.image.url }}" class="d-block w-100 rounded" alt="Image for {{ package.name }}" style="max-height: 400px; object-fit: cover;">
+                            <img src="{{ image.image.url }}" class="d-block w-100 rounded" alt="Image for {{ package.name }}" style="max-height: 400px; object-fit: cover;">
                         </div>
                     {% endfor %}
                 </div>
