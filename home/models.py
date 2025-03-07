@@ -24,7 +24,7 @@ class Package(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     holiday_duration = models.PositiveIntegerField()
     date = models.DateField()
-    image = models.ImageField(upload_to='package_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='media/package_images/', blank=True, null=True)
     holiday_type = models.CharField(max_length=25, choices=HOLIDAY_TYPE_CHOICES, default=ENTERTAINMENT)
     females_only = models.BooleanField(default=False)
 

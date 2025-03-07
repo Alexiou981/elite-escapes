@@ -19,7 +19,10 @@ def package_details(request, package_id):
     """ A view to render the package details page """
     package = get_object_or_404(Package, id=package_id)
     reviews = package.reviews.all()  # Fetch reviews related to this package
-    return render(request, 'home/package_details.html', {'package': package})
+    return render(request, 'home/package_details.html', {
+        'package': package,
+        'MEDIA_URL': settings.MEDIA_URL
+        })
 
 
 def newsletter_signup(request):
