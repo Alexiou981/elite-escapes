@@ -28,7 +28,7 @@
 </head>
 <body>
 
-    <header class="container-fluid bg-white shadow-sm">
+    <header class="container-fluid shadow-sm">
         <div class="container">
             <div class="row align-items-center py-2 d-flex flex-column flex-md-row justify-content-between">
                 <!-- Logo Section -->
@@ -42,22 +42,22 @@
                 <div class="col-12 col-md-8 text-center text-md-right d-flex justify-content-center justify-content-md-end align-items-center">
                     <ul class="list-inline my-0 d-flex flex-column flex-md-row align-items-center">
                         <li class="list-inline-item dropdown mb-2 mb-md-0 mr-md-3">
-                            <a class="nav-link text-black d-flex align-items-center" href="#" id="user-options" data-toggle="dropdown">
+                            <a class="nav-link text-black d-flex align-items-center text-gold" href="#" id="user-options" data-toggle="dropdown">
                                 <i class="fas fa-user fa-lg mr-2"></i> My Account
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 {% if request.user.is_authenticated %}
-                                    <a href="{% url 'personal_details' %}" class="dropdown-item">Personal Details</a>
-                                    <a href="{% url 'customer_bookings' %}" class="dropdown-item">Bookings</a>
-                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                    <a href="{% url 'personal_details' %}" class="dropdown-item text-gold">Personal Details</a>
+                                    <a href="{% url 'customer_bookings' %}" class="dropdown-item text-gold">Bookings</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item text-gold">Logout</a>
                                 {% else %}
-                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item text-gold">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item text-gold">Login</a>
                                 {% endif %}
                             </div>
                         </li>
                         <li class="list-inline-item mb-2 mb-md-0">
-                            <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-sm">
+                            <a href="{% url 'contact' %}" class="btn btn-sm text-gold">
                                 <i class="fas fa-envelope"></i> Contact Us
                             </a>
                         </li>
@@ -81,7 +81,6 @@
     </div>
 </div>
 {% endif %}
-
 <div class="container mt-5 pt-3">
     {% block page_header %}
     {% endblock %}

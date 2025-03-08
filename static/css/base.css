@@ -1,16 +1,29 @@
-/* base.css taken from ckz8780 from https://github.com/Code-Institute-Solutions/boutique_ado_v1/blob/e3ce173e7475dd8e9c7f51a3af3eaa888c29cb79/static/css/base.css */
+/* Color Variables */
+:root {
+    --dark-blue: #00296B;
+    --medium-blue: #003F88;
+    --bright-blue: #00509D;
+    --gold: #FDC500;
+    --bright-yellow: #FFD500;
+    --text-color: #333;
+    --background-color: #f8f9fa;
+}
+
+/* General Styles */
 html {
     height: 100%;
 }
 
 body {
     font-family: 'Lato';
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 html, body {
     margin: 0;
     padding: 0;
-    padding-top: 2rem;
+
     overflow-x: hidden; /* Prevent horizontal scrolling */
     width: 100%;
 }
@@ -19,11 +32,11 @@ html, body {
     background: url('/static/images/hero-image.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 70vh; /* Adjusted for mobile view */
     color: white;  
 }
 
-/* from Bulma */
+/* Icon Styles */
 .icon {
     align-items: center;
     display: inline-flex;
@@ -32,53 +45,102 @@ html, body {
     width: 1.5rem;
 }
 
+/* Logo and Text Colors */
 .logo-font {
     text-transform: uppercase;
+    color: var(--gold);
 }
 
-
-#topnav .main-logo-link {
-    padding: 0;
-}
-
-#topnav .list-inline {
-    margin: 0;
-    padding: 0;
-}
-
-#topnav .list-inline-item {
-    padding: 0 5px; /* Adjust spacing between items */
-}
-
-.shop-now-button {
-    background: black;
-    color: white;
-    min-width: 260px;
-}
-
-.btn-black {
-    background: black;
-    color: white;
-}
-
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #222;
-    color: white;
-}
-
-.text-black {
-    color: #000 !important;
+.text-gold {
+    color: var(--gold) !important;
 }
 
 .border-black {
     border: 1px solid black !important;
 }
 
+.border-bright-blue {
+    border: 1px solid var(--bright-blue) !important;
+}
+
+/* Navbar and Header */
+#topnav {
+    background-color: var(--dark-blue);
+}
+
+#topnav .main-logo-link {
+    padding: 0;
+    color: var(--gold);
+}
+
+#topnav .list-inline-item {
+    padding: 0 5px; /* Adjust spacing between items */
+}
+
+#topnav a.nav-link {
+    color: var(--gold);
+}
+
+#topnav a.nav-link:hover {
+    color: var(--bright-yellow);
+}
+
+/* Rule for nav items color*/
+header.container-fluid.shadow-sm {
+    background-color: var(--bright-blue);
+}
+
+a.btn.btn-sm.text-gold {
+    border-color: var(--text-color);
+    border-style: ridge;
+}
+
+/* Rule for dropdown items */
+.dropdown-menu.dropdown-menu-right.show {
+    background-color: var(--medium-blue);
+}
+
+/* Button Styles */
+.shop-now-button,
+.btn-black {
+    background-color: var(--bright-blue);
+    color: #fff;
+    min-width: 260px;
+}
+
+.shop-now-button:hover,
+.btn-black:hover,
+.shop-now-button:active,
+.btn-black:active,
+.shop-now-button:focus,
+.btn-black:focus {
+    background-color: var(--medium-blue);
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: var(--bright-yellow);
+    border-color: var(--bright-yellow);
+    color: #000;
+}
+
+.btn-outline-primary {
+    border-color: var(--bright-blue);
+    color: var(--bright-blue);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--bright-blue);
+    color: #fff;
+}
+
+/* Alert Styles */
 .alert-container {
     position: fixed;
     top: 70px; 
@@ -89,15 +151,68 @@ html, body {
 }
 
 .alert-container .alert {
-    pointer-events: auto; /* Enable interaction with the alert buttons */
+    pointer-events: auto;
+    border-left: 5px solid var(--gold);
 }
 
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
 
-/* Style rule for the package list container */
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--bright-blue);
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid var(--bright-blue);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-header, .card-footer {
+    background-color: var(--bright-blue);
+    color: #fff;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-blue);
+    color: #fff;
+}
+
+footer a {
+    color: var(--gold);
+}
+
+footer a:hover {
+    color: var(--bright-yellow);
+}
+
+/* Container and Form Styles */
 .container.package-list {
-    margin-top: 10%;
-    background-color:darkgrey;
+    margin-top: 2%;
+    background-color: var(--medium-blue);
     padding: 20px 0;
+}
+
+/* Style rule for package list individual containers */
+.card.mb-4.shadow-sm {
+    background-color: var(--bright-yellow);
 }
 
 .customer-form {
@@ -110,6 +225,7 @@ html, body {
 
 .customer-details-form label {
     font-weight: bold;
+    color: var(--gold);
 }
 
 .customer-details-form input, 
@@ -117,36 +233,7 @@ html, body {
     width: 100%;
 }
 
-/* Style rule for success message upon form submission */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-.alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-}
-.close {
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
-}
-.close:hover {
-    color: #000;
-    text-decoration: none;
-}
-.carousel-inner img {
-    width: 100%; 
-    height: 500px;  
-    object-fit: cover; 
-}
-
-/* Confitmation question about deleting personal details */
+/* Confirmation Message Styles */
 .delete-details {
     max-height: 100vh;
     position: relative;
@@ -155,28 +242,33 @@ html, body {
 }
 
 .bg-dark-transparent {
-    background-color: rgba(0, 0, 0, 0.7) !important; /* 70% opacity */
+    background-color: rgba(0, 0, 0, 0.7) !important;
     color: white;
     padding: 15px;
     border-radius: 10px;
     display: inline-block;
 }
 
-/* -------------------------------- Media Queries */
-
-/* General small-text label style for compact layout */
-.small-text {
-    font-size: 0.9rem;
+/* Carousel Styles */
+.carousel-inner img {
+    width: 100%; 
+    height: 500px;  
+    object-fit: cover; 
 }
 
-/* Slightly larger container on xl screens */
+/* Rule for Personal Info page */
+
+.card.p-4.text-white {
+    background-color: var(--bright-blue);
+}
+
+/* -------------------------------- Media Queries */
 @media (min-width: 1200px) {
   .container {
     max-width: 80%;
   }
 }
 
-/* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -185,33 +277,24 @@ html, body {
         left: 0;
         z-index: 1030;
     }
-
     .header-container {
         padding-top: 164px;
     }
 }
 
-
 @media (max-width: 425px) {
     html, body {
         padding-top: 4rem;
     }
-
     ul .list-inline-item.dropdown {
-        padding-top: 1.5rem !important; /* Add pt-3 (Bootstrap's padding-top equivalent is 1rem) */
+        padding-top: 1.5rem !important;
     }
-}
-
-/* Custom styles for mobile devices with max-width of 420px */
-@media (max-width: 425px) {
     img {
-        height: 50% !important;  /* Set images to 50% height */
-        object-fit: cover;       /* Maintain aspect ratio */
+        height: 50% !important;
+        object-fit: cover;
     }
-
     .hero-background {
-        height: 70vh !important;  /* Set images to 50% height */
-        object-fit: cover;       /* Maintain aspect ratio */
+        height: 50vh !important;
+        object-fit: cover;
     }
 }
-
