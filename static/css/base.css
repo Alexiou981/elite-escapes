@@ -4,7 +4,7 @@
     --medium-blue: #003F88;
     --bright-blue: #00509D;
     --gold: #FDC500;
-    --bright-yellow: #FFD500;
+    --bright-yellow: #ffd500d7;
     --text-color: #333;
     --background-color: #f8f9fa;
 }
@@ -25,7 +25,7 @@ html, body {
     padding: 0;
 
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    width: 100%;
+    width: 100% !important;
 }
 
 .hero-background {
