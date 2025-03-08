@@ -201,3 +201,17 @@ html, body {
         padding-top: 1.5rem !important; /* Add pt-3 (Bootstrap's padding-top equivalent is 1rem) */
     }
 }
+
+/* Custom styles for mobile devices with max-width of 420px */
+@media (max-width: 425px) {
+    img {
+        height: 50% !important;  /* Set images to 50% height */
+        object-fit: cover;       /* Maintain aspect ratio */
+    }
+
+    .hero-background {
+        height: 70vh !important;  /* Set images to 50% height */
+        object-fit: cover;       /* Maintain aspect ratio */
+    }
+}
+
