@@ -262,6 +262,12 @@ footer a:hover {
     background-color: var(--bright-blue);
 }
 
+/* Allauth pages styling */
+
+.card.shadow-lg.border-0.rounded-2.allauth-card {
+    background-color: var(--medium-blue) !important;
+}
+
 /* -------------------------------- Media Queries */
 @media (min-width: 1200px) {
   .container {
