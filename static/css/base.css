@@ -304,9 +304,6 @@ button.btn.btn-block {
 }
 
 @media (max-width: 425px) {
-    html, body {
-        padding-top: 4rem;
-    }
     ul .list-inline-item.dropdown {
         padding-top: 1.5rem !important;
     }
