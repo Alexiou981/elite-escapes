@@ -1,110 +1,86 @@
 {% extends "base.html" %}
 {% load static %}
-{% load widget_tweaks %}
+
+{% block extra_title %} - Customer Details{% endblock extra_title %}
 
 {% block content %}
-<div class="container vh-100 d-flex align-items-center justify-content-center">
+<div class="container d-flex align-items-center justify-content-center pt-5 mt-5">
     <div class="row w-100 justify-content-center">
         <div class="col-md-8 col-lg-6">
-            <h2 class="text-center mb-3" style="font-size: 1.5rem;">Customer Details</h2>
+            <h2 class="text-center mb-3 text-gold" style="font-size: 1.5rem;">Customer Details</h2>
 
             <!-- Compact form container to fit on any screen -->
-            <div class="p-3 bg-white shadow-sm rounded" style="height: auto;">
-                <form method="post"  id="customer-details-form" class="customer-details-form">
+            <div class="p-3 bg-white shadow-lg rounded" style="height: auto;">
+                <form method="post" id="customer-details-form" class="customer-details-form">
                     {% csrf_token %}
 
-                    <!-- Reduce field margins and padding to save space -->
+                    <!-- Render Form Fields with Autocomplete Attributes -->
                     <div class="form-row">
                         <div class="form-group col-12 mb-2">
-                            <label for="id_first_name" class="small-text">First Name</label>
-                            {{ form.first_name|add_class:"form-control-sm" }}
+                            <label for="id_first_name" class="text-gold"><strong>First Name</strong></label>
+                            <input type="text" name="first_name" id="id_first_name" class="form-control form-control-sm shadow-sm" autocomplete="given-name">
                         </div>
                         <div class="form-group col-12 mb-2">
-                            <label for="id_last_name" class="small-text">Last Name</label>
-                            {{ form.last_name|add_class:"form-control-sm" }}
+                            <label for="id_last_name" class="text-gold"><strong>Last Name</strong></label>
+                            <input type="text" name="last_name" id="id_last_name" class="form-control form-control-sm shadow-sm" autocomplete="family-name">
                         </div>
-                        <div class="form-group col-12 mb-2 text-center mt-2">
-                            <label for="id_gender" class="small-text">Gender</label>
-                            {{ form.gender|add_class:"form-control-sm" }}
+                        <div class="form-group col-12 mb-2">
+                            <label for="id_gender" class="text-gold"><strong>Gender</strong></label>
+                            <select name="gender" id="id_gender" class="custom-select custom-select-sm shadow-sm">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-12 mb-2">
-                            <label for="id_email" class="small-text">Email</label>
-                            {{ form.email|add_class:"form-control-sm" }}
+                            <label for="id_email" class="text-gold"><strong>Email</strong></label>
+                            <input type="email" name="email" id="id_email" class="form-control form-control-sm shadow-sm" autocomplete="email">
                         </div>
                         <div class="form-group col-12 mb-2">
-                            <label for="id_phone" class="small-text">Phone</label>
-                            {{ form.phone|add_class:"form-control-sm" }}
+                            <label for="id_phone" class="text-gold"><strong>Phone</strong></label>
+                            <input type="text" name="phone" id="id_phone" class="form-control form-control-sm shadow-sm" autocomplete="tel">
                         </div>
                     </div>
 
                     <div class="form-group mb-2">
-                        <label for="id_address" class="small-text">Address</label>
-                        {{ form.address|add_class:"form-control-sm" }}
+                        <label for="id_address" class="text-gold"><strong>Address</strong></label>
+                        <input type="text" name="address" id="id_address" class="form-control form-control-sm shadow-sm" autocomplete="street-address">
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-6 mb-2">
-                            <label for="id_city" class="small-text">City</label>
-                            {{ form.city|add_class:"form-control-sm" }}
+                            <label for="id_city" class="text-gold"><strong>City</strong></label>
+                            <input type="text" name="city" id="id_city" class="form-control form-control-sm shadow-sm" autocomplete="address-level2">
                         </div>
                         <div class="form-group col-6 mb-2">
-                            <label for="id_country" class="small-text">Country</label>
-                            {{ form.country|add_class:"form-control-sm" }}
+                            <label for="id_country" class="text-gold"><strong>Country</strong></label>
+                            <input type="text" name="country" id="id_country" class="form-control form-control-sm shadow-sm" autocomplete="country">
                         </div>
                     </div>
 
                     <div class="form-group mb-2">
-                        <label for="id_postal_code" class="small-text">Postal Code</label>
-                        {{ form.postal_code|add_class:"form-control-sm" }}
+                        <label for="id_postal_code" class="text-gold"><strong>Postal Code</strong></label>
+                        <input type="text" name="postal_code" id="id_postal_code" class="form-control form-control-sm shadow-sm" autocomplete="postal-code">
                     </div>
 
-                    <div class="form-row"></div>
-                        <div class="form-group col-12 mb-2">
-                            <label for="id_date_of_birth" class="small-text">Date of Birth</label>
-                            {{ form.date_of_birth|add_class:"form-control-sm" }}
-                        </div>
+                    <div class="form-group mb-2">
+                        <label for="id_date_of_birth" class="text-gold"><strong>Date of Birth</strong></label>
+                        <input type="date" name="date_of_birth" id="id_date_of_birth" class="form-control form-control-sm shadow-sm" autocomplete="bday">
                     </div>
 
-                    <!-- Smaller submit button -->
+                    <!-- Submit Button -->
                     <div class="text-center">
-                        {% if customer %}
-                            <a href="{% url 'order_overview' %}" class="btn btn-success mt-2 px-4 btn-sm">Continue to Order Overview</a>
-                        {% else %}
-                            <button type="submit" class="btn btn-primary mt-2 px-4 btn-sm">Save Details</button>
-                        {% endif %}
-                    </div>                    
+                        <button type="submit" class="btn btn-primary btn-lg shadow-sm mt-3">
+                            <i class="fas fa-save"></i> Save Details
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
-        <div id="message-container" class="alert" style="display: none;"></div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('customer-details-form');
-    const messageContainer = document.getElementById('message-container'); 
-
-    if (form && messageContainer) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();  
-            // Show the message
-            messageContainer.style.display = 'block';
-            messageContainer.className = 'alert alert-success';
-            messageContainer.innerText = 'Your details have been saved successfully!';
-
-            // Delay and then submit the form
-            setTimeout(() => {
-                form.submit();
-            }, 1000);  // Adjust delay as needed
-        });
-    } else {
-        console.error('Form or message container not found');
-    }
-});
-
-    </script>
-    
+</div>
 {% endblock %}
