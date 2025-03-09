@@ -97,11 +97,12 @@ def order_overview(request):
     })
 
 
-@login_required  # ✅ NEW: Added login_required decorator
+@login_required
 def personal_details(request):
-    # Fetch the customer's information for the logged-in user
-    customer = get_object_or_404(Customer, user=request.user)
+    # Fetch the customer's information for the logged-in user, or None if not found
+    customer = Customer.objects.filter(user=request.user).first()
 
     return render(request, 'customers/personal_details.html', {
         'customer': customer
     })
+
