@@ -1,27 +1,62 @@
 {% extends 'base.html' %}
 
+{% block extra_title %} - Order Overview{% endblock extra_title %}
+
 {% block content %}
-<h1>Order Overview</h1>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-2">
+                <div class="card-header bg-white text-center border-0">
+                    <h2 class="h4 font-weight-bold text-gold">Order Overview</h2>
+                </div>
+                <div class="card-body">
+                    <!-- User Details Section -->
+                    <h4 class="text-gold mb-3">Your Details</h4>
+                    <div class="mb-4 border rounded p-3 bg-light">
+                        <p><strong>First Name:</strong> {{ customer.first_name }}</p>
+                        <p><strong>Last Name:</strong> {{ customer.last_name }}</p>
+                        <p><strong>Email:</strong> {{ customer.email }}</p>
+                        <p><strong>Address:</strong> {{ customer.address }}</p>
+                    </div>
 
-<h2>Your Details</h2>
-<p>First Name: {{ customer.first_name }}</p>
-<p>Last Name: {{ customer.last_name }}</p>
-<p>Email: {{ customer.email }}</p>
-<p>Address: {{ customer.address }}</p>
-
-<h2>Your Cart Items</h2>
-<ul>
-    {% for item in cart_items %}
-        <li>{{ item.package.name }} - Quantity: {{ item.quantity }}</li>
-        <h3>Total Amount: ${{ total_price }}</h3>
-        {% if item.package %}
-            <a href="{% url 'checkout' total_price=total_price|stringformat:"d" package_id=item.package.id %}" class="btn btn-success">Proceed to Checkout</a>
-
-        {% else %}
-            <p>Package not found.</p>
-        {% endif %}
-    {% empty %}
-        <li>Your cart is empty.</li>
-    {% endfor %}
-</ul>
+                    <!-- Cart Items Section -->
+                    <h4 class="text-gold mb-3">Your Cart Items</h4>
+                    {% if cart_items %}
+                        <table class="table table-bordered table-hover shadow-sm">
+                            <thead class="bg-gold text-white">
+                                <tr>
+                                    <th scope="col">Package</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total Amount</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart_items %}
+                                    <tr>
+                                        <td>{{ item.package.name }}</td>
+                                        <td>{{ item.quantity }}</td>
+                                        <td>${{ total_price }}</td>
+                                        <td>
+                                            {% if item.package %}
+                                                <a href="{% url 'checkout' total_price=total_price|stringformat:'d' package_id=item.package.id %}" class="btn btn-success btn-sm">
+                                                    Proceed to Checkout
+                                                </a>
+                                            {% else %}
+                                                <span class="text-danger">Package not found</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p class="text-center text-muted">Your cart is empty.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
