@@ -1,98 +1,114 @@
 {% extends "base.html" %}
 {% load custom_filters %}
 
+{% block extra_title %} - Booking Overview{% endblock extra_title %}
+
 {% block content %}
-<div class="container package-list">
-    <h1 class="text-center mt-4">Booking Overview</h1>
-
-    {% if items %}
-        <!-- Regular Table for Large Screens -->
-        <div class="d-none d-md-block">
-            <table class="table table-bordered text-center">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Package</th>
-                        <th>Number of Travelers</th>
-                        <th>Unit Price</th>
-                        <th>Total Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in items %}
-                        <tr>
-                            <td class="align-middle">{{ item.package.name }}</td>
-                            <td class="align-middle">
-                                <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST">
-                                    {% csrf_token %}
-                                    <div class="input-group">
-                                        <input 
-                                            type="number" 
-                                            name="quantity" 
-                                            value="{{ item.quantity }}" 
-                                            min="1" 
-                                            class="form-control quantity-input text-center"
-                                            style="max-width: 80px;"
-                                            data-original="{{ item.quantity }}"
-                                        >
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-info update-button" disabled>Update</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </td>
-                            <td class="align-middle">${{ item.package.price|floatformat:2 }}</td>
-                            <td class="align-middle">${{ item.package.price|multiply:item.quantity|floatformat:2 }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Mobile-Friendly Vertical Cards for Small Screens -->
-        <div class="d-md-none">
-            {% for item in items %}
-                <div class="card mb-3 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold">{{ item.package.name }}</h5>
-                        <p><strong>Unit Price:</strong> ${{ item.package.price|floatformat:2 }}</p>
-                        <p><strong>Total Price:</strong> ${{ item.package.price|multiply:item.quantity|floatformat:2 }}</p>
-                        <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST" class="d-flex align-items-center">
-                            {% csrf_token %}
-                            <input 
-                                type="number" 
-                                name="quantity" 
-                                value="{{ item.quantity }}" 
-                                min="1" 
-                                class="form-control quantity-input text-center mr-2"
-                                style="max-width: 80px;"
-                                data-original="{{ item.quantity }}"
-                            >
-                            <button type="submit" class="btn btn-info update-button" disabled>Update</button>
-                        </form>
-                    </div>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg border-0 rounded-2">
+                <div class="card-header bg-white text-center border-0">
+                    <h2 class="h4 font-weight-bold text-gold">Booking Overview</h2>
                 </div>
-            {% endfor %}
-        </div>
+                <div class="card-body">
 
-        <!-- Total & Continue Button -->
-        <div class="text-center mt-4">
-            <h3 class="font-weight-bold">Total: ${{ total|floatformat:2 }}</h3>
-            <a href="{% url 'customer_details' %}" class="btn btn-success btn-lg mt-2">Continue to Customer Details</a>
-        </div>
+                    {% if items %}
+                        <!-- Regular Table for Large Screens -->
+                        <div class="d-none d-md-block mb-4">
+                            <table class="table table-bordered table-hover shadow-sm text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Package Name</th>
+                                        <th>Number of Travelers</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in items %}
+                                        <tr>
+                                            <td class="align-middle">{{ item.package.name }}</td>
+                                            <td class="align-middle">
+                                                <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="input-group">
+                                                        <input 
+                                                            type="number" 
+                                                            name="quantity" 
+                                                            value="{{ item.quantity }}" 
+                                                            min="1" 
+                                                            class="form-control text-center shadow-sm"
+                                                            style="max-width: 80px;"
+                                                            data-original="{{ item.quantity }}"
+                                                        >
+                                                        <div class="input-group-append">
+                                                            <button type="submit" class="btn btn-sm shadow-sm update-button text-white" disabled>Update</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                            <td class="align-middle">${{ item.package.price|floatformat:2 }}</td>
+                                            <td class="align-middle">${{ item.package.price|multiply:item.quantity|floatformat:2 }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
 
-    {% else %}
-        <p class="text-center text-muted mt-5">Your shopping bag is empty.</p>
-    {% endif %}
+                        <!-- Mobile-Friendly Vertical Cards for Small Screens -->
+                        <div class="d-md-none mb-4">
+                            {% for item in items %}
+                                <div class="card mb-3 shadow-sm border-0 rounded-2">
+                                    <div class="card-body bg-light">
+                                        <h5 class="card-title font-weight-bold text-gold">{{ item.package.name }}</h5>
+                                        <p><strong>Unit Price:</strong> ${{ item.package.price|floatformat:2 }}</p>
+                                        <p><strong>Total Price:</strong> ${{ item.package.price|multiply:item.quantity|floatformat:2 }}</p>
+                                        <form action="{% url 'update_bag_quantity' item.package_id %}" method="POST" class="d-flex align-items-center">
+                                            {% csrf_token %}
+                                            <input 
+                                                type="number" 
+                                                name="quantity" 
+                                                value="{{ item.quantity }}" 
+                                                min="1" 
+                                                class="form-control text-center mr-2 shadow-sm"
+                                                style="max-width: 80px;"
+                                                data-original="{{ item.quantity }}"
+                                            >
+                                            <button type="submit" class="btn btn-sm shadow-sm update-button text-white" disabled>Update</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Total & Continue Button -->
+                        <div class="text-center mt-4">
+                            <h3 class="font-weight-bold text-gold">Total: ${{ total|floatformat:2 }}</h3>
+                            <a href="{% url 'customer_details' %}" class="btn btn-lg mt-2 shadow-sm">
+                                Continue to Customer Details
+                            </a>
+                        </div>
+
+                    {% else %}
+                        <div class="alert alert-warning text-center mt-5">
+                            <p class="mb-0">Your shopping bag is empty.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const quantityInputs = document.querySelectorAll('.quantity-input');
-        
+        const quantityInputs = document.querySelectorAll('input[name="quantity"]');
+
         quantityInputs.forEach(input => {
             const originalQuantity = input.dataset.original;
             const updateButton = input.closest('form').querySelector('.update-button');
-            
+
             input.addEventListener('input', () => {
                 if (input.value !== originalQuantity) {
                     updateButton.disabled = false;
