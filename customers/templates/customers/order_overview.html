@@ -24,7 +24,7 @@
                     <h4 class="text-gold mb-3">Your Cart Items</h4>
                     {% if cart_items %}
                         <table class="table table-bordered table-hover shadow-sm">
-                            <thead class="bg-gold text-white">
+                            <thead>
                                 <tr>
                                     <th scope="col">Package</th>
                                     <th scope="col">Quantity</th>
@@ -40,7 +40,7 @@
                                         <td>${{ total_price }}</td>
                                         <td>
                                             {% if item.package %}
-                                                <a href="{% url 'checkout' total_price=total_price|stringformat:'d' package_id=item.package.id %}" class="btn btn-success btn-sm">
+                                                <a href="{% url 'checkout' total_price=total_price|stringformat:'d' package_id=item.package.id %}" class="btn btn-sm proceed-chkt-btn">
                                                     Proceed to Checkout
                                                 </a>
                                             {% else %}
