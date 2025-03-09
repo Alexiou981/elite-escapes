@@ -266,6 +266,12 @@ footer a:hover {
     background-color: var(--medium-blue);
 }
 
+/* Contact page styling */
+
+.card.shadow-lg.p-4 {
+    background-color: var(--bright-blue);
+}
+
 /* Allauth pages styling */
 
 .card.shadow-lg.border-0.rounded-2.allauth-card {
