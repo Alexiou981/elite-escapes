@@ -16,22 +16,20 @@ def customer_details(request):
     has_cart_items = ShoppingCartItem.objects.filter(cart__user=request.user).exists()
 
     if request.method == 'POST':
-        if customer:
-            # If customer details already exist, prevent re-saving
-            messages.warning(request, "You have already saved your details.")
-            return redirect('order_overview' if has_cart_items else 'personal_details')  # Redirect to order overview
-
-        form = CustomerForm(request.POST)
+        form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
             customer = form.save(commit=False)
-            customer.user = request.user
+            customer.user = request.user  # Associate with logged-in user
             customer.save()
-
             messages.success(request, "Thank you! Your details have been saved successfully!")
-
-            return redirect('order_overview' if has_cart_items else 'personal_details')  # Redirect to order overview
+            return redirect('order_overview' if has_cart_items else 'personal_details')
+        else:
+            # Print form errors for debugging
+            print("Form is NOT valid")
+            print(form.errors)  # Print form errors
+            messages.error(request, "There was an error saving your details. Please check the form.")
     else:
-        form = CustomerForm(instance=customer) if customer else CustomerForm()
+        form = CustomerForm(instance=customer)
 
     return render(request, 'customers/customer_details.html', {
         'form': form,

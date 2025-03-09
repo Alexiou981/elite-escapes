@@ -13,3 +13,5 @@ class CustomerForm(forms.ModelForm):
                 years=range(1920, datetime.now().year + 1)
             ),
         }
+    
+    
