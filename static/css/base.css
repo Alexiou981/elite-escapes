@@ -283,6 +283,22 @@ button.btn.btn-block {
     background-color: var(--gold);
 }
 
+/* Proceed Order */
+a.btn.btn-lg.mt-2.shadow-sm {
+    background-color: var(--gold);
+}
+
+/* Update Traveller Quantity */
+button.btn.btn-sm.shadow-sm.update-button {
+    background-color: var(--bright-blue);
+}
+
+/* Proceed to Checkout Button styling */
+
+.proceed-chkt-btn {
+    background-color: var(--bright-yellow);
+}
+
 /* -------------------------------- Media Queries */
 @media (min-width: 1200px) {
   .container {
