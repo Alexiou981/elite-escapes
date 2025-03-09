@@ -15,6 +15,14 @@ def customer_details(request):
     # Check if there are items in the shopping cart
     has_cart_items = ShoppingCartItem.objects.filter(cart__user=request.user).exists()
 
+    # ✅ NEW: Redirect if customer already exists and there are cart items
+    if customer:
+        if has_cart_items:
+            return redirect('order_overview')
+        else:
+            return redirect('personal_details')
+
+    # Handle form submission
     if request.method == 'POST':
         form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
@@ -74,7 +82,7 @@ def delete_customer_details(request):
 
 @login_required
 def order_overview(request):
-    customer = Customer.objects.get(user=request.user)
+    customer = get_object_or_404(Customer, user=request.user)
     cart_items = ShoppingCartItem.objects.filter(cart__user=request.user)
     total_price = sum(item.package.price * item.quantity for item in cart_items)
 
@@ -89,12 +97,10 @@ def order_overview(request):
     })
 
 
+@login_required  # ✅ NEW: Added login_required decorator
 def personal_details(request):
-    # Try to fetch the customer's information for the logged-in user
-    try:
-        customer = Customer.objects.get(user=request.user)
-    except Customer.DoesNotExist:
-        customer = None  # No details exist for this user yet
+    # Fetch the customer's information for the logged-in user
+    customer = get_object_or_404(Customer, user=request.user)
 
     return render(request, 'customers/personal_details.html', {
         'customer': customer
