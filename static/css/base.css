@@ -262,10 +262,19 @@ footer a:hover {
     background-color: var(--bright-blue);
 }
 
+.card.border-0.shadow {
+    background-color: var(--medium-blue);
+}
+
 /* Allauth pages styling */
 
 .card.shadow-lg.border-0.rounded-2.allauth-card {
     background-color: var(--medium-blue) !important;
+}
+
+/* Signout button */
+button.btn.btn-block {
+    background-color: var(--gold);
 }
 
 /* -------------------------------- Media Queries */
