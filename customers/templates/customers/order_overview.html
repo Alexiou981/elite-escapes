@@ -22,7 +22,9 @@
 
                     <!-- Cart Items Section -->
                     <h4 class="text-gold mb-3">Your Cart Items</h4>
-                    {% if cart_items %}
+
+                    <!-- Table for Larger Screens -->
+                    <div class="d-none d-md-block">
                         <table class="table table-bordered table-hover shadow-sm">
                             <thead>
                                 <tr>
@@ -51,7 +53,30 @@
                                 {% endfor %}
                             </tbody>
                         </table>
-                    {% else %}
+                    </div>
+
+                    <!-- Card Layout for Small Screens (≤ 425px) -->
+                    <div class="d-block d-md-none">
+                        {% for item in cart_items %}
+                            <div class="card mb-3 shadow-sm border-0 rounded-2">
+                                <div class="card-body bg-light">
+                                    <h5 class="card-title font-weight-bold text-gold">{{ item.package.name }}</h5>
+                                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                                    <p><strong>Total Amount:</strong> ${{ total_price }}</p>
+                                    {% if item.package %}
+                                        <a href="{% url 'checkout' total_price=total_price|stringformat:'d' package_id=item.package.id %}" class="btn btn-sm proceed-chkt-btn">
+                                            Proceed to Checkout
+                                        </a>
+                                    {% else %}
+                                        <span class="text-danger">Package not found</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- No Items Message -->
+                    {% if not cart_items %}
                         <p class="text-center text-muted">Your cart is empty.</p>
                     {% endif %}
                 </div>
@@ -59,4 +84,18 @@
         </div>
     </div>
 </div>
+
+<!-- Custom CSS for Responsive Behavior -->
+<style>
+    @media (max-width: 425px) {
+        .card-body p {
+            margin-bottom: 0.5rem;
+        }
+        .btn-sm {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+    }
+</style>
+
 {% endblock %}
