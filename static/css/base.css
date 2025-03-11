@@ -299,6 +299,12 @@ button.btn.btn-sm.shadow-sm.update-button {
     background-color: var(--bright-yellow);
 }
 
+/* Personal Details Container */
+
+.card.shadow-lg.border-0.rounded-2 {
+    background-color: var(--bright-blue);
+}
+
 /* -------------------------------- Media Queries */
 @media (min-width: 1200px) {
   .container {
