@@ -15,8 +15,8 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=15, null=True, blank=True)  # Change IntegerField to CharField
-    address = models.TextField(blank=True, null=True)
+    phone = models.CharField(max_length=15, null=False, blank=False, default='')  
+    address = models.TextField(blank=False, null=False, default='')
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=10)
