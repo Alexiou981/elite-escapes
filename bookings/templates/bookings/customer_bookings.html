@@ -1,36 +1,44 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Your Bookings
-{% endblock %}
+{% block extra_title %} - Your Bookings{% endblock extra_title %}
 
 {% block content %}
-    
-    <div class="container package-list">
-        <h1 class="text-white">Your Bookings</h1>
-        <div class="row mt-2">
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <ul>
-                        {% for booking in bookings %}
-                            <li>
-                                <strong>{{ booking.package.name }}</strong> - ${{ booking.amount }}
-                            </li>
-                            <li>
-                                Booked on: ({{ booking.created_at|date:"Y-m-d" }})
-                            </li>
-                            <li>
-                                Departure Date: ({{ booking.package.date|date:"F j, Y" }})
-                            </li>
-                            <li>
-                                Duration: ({{ booking.package.holiday_duration }} days)
-                            </li>
-                        {% empty %}
-                            <li>No bookings found.</li>
-                        {% endfor %}
-                    </ul>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card shadow-lg border-0 rounded-2">
+                <div class="card-header bg-white text-center border-0">
+                    <h2 class="h4 font-weight-bold text-gold">Your Bookings</h2>
+                </div>
+                <div class="card-body">
+                    
+                    {% if bookings %}
+                        <div class="row">
+                            {% for booking in bookings %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card shadow-sm border-0 rounded-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title font-weight-bold text-gold">
+                                                {{ booking.package.name }}
+                                            </h5>
+                                            <p class="mb-1"><strong>Amount:</strong> ${{ booking.amount }}</p>
+                                            <p class="mb-1"><strong>Booked on:</strong> {{ booking.created_at|date:"Y-m-d" }}</p>
+                                            <p class="mb-1"><strong>Departure Date:</strong> {{ booking.package.date|date:"F j, Y" }}</p>
+                                            <p class="mb-1"><strong>Duration:</strong> {{ booking.package.holiday_duration }} days</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-center">
+                            No bookings found.
+                        </div>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
