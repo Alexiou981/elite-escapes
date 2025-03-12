@@ -27,6 +27,9 @@ class Package(models.Model):
     image = models.ImageField(upload_to='media/package_images/', blank=True, null=True)
     holiday_type = models.CharField(max_length=25, choices=HOLIDAY_TYPE_CHOICES, default=ENTERTAINMENT)
     females_only = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
 
     def __str__(self):
         return self.name
