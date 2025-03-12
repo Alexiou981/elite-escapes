@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://elite-escapes-6cd7f36ee2af.herokuapp.com/sitemap.xml
