@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     'elite-escapes-6cd7f36ee2af.herokuapp.com', 
     '127.0.0.1',
     '.herokuapp.com',
+    'localhost',
     ]
 
 

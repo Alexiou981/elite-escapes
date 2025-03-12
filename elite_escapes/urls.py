@@ -20,6 +20,10 @@ from django.conf.urls.static import static
 from checkout.views import success_view, cancel_view
 from django.contrib.sitemaps.views import sitemap
 from home.sitemaps import StaticViewSitemap, PackageSitemap 
+from django.conf.urls import handler404
+from .views import custom_404_view
+
+handler404 = custom_404_view
 
 sitemaps = {
     'static': StaticViewSitemap(),
