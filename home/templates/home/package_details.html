@@ -1,5 +1,10 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
+{% block extra_title %} - {{ package.name }}{% endblock extra_title %}
+
+{% block meta_description %}
+    Book an unforgettable trip with {{ package.name }}. Enjoy {{ package.holiday_duration }} days of adventure!
+{% endblock meta_description %}
 
 {% block content %}
 <div class="container">
