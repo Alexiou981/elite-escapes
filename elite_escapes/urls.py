@@ -43,7 +43,7 @@ urlpatterns = [
     path('reviews/', include('reviews.urls')),
     path('contact/', include('contact.urls')),
     path('tinymce/', include('tinymce.urls')),
-    
+    path('admin-panel/', include('admin_panel.urls')),
     # Sitemap URL
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
