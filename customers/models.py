@@ -1,7 +1,27 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.utils import timezone
-from django.forms.widgets import SelectDateWidget
+from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.conf import settings
+
+
+class CustomUser(AbstractUser):
+    ROLE_CHOICES = [
+        ('admin', 'Admin'),
+        ('user', 'User'),
+    ]
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
+
+
+    groups = models.ManyToManyField(Group, related_name="customuser_groups", blank=True)
+    user_permissions = models.ManyToManyField(Permission, related_name="customuser_permissions", blank=True)
+
+    def __str__(self):
+        return self.username
+
+    def is_admin(self):
+        return self.role == 'admin'
+
+    def is_user(self):
+        return self.role == 'user'
 
 class Customer(models.Model):
     GENDER_CHOICES = [
@@ -11,7 +31,7 @@ class Customer(models.Model):
         ('Other', 'Other')
     ]
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
