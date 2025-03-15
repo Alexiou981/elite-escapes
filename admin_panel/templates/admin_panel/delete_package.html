@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-danger">Delete Package</h2>
+
+    <div class="alert alert-warning text-center">
+        <p>Are you sure you want to delete the package "<strong>{{ package.name }}</strong>"?</p>
+    </div>
+
+    <form method="POST" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

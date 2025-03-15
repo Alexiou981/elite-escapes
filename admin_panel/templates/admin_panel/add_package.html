@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-gold">Add New Package</h2>
+    
+    <form method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Package Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="id_price">Price ($)</label>
+            <input type="number" name="price" class="form-control" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+            <label for="id_description">Description</label>
+            <textarea name="description" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="id_image">Package Image</label>
+            <input type="file" name="image" class="form-control-file">
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Package</button>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
