@@ -1,16 +1,22 @@
 from django import forms
-from home.models import Package
+from home.models import Package, PackageImages
+from django.forms import inlineformset_factory
 
 class PackageForm(forms.ModelForm):
     class Meta:
         model = Package
-        fields = ['name', 'price', 'brief_description', 'detailed_description', 'getaway_highlights', 'image']
+        fields = [
+            'name', 'brief_description', 'detailed_description', 'getaway_highlights', 
+            'included', 'price', 'holiday_duration', 'date', 'image', 
+            'holiday_type', 'females_only'
+        ]
 
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter package name'}),
-            'price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01', 'placeholder': 'Enter price'}),
-            'brief_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Enter package brief description'}),
-            'detailed_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Enter package detailed description'}),
-            'getaway_highlights': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Enter package highlights'}),
-            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
-        }
+class PackageImagesForm(forms.ModelForm):
+    class Meta:
+        model = PackageImages
+        fields = ['image']
+
+# Create an inline formset to handle multiple images
+PackageImagesFormSet = inlineformset_factory(
+    Package, PackageImages, form=PackageImagesForm, extra=3  # Allows up to 3 additional images by default
+)
