@@ -2,20 +2,26 @@ from django.db import models
 from tinymce.models import HTMLField
 
 class Package(models.Model):
-    ENTERTAINMENT = "Entertainment"
-    RELAXATION = "Relaxation"
-    EDUCATION = "Education"
+    # Holiday Type Choices
     ADVENTURE = "Adventure"
-    
-    
+    RELAXATION = "Relaxation"
+    CULTURAL = "Cultural"
+    WILDLIFE = "Wildlife"
+    ROMANTIC = "Romantic"
+    FAMILY = "Family"
+    OTHER = "Other"
+
     HOLIDAY_TYPE_CHOICES = [
-        (ENTERTAINMENT, "Entertainment"),
-        (RELAXATION, "Relaxation"),
-        (EDUCATION, "Education"),
         (ADVENTURE, "Adventure"),
+        (RELAXATION, "Relaxation"),
+        (CULTURAL, "Cultural"),
+        (WILDLIFE, "Wildlife"),
+        (ROMANTIC, "Romantic"),
+        (FAMILY, "Family"),
+        (OTHER, "Other"),
     ]
 
-
+    # Package Fields
     name = models.CharField(max_length=255)
     brief_description = models.TextField()
     detailed_description = HTMLField(blank=True)
@@ -24,15 +30,11 @@ class Package(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     holiday_duration = models.PositiveIntegerField()
     date = models.DateField()
-    image = models.ImageField(upload_to='media/package_images/', blank=True, null=True)
-    holiday_type = models.CharField(max_length=25, choices=HOLIDAY_TYPE_CHOICES, default=ENTERTAINMENT)
+    image = models.ImageField(upload_to='package_images/', blank=True, null=True)
+    holiday_type = models.CharField(max_length=25, choices=HOLIDAY_TYPE_CHOICES, default=ADVENTURE)
     females_only = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
-
-    def __str__(self):
-        return self.name
 
 
 class PackageImages(models.Model):
