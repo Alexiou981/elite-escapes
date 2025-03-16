@@ -3,31 +3,140 @@
 {% block content %}
 <div class="container mt-5">
     <h2 class="text-center text-gold">Edit Package</h2>
-    
+
     <form method="POST" enctype="multipart/form-data" class="mt-4">
         {% csrf_token %}
-        <div class="form-group">
-            <label for="id_name">Package Name</label>
-            <input type="text" name="name" class="form-control" value="{{ package.name }}" required>
+
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="id_name" class="font-weight-bold">Package Name</label>
+                    <input type="text" name="name" class="form-control shadow-sm" value="{{ form.name.value }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_brief_description" class="font-weight-bold">Brief Description</label>
+                    <textarea name="brief_description" class="form-control shadow-sm">{{ form.brief_description.value }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_detailed_description" class="font-weight-bold">Detailed Description</label>
+                    <textarea name="detailed_description" class="form-control tinymce shadow-sm">{{ form.detailed_description.value }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_getaway_highlights" class="font-weight-bold">Getaway Highlights</label>
+                    <textarea name="getaway_highlights" class="form-control tinymce shadow-sm">{{ form.getaway_highlights.value }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_included" class="font-weight-bold">What's Included</label>
+                    <textarea name="included" class="form-control tinymce shadow-sm">{{ form.included.value }}</textarea>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="id_price" class="font-weight-bold">Price ($)</label>
+                    <input type="number" name="price" class="form-control shadow-sm" step="0.01" value="{{ form.price.value }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_holiday_duration" class="font-weight-bold">Holiday Duration (Days)</label>
+                    <input type="number" name="holiday_duration" class="form-control shadow-sm" value="{{ form.holiday_duration.value }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_date">Start Date</label>
+                    <input type="date" name="date" class="form-control" value="{{ package.date|date:'Y-m-d' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_holiday_type" class="font-weight-bold">Holiday Type</label>
+                    {{ form.holiday_type }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_females_only" class="font-weight-bold">Females Only?</label>
+                    <div class="form-check">
+                        {{ form.females_only }}
+                        <label class="form-check-label" for="id_females_only">Yes</label>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Cover Image -->
+                <div class="form-group">
+                    <label for="id_image">Cover Image</label><br>
+                
+                    {% if package.image %}
+                        <!-- Display Current Cover Image -->
+                        <img src="{{ package.image.url }}" class="img-fluid rounded shadow-lg mb-2" width="200" alt="Current Cover Image">
+                        <p class="text-muted">Current Cover Image</p>
+                
+                        <!-- Remove Cover Image Checkbox -->
+                        <div class="form-check">
+                            <input type="checkbox" name="remove_cover" value="1" class="form-check-input">
+                            <label class="form-check-label text-danger">Remove</label>
+                        </div>
+                    {% endif %}
+                
+                    <!-- Upload New Cover Image (WITHOUT the "Currently" text) -->
+                    <label class="mt-2">Upload a new cover image:</label>
+                    <input type="file" name="image" class="form-control-file">
+                </div>                
+                    
+                
+                <hr>
+                <!-- Display Existing Additional Images -->
+                {% if package.images.all %}
+                <div class="form-group mt-3">
+                    <label class="font-weight-bold">Carousel Images</label>
+                    <div class="row">
+                        {% for image in package.images.all %}
+                        <div class="col-md-4 text-center">
+                            <img src="{{ image.image.url }}" class="img-thumbnail mb-2" alt="Package Image">
+                            <div class="form-check">
+                                <input type="checkbox" name="delete_images" value="{{ image.id }}" class="form-check-input">
+                                <label class="form-check-label text-danger">Remove</label>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Additional Images Upload -->
+                <div class="form-group">
+                    <input type="file" name="additional_images" class="form-control-file" multiple>
+                    <small class="form-text text-muted">You can upload multiple images for the package gallery.</small>
+                </div>
+                {% endif %}
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="id_price">Price ($)</label>
-            <input type="number" name="price" class="form-control" step="0.01" value="{{ package.price }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="id_description">Description</label>
-            <textarea name="description" class="form-control" rows="4">{{ package.description }}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="id_image">Package Image</label>
-            <input type="file" name="image" class="form-control-file">
-        </div>
-
-        <button type="submit" class="btn btn-warning">Update Package</button>
-        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success btn-lg">Save Changes</button>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary btn-lg">Cancel</a>
     </form>
 </div>
+
+<script>
+    tinymce.init({
+        selector: 'textarea.tinymce',
+        height: 400,
+        menubar: true,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+        ],
+        toolbar: 'undo redo | formatselect | ' +
+            'bold italic forecolor backcolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+        content_style: "body { font-family:Arial,sans-serif; font-size:14px }"
+    });
+</script>
+
 {% endblock %}
