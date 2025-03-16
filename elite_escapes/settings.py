@@ -237,3 +237,17 @@ STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY', default='')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', default='')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', default='')
+
+TINYMCE_DEFAULT_CONFIG = {
+    'selector': 'textarea',
+    'height': 400,
+    'width': '100%',
+    'menubar': True,
+    'plugins': 'advlist autolink lists link image charmap print preview anchor',
+    'toolbar': 'undo redo | formatselect | bold italic underline | \
+                alignleft aligncenter alignright | bullist numlist outdent indent | removeformat',
+    'branding': False,
+    'content_style': "body { font-family:Arial, sans-serif; font-size:14px }",
+    'promotion': False,
+    'apiKey': 'kulgkil1u07cncnm37du7j0fwuhot3gpdg70e3bcbf8q4xrp',  # Replace with your actual API key
+}
