@@ -3,7 +3,7 @@
 {% block extra_title %} - {{ package.name }}{% endblock extra_title %}
 
 {% block meta_description %}
-    Book an unforgettable trip with {{ package.name }}. Enjoy {{ package.holiday_duration }} days of adventure!
+Book an unforgettable trip with {{ package.name }}. Enjoy {{ package.holiday_duration }} days of adventure!
 {% endblock meta_description %}
 
 {% block content %}
@@ -17,16 +17,27 @@
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     {% for image in package.images.all %}
-                        <li data-target="#packageCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                    <li data-target="#packageCarousel" data-slide-to="{{ forloop.counter0 }}"
+                        class="{% if forloop.first %}active{% endif %}"></li>
                     {% endfor %}
                 </ol>
 
                 <!-- Carousel Items -->
                 <div class="carousel-inner">
+                    <!-- Cover Image -->
+                    {% if package.image %}
+                    <div class="carousel-item active">
+                        <img src="{{ package.image.url }}" class="d-block w-100 rounded"
+                            alt="Main Image for {{ package.name }}">
+                    </div>
+                    {% endif %}
+
+                    <!-- Additional Images -->
                     {% for image in package.images.all %}
-                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{ image.image.url }}" class="d-block w-100 rounded" alt="Image for {{ package.name }}">
-                        </div>
+                    <div class="carousel-item {% if not package.image and forloop.first %}active{% endif %}">
+                        <img src="{{ image.image.url }}" class="d-block w-100 rounded"
+                            alt="Additional Image for {{ package.name }}">
+                    </div>
                     {% endfor %}
                 </div>
 
@@ -40,6 +51,11 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+            {% else %}
+            <!-- Display Cover Image If No Extra Images Exist -->
+            {% if package.image %}
+            <img src="{{ package.image.url }}" class="d-block w-100 rounded shadow-lg mt-3" alt="{{ package.name }}">
+            {% endif %}
             {% endif %}
         </div>
 
@@ -50,19 +66,30 @@
             <br>
             <p>{{ package.getaway_highlights|safe }}</p>
             <div class="d-flex">
-                <div class="col-md-7"><p>{{ package.included|safe }}</p></div>
+                <div class="col-md-7">
+                    <p>{{ package.included|safe }}</p>
+                </div>
                 <div class="col-md-5">
                     <h3 class="font-weight-bold mb-3">Details</h3>
-                    <p><strong>Price:</strong> <span class="text-success font-weight-bold">${{ package.price }}</span></p>
-                    <p><strong>Duration:</strong> <span class="badge badge-secondary">{{ package.holiday_duration }} days</span></p>
+                    <p><strong>Price:</strong> <span class="text-success font-weight-bold">${{ package.price }}</span>
+                    </p>
+                    <p><strong>Duration:</strong> <span class="badge badge-secondary">{{ package.holiday_duration }}
+                            days</span></p>
+                    <p><strong>Start Date:</strong> <span class="badge badge-info">{{ package.date }}</span></p>
+                    <p><strong>Holiday Type:</strong> <span class="badge badge-primary">{{ package.holiday_type }}</span></p>
+
+                    {% if package.females_only %}
+                    <p><strong>Note:</strong> This is a <span class="text-danger font-weight-bold">Females-Only</span>
+                        trip.</p>
+                    {% endif %}
                 </div>
             </div>
 
             <!-- Booking Buttons -->
             {% if user.is_authenticated %}
-                <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary mt-4 ml-4 shadow-sm">Book Now</a>
+            <a href="{% url 'add_to_bag' package.id %}" class="btn btn-primary mt-4 ml-4 shadow-sm">Book Now</a>
             {% else %}
-                <a href="{% url 'account_login' %}" class="btn btn-primary mt-4 ml-4 shadow-sm">Login/Register to Book!</a>
+            <a href="{% url 'account_login' %}" class="btn btn-primary mt-4 ml-4 shadow-sm">Login/Register to Book!</a>
             {% endif %}
         </div>
     </div>
@@ -70,50 +97,45 @@
     <!-- Reviews Section -->
     <div class="col-md-12 mt-5">
         <h3 class="font-weight-bold mb-3">Customer Reviews</h3>
-        
+
         {% if package.reviews.all %}
-            {% for review in package.reviews.all %}
-                <div class="border rounded p-3 mb-3 shadow-sm">
-                    <p><strong>{{ review.user.username }}</strong> - <span class="text-warning">
-                        {% for i in "12345"|make_list %}
-                            {% if forloop.counter <= review.rating %}
-                                ★
-                            {% else %}
-                                ☆
-                            {% endif %}
-                        {% endfor %}
-                    </span></p>
-                    <p>{{ review.comment }}</p>
-                    <small class="text-muted">Reviewed on {{ review.created_at|date:"F d, Y" }}</small>
-                </div>
-            {% endfor %}
+        {% for review in package.reviews.all %}
+        <div class="border rounded p-3 mb-3 shadow-sm">
+            <p><strong>{{ review.user.username }}</strong> - <span class="text-warning">
+                    {% for i in "12345"|make_list %}
+                    {% if forloop.counter <= review.rating %} ★ {% else %} ☆ {% endif %} {% endfor %} </span>
+            </p>
+            <p>{{ review.comment }}</p>
+            <small class="text-muted">Reviewed on {{ review.created_at|date:"F d, Y" }}</small>
+        </div>
+        {% endfor %}
         {% else %}
-            <p class="text-muted">There are no reviews submitted yet.</p>
+        <p class="text-muted">There are no reviews submitted yet.</p>
         {% endif %}
 
         <!-- Review Submission Form (Only for Authenticated Users) -->
         {% if user.is_authenticated %}
-            <h4 class="mt-4">Leave a Review</h4>
-            <form method="post" action="{% url 'add_review' package.id %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="rating">Rating</label>
-                    <select name="rating" class="form-control" required>
-                        <option value="5">★★★★★ - Excellent</option>
-                        <option value="4">★★★★☆ - Very Good</option>
-                        <option value="3">★★★☆☆ - Good</option>
-                        <option value="2">★★☆☆☆ - Fair</option>
-                        <option value="1">★☆☆☆☆ - Poor</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="comment">Your Review</label>
-                    <textarea name="comment" class="form-control" rows="3" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary mt-2 mb-4">Submit Review</button>
-            </form>
+        <h4 class="mt-4">Leave a Review</h4>
+        <form method="post" action="{% url 'add_review' package.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <select name="rating" class="form-control" required>
+                    <option value="5">★★★★★ - Excellent</option>
+                    <option value="4">★★★★☆ - Very Good</option>
+                    <option value="3">★★★☆☆ - Good</option>
+                    <option value="2">★★☆☆☆ - Fair</option>
+                    <option value="1">★☆☆☆☆ - Poor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comment">Your Review</label>
+                <textarea name="comment" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2 mb-4">Submit Review</button>
+        </form>
         {% else %}
-            <p><a href="{% url 'account_login' %}">Log in</a> to leave a review.</p>
+        <p><a href="{% url 'account_login' %}">Log in</a> to leave a review.</p>
         {% endif %}
     </div>
 </div>
