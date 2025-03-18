@@ -10,8 +10,6 @@ from django.contrib import messages
 def is_admin(user):
     return user.is_authenticated and hasattr(user, 'role') and user.is_admin()
 
-
-
 # Admin Dashboard - List All Packages
 @login_required
 def admin_dashboard(request):
@@ -53,12 +51,8 @@ def edit_package(request, package_id):
         if "remove_cover" in request.POST:
             if package.image:
                 image_path = os.path.join(settings.MEDIA_ROOT, str(package.image))
-                
-                # Check if file exists before deleting
                 if os.path.exists(image_path):
                     os.remove(image_path)
-                
-                # Remove image reference from the database
                 package.image.delete(save=False)
                 package.image = None
                 messages.success(request, "Cover image removed successfully.")
@@ -69,27 +63,30 @@ def edit_package(request, package_id):
             for image_id in delete_image_ids:
                 image_obj = get_object_or_404(PackageImages, id=image_id)
                 image_path = os.path.join(settings.MEDIA_ROOT, str(image_obj.image))
-
-                # Check if file exists before deleting
                 if os.path.exists(image_path):
                     os.remove(image_path)
-                
-                # Remove image reference from the database
                 image_obj.delete()
             messages.success(request, "Selected additional images were removed.")
 
         # Handle form data update
         form = PackageForm(request.POST, request.FILES, instance=package)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Package updated successfully.")
+            package = form.save()  # Save the package details
+
+            # ✅ Handle New Additional Images Upload
+            if request.FILES.getlist("additional_images"):
+                for image_file in request.FILES.getlist("additional_images"):
+                    PackageImages.objects.create(package=package, image=image_file)
+                messages.success(request, "New additional images uploaded successfully.")
+
             return redirect("admin_dashboard")
+        else:
+            messages.error(request, "There was an error updating the package.")
 
     else:
         form = PackageForm(instance=package)
 
     return render(request, "admin_panel/edit_package.html", {"form": form, "package": package})
-
 
 # Delete Package
 @login_required
