@@ -24,7 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
 ALLOWED_HOSTS = [
     'elite-escapes-6cd7f36ee2af.herokuapp.com', 
     '127.0.0.1',
@@ -61,7 +60,9 @@ INSTALLED_APPS = [
     'admin_panel', 
 ]
 
-AUTH_USER_MODEL = 'customers.CustomUser'  # Ensure this matches the app and model name
+ACCOUNT_FORMS = {
+    'signup': 'customers.forms.CustomSignupForm',  # Use our form
+}
 
 
 MIDDLEWARE = [
@@ -120,7 +121,8 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
 
 # Settings boutique_ado/settings.py by ckz8780
 # https://github.com/Code-Institute-Solutions/boutique_ado_v1/blob/ea7fe2688a0d97db4e469b672d5cb35e5835ff69/boutique_ado/settings.py
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
@@ -130,6 +132,7 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_SIGNUP_REDIRECT_URL = "/accounts/confirm-email/"  
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "/"
+AUTH_USER_MODEL = 'customers.CustomUser'  # Ensure this matches the app and model name
 
 WSGI_APPLICATION = 'elite_escapes.wsgi.application'
 

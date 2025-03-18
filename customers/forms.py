@@ -2,6 +2,7 @@ from django import forms
 from .models import Customer
 from django.forms.widgets import SelectDateWidget
 from datetime import datetime
+from allauth.account.forms import SignupForm
 
 class CustomerForm(forms.ModelForm):
     class Meta:
@@ -15,3 +16,9 @@ class CustomerForm(forms.ModelForm):
         }
     
     
+class CustomSignupForm(SignupForm):
+    def save(self, request):
+        user = super().save(request)
+        user.username = user.email.split('@')[0]  # Assign a unique username
+        user.save()
+        return user

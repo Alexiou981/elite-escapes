@@ -10,19 +10,15 @@ class CustomUser(AbstractUser):
     ]
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
 
-
-    groups = models.ManyToManyField(Group, related_name="customuser_groups", blank=True)
-    user_permissions = models.ManyToManyField(Permission, related_name="customuser_permissions", blank=True)
+    # Ensure a default username is generated
+    def save(self, *args, **kwargs):
+        if not self.username:
+            self.username = self.email.split('@')[0]  # Use email prefix as username
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.username
-
-    def is_admin(self):
-        return self.role == 'admin'
-
-    def is_user(self):
-        return self.role == 'user'
-
+        return self.email  # Show email instead of username in admin panel
+    
 class Customer(models.Model):
     GENDER_CHOICES = [
         ('Male', 'Male'),
