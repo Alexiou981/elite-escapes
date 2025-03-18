@@ -10,10 +10,10 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg p-4">
-                <div class="card-header bg-white text-center border-0">
-                    <h2 class="h4 font-weight-bold">{% trans "Confirm Your Email" %}</h2>
+                <div class="card-header text-center border-0">
+                    <h2 class="h4 font-weight-bold text-gold">{% trans "Confirm Your Email" %}</h2>
                 </div>
-                <div class="card-body text-center">
+                <div class="card-body text-center text-white">
                     {% if confirmation %}
                         <p>
                             {% blocktranslate with confirmation.email_address.email as email %}
