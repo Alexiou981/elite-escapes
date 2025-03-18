@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False 
+
 ALLOWED_HOSTS = [
     'elite-escapes-6cd7f36ee2af.herokuapp.com', 
     '127.0.0.1',
@@ -100,6 +101,9 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
+    # Custom backend for email/username login
+    'customers.backends.EmailOrUsernameModelBackend',  
+
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
@@ -121,10 +125,10 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
 
 # Settings boutique_ado/settings.py by ckz8780
 # https://github.com/Code-Institute-Solutions/boutique_ado_v1/blob/ea7fe2688a0d97db4e469b672d5cb35e5835ff69/boutique_ado/settings.py
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+#ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
