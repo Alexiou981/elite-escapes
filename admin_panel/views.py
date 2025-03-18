@@ -8,7 +8,7 @@ from django.contrib import messages
 
 # Function to check if the user is an admin
 def is_admin(user):
-    return user.is_authenticated and hasattr(user, 'role') and user.is_admin()
+    return user.is_authenticated and user.is_admin()
 
 # Admin Dashboard - List All Packages
 @login_required

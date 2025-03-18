@@ -10,6 +10,9 @@ class CustomUser(AbstractUser):
     ]
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
 
+    def is_admin(self):
+        return self.role == 'admin'
+    
     # Ensure a default username is generated
     def save(self, *args, **kwargs):
         if not self.username:
