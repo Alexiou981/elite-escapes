@@ -20,7 +20,7 @@
                     {% if items %}
                         <!-- Regular Table for Large Screens -->
                         <div class="d-none d-md-block mb-4">
-                            <table class="table table-bordered table-hover shadow-sm text-center">
+                            <table class="table table-bordered table-hover shadow-sm text-center text-white">
                                 <thead>
                                     <tr>
                                         <th>Package Name</th>
@@ -47,7 +47,7 @@
                                                             data-original="{{ item.quantity }}"
                                                         >
                                                         <div class="input-group-append">
-                                                            <button type="submit" class="btn btn-sm shadow-sm update-button text-white" disabled>Update</button>
+                                                            <button type="submit" class="btn btn-sm btn-success shadow-sm" disabled>Update</button>
                                                         </div>
                                                     </div>
                                                 </form>
