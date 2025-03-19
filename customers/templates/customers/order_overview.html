@@ -3,7 +3,7 @@
 {% block extra_title %} - Order Overview{% endblock extra_title %}
 
 {% block meta_description %}
-    "Review your booking and proceed to checkout with Elite Escapes."
+    Review your booking and proceed to checkout with Elite Escapes.
 {% endblock meta_description %}
 
 {% block content %}
@@ -29,8 +29,8 @@
 
                     <!-- Table for Larger Screens -->
                     <div class="d-none d-md-block">
-                        <table class="table table-bordered table-hover shadow-sm">
-                            <thead>
+                        <table class="table table-bordered shadow-sm">
+                            <thead class="text-white">
                                 <tr>
                                     <th scope="col">Package</th>
                                     <th scope="col">Quantity</th>
@@ -38,7 +38,7 @@
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-white">
                                 {% for item in cart_items %}
                                     <tr>
                                         <td>{{ item.package.name }}</td>
@@ -88,6 +88,7 @@
         </div>
     </div>
 </div>
+{% endblock %}
 
 <!-- Custom CSS for Responsive Behavior -->
 <style>
@@ -101,5 +102,3 @@
         }
     }
 </style>
-
-{% endblock %}
