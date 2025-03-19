@@ -146,16 +146,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://elite-escapes-6cd7f36ee2af.herokuapp.com',]
 
 
-
-TINYMCE_DEFAULT_CONFIG = {
-    'height': 400,
-    'width': '100%',
-    'plugins': 'advlist autolink lists link image charmap print preview anchor',
-    'toolbar': 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help',
-}
-
-
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
