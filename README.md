@@ -2,6 +2,7 @@
 
 Elite Escapes is a full-featured travel booking platform that allows users to browse and book exclusive holiday packages. Users can sign up, manage their bookings, and leave reviews. The application includes an integrated checkout system with Stripe for secure payments.
 ## Table of Contents
++ [Business Model](#business-model "Business Model")
 + [UX](#ux "UX")
 + [User Stories](#user-stories "User Stories")
 + [Design](#design "Design")
@@ -10,6 +11,34 @@ Elite Escapes is a full-featured travel booking platform that allows users to br
 + [Technologies Used](#technologies-used "Technologies Used")
 + [Deployment](#deployment "Deployment")
 + [Credits](#credits "Credits")
+
+## E-Commerce Business Model
+
+### **Business Overview**
+Elite Escapes is an online travel booking platform that provides luxury holiday packages to customers worldwide. Our platform allows users to browse, book, and customize travel experiences, ensuring a seamless and hassle-free vacation planning process.
+
+### **Revenue Model**
+Elite Escapes generates revenue through:
+- **Direct Sales:** Customers purchase vacation packages directly from the platform.
+- **Affiliate Partnerships:** Collaborations with hotels, airlines, and travel agencies to offer bundled deals.
+- **Premium Memberships (Future Scope):** Exclusive offers for repeat customers and premium users.
+
+### **Target Customers**
+Our target audience includes:
+- **Luxury Travelers:** People looking for high-end travel experiences.
+- **Couples & Honeymooners:** Romantic getaway seekers.
+- **Adventure Enthusiasts:** Travelers interested in curated adventure trips.
+- **Families & Groups:** Customizable vacation packages for family holidays.
+
+### **E-Commerce Model**
+Elite Escapes operates under the **Business-to-Consumer (B2C) model**, where travel packages are directly sold to customers through an interactive online platform.
+
+### **Payment & Fulfillment Process**
+- Customers select a package and proceed to checkout.
+- Secure payments are processed using **Stripe**.
+- Upon successful payment, customers receive a confirmation email with booking details.
+- Additional customer support is available via chat or email for any modifications or cancellations.
+
 
 ## UX
 
