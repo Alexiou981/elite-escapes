@@ -79,10 +79,10 @@
                     <!-- Address -->
                     <div class="form-group">
                         <label for="id_address" class="text-gold"><strong>Address</strong></label>
-                        <input type="text" name="address" id="id_address" 
-                               class="form-control form-control-sm shadow-sm {% if form.address.errors %}is-invalid{% endif %}" 
-                               autocomplete="street-address"
-                               value="{{ form.address.value|default:'' }}">
+                        <input type="text" name="address" id="id_address"
+                            class="form-control form-control-sm shadow-sm {% if form.address.errors %}is-invalid{% endif %}"
+                            autocomplete="address-line1"
+                            value="{{ form.address.value|default:'' }}">
                         {% for error in form.address.errors %}
                             <div class="invalid-feedback">{{ error }}</div>
                         {% endfor %}
