@@ -61,18 +61,20 @@
                             <div class="invalid-feedback">{{ error }}</div>
                         {% endfor %}
                     </div>
-
+                    
                     <!-- Phone -->
                     <div class="form-group">
                         <label for="id_phone" class="text-gold"><strong>Phone</strong></label>
-                        <input type="text" name="phone" id="id_phone" 
-                               class="form-control form-control-sm shadow-sm {% if form.phone.errors %}is-invalid{% endif %}" 
-                               autocomplete="tel"
-                               value="{{ form.phone.value|default:'' }}">
+                        <input type="tel" name="phone" id="id_phone"
+                            class="form-control form-control-sm shadow-sm {% if form.phone.errors %}is-invalid{% endif %}"
+                            pattern="^\+?\d{10,15}$" inputmode="tel"
+                            title="Phone number must start with '+' (optional) followed by 10-15 digits." autocomplete="tel"
+                            value="{{ form.phone.value|default:'' }}">
                         {% for error in form.phone.errors %}
-                            <div class="invalid-feedback">{{ error }}</div>
+                        <div class="invalid-feedback">{{ error }}</div>
                         {% endfor %}
                     </div>
+
 
                     <!-- Address -->
                     <div class="form-group">

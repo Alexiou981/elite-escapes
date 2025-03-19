@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.conf import settings
-
+from django.core.validators import RegexValidator
 
 class CustomUser(AbstractUser):
     ROLE_CHOICES = [
@@ -34,7 +34,18 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=15, null=False, blank=False, default='')  
+    phone_validator = RegexValidator(
+        regex=r'^\+?\d{10,15}$',  # Allow optional "+" at the beginning
+        message="Phone number must start with '+' (optional) followed by 10-15 digits."
+    )
+
+    phone = models.CharField(
+        max_length=16,  # Increased by 1 to accommodate "+"
+        validators=[phone_validator],
+        null=False,
+        blank=False,
+        default=''
+    )
     address = models.TextField(blank=False, null=False, default='')
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
