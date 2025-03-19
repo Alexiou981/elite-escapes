@@ -12,27 +12,27 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="id_name" class="font-weight-bold">Package Name</label>
-                    <input type="text" name="name" class="form-control shadow-sm" value="{{ form.name.value }}" required>
+                    <input type="text" name="name" id="id_name" class="form-control shadow-sm" value="{{ form.name.value|default_if_none:'' }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="id_brief_description" class="font-weight-bold">Brief Description</label>
-                    <textarea name="brief_description" class="form-control shadow-sm">{{ form.brief_description.value }}</textarea>
+                    <textarea name="brief_description" id="id_brief_description" class="form-control shadow-sm">{{ form.brief_description.value|default_if_none:'' }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="id_detailed_description" class="font-weight-bold">Detailed Description</label>
-                    <textarea name="detailed_description" class="form-control tinymce shadow-sm">{{ form.detailed_description.value }}</textarea>
+                    <textarea name="detailed_description" id="id_detailed_description" class="form-control tinymce shadow-sm">{{ form.detailed_description.value|default_if_none:'' }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="id_getaway_highlights" class="font-weight-bold">Getaway Highlights</label>
-                    <textarea name="getaway_highlights" class="form-control tinymce shadow-sm">{{ form.getaway_highlights.value }}</textarea>
+                    <textarea name="getaway_highlights" id="id_getaway_highlights" class="form-control tinymce shadow-sm">{{ form.getaway_highlights.value|default_if_none:'' }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="id_included" class="font-weight-bold">What's Included</label>
-                    <textarea name="included" class="form-control tinymce shadow-sm">{{ form.included.value }}</textarea>
+                    <textarea name="included" id="id_included" class="form-control tinymce shadow-sm">{{ form.included.value|default_if_none:'' }}</textarea>
                 </div>
             </div>
 
@@ -40,40 +40,46 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="id_price" class="font-weight-bold">Price ($)</label>
-                    <input type="number" name="price" class="form-control shadow-sm" step="0.01" value="{{ form.price.value }}" required>
+                    <input type="number" name="price" id="id_price" class="form-control shadow-sm" step="0.01" 
+                           value="{{ form.price.value|default_if_none:'' }}" required>
+
                 </div>
 
                 <div class="form-group">
                     <label for="id_holiday_duration" class="font-weight-bold">Holiday Duration (Days)</label>
-                    <input type="number" name="holiday_duration" class="form-control shadow-sm" value="{{ form.holiday_duration.value }}" required>
+                    <input type="number" name="holiday_duration" id="id_holiday_duration" class="form-control shadow-sm" 
+                           value="{{ form.holiday_duration.value|default_if_none:'' }}" required>
+
                 </div>
 
                 <div class="form-group">
                     <label for="id_date" class="font-weight-bold">Start Date</label>
-                    <input type="date" name="date" class="form-control shadow-sm" value="{{ form.date.value }}" required>
+                    <input type="date" name="date" id="id_date" class="form-control shadow-sm" 
+                           value="{{ form.date.value|default_if_none:'' }}" required>
+
                 </div>
 
                 <div class="form-group">
                     <label for="id_holiday_type" class="font-weight-bold">Holiday Type</label>
-                    {{ form.holiday_type }}
+                    {{ form.holiday_type|default_if_none:'' }}
                 </div>
 
                 <div class="form-group">
                     <label for="id_females_only" class="font-weight-bold">Females Only?</label>
                     <div class="form-check">
-                        {{ form.females_only }}
+                        <input type="checkbox" name="females_only" id="id_females_only" class="form-check-input">
                         <label class="form-check-label" for="id_females_only">Yes</label>
                     </div>
-                </div>
+                </div>                
 
                 <div class="form-group">
                     <label for="id_image" class="font-weight-bold">Cover Image</label>
-                    <input type="file" name="image" class="form-control-file">
+                    <input type="file" name="image" id="id_image"  class="form-control-file">
                 </div>
 
                 <div class="form-group">
                     <label for="id_additional_images" class="font-weight-bold">Additional Images</label>
-                    <input type="file" name="additional_images" multiple class="form-control-file">
+                    <input type="file" name="additional_images" id="id_additional_images" multiple class="form-control-file">
                     <small class="text-muted">Upload multiple images for the carousel.</small>
                 </div>
             </div>
