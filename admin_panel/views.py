@@ -26,11 +26,21 @@ def add_package(request):
         form = PackageForm(request.POST, request.FILES)
         images_formset = PackageImagesFormSet(request.POST, request.FILES)
 
-        if form.is_valid() and images_formset.is_valid():
-            package = form.save()
-            images_formset.instance = package  # Attach images to the saved package
-            images_formset.save()
+        if form.is_valid():
+            package = form.save()  # Save the package
+
+            # Handle Additional Images Upload
+            images = request.FILES.getlist("additional_images")
+            if images:
+                for image_file in images:
+                    PackageImages.objects.create(package=package, image=image_file)
+
+            messages.success(request, "Package added successfully.")
             return redirect('admin_dashboard')
+
+        else:
+            messages.error(request, "There was an error adding the package. Please check the form and try again.")
+
     else:
         form = PackageForm()
         images_formset = PackageImagesFormSet()
@@ -88,12 +98,15 @@ def edit_package(request, package_id):
 
     return render(request, "admin_panel/edit_package.html", {"form": form, "package": package})
 
-# Delete Package
+# Delete Package View with Confirmation
 @login_required
+@user_passes_test(is_admin)
 def delete_package(request, package_id):
-    if not is_admin(request.user):
-        return redirect('home')
-
     package = get_object_or_404(Package, id=package_id)
-    package.delete()
-    return redirect('admin_dashboard')
+
+    if request.method == "POST":
+        package.delete()
+        messages.success(request, "Package deleted successfully.")
+        return redirect("admin_dashboard")
+
+    return render(request, "admin_panel/delete_package.html", {"package": package})

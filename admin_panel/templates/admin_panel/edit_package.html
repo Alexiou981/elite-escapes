@@ -12,27 +12,27 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="id_name" class="font-weight-bold">Package Name</label>
-                    <input type="text" name="name" class="form-control shadow-sm" value="{{ form.name.value }}" required>
+                    <input type="text" name="name" id="id_name" class="form-control shadow-sm" value="{{ form.name.value }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="id_brief_description" class="font-weight-bold">Brief Description</label>
-                    <textarea name="brief_description" class="form-control shadow-sm">{{ form.brief_description.value }}</textarea>
+                    <textarea name="brief_description" id="id_brief_description" class="form-control shadow-sm">{{ form.brief_description.value }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="id_detailed_description" class="font-weight-bold">Detailed Description</label>
-                    <textarea name="detailed_description" class="form-control tinymce shadow-sm">{{ form.detailed_description.value }}</textarea>
+                    <textarea name="detailed_description" id="id_detailed_description" class="form-control tinymce shadow-sm">{{ form.detailed_description.value }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="id_getaway_highlights" class="font-weight-bold">Getaway Highlights</label>
-                    <textarea name="getaway_highlights" class="form-control tinymce shadow-sm">{{ form.getaway_highlights.value }}</textarea>
+                    <textarea name="getaway_highlights" id="id_getaway_highlights" class="form-control tinymce shadow-sm">{{ form.getaway_highlights.value }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="id_included" class="font-weight-bold">What's Included</label>
-                    <textarea name="included" class="form-control tinymce shadow-sm">{{ form.included.value }}</textarea>
+                    <textarea name="included" id="id_included" class="form-control tinymce shadow-sm">{{ form.included.value }}</textarea>
                 </div>
             </div>
 
@@ -40,17 +40,17 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="id_price" class="font-weight-bold">Price ($)</label>
-                    <input type="number" name="price" class="form-control shadow-sm" step="0.01" value="{{ form.price.value }}" required>
+                    <input type="number" id="id_price" name="price" class="form-control shadow-sm" step="0.01" value="{{ form.price.value }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="id_holiday_duration" class="font-weight-bold">Holiday Duration (Days)</label>
-                    <input type="number" name="holiday_duration" class="form-control shadow-sm" value="{{ form.holiday_duration.value }}" required>
+                    <input type="number" id="id_holiday_duration" name="holiday_duration" class="form-control shadow-sm" value="{{ form.holiday_duration.value }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="id_date">Start Date</label>
-                    <input type="date" name="date" class="form-control" value="{{ package.date|date:'Y-m-d' }}" required>
+                    <input type="date" id="id_date" name="date" class="form-control" value="{{ package.date|date:'Y-m-d' }}" required>
                 </div>
 
                 <div class="form-group">
@@ -70,6 +70,7 @@
                 <!-- Cover Image -->
                 <div class="form-group">
                     <label for="id_image">Cover Image</label><br>
+                    <input type="file" name="image" id="id_image" class="form-control-file">
                 
                     {% if package.image %}
                         <!-- Display Current Cover Image -->
