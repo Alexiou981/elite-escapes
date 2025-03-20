@@ -61,13 +61,12 @@ Book an unforgettable trip with {{ package.name }}. Enjoy {{ package.holiday_dur
 
         <div class="col-md-12 mt-5">
             <!-- Details Section -->
-            <p>{{ package.detailed_description|safe }}</p>
+            {{ package.detailed_description|safe }}
             <hr>
-            <br>
-            <p>{{ package.getaway_highlights|safe }}</p>
+            {{ package.getaway_highlights|safe }}
             <div class="d-flex">
                 <div class="col-md-7">
-                    <p>{{ package.included|safe }}</p>
+                    {{ package.included|safe }}
                 </div>
                 <div class="col-md-5">
                     <h3 class="font-weight-bold mb-3">Details</h3>
@@ -119,8 +118,9 @@ Book an unforgettable trip with {{ package.name }}. Enjoy {{ package.holiday_dur
         <form method="post" action="{% url 'add_review' package.id %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="rating">Rating</label>
-                <select name="rating" class="form-control" required>
+                <label for="id_rating">Rating</label>
+                <select name="rating" id="id_rating" class="form-control" required>
+                    <option value="" disabled selected>Select a rating</option>
                     <option value="5">★★★★★ - Excellent</option>
                     <option value="4">★★★★☆ - Very Good</option>
                     <option value="3">★★★☆☆ - Good</option>
@@ -129,8 +129,8 @@ Book an unforgettable trip with {{ package.name }}. Enjoy {{ package.holiday_dur
                 </select>
             </div>
             <div class="form-group">
-                <label for="comment">Your Review</label>
-                <textarea name="comment" class="form-control" rows="3" required></textarea>
+                <label for="id_comment">Your Review</label>
+                <textarea name="comment" id="id_comment" class="form-control" rows="3" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary mt-2 mb-4">Submit Review</button>
         </form>
