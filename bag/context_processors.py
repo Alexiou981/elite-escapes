@@ -1,5 +1,6 @@
 from .models import ShoppingCart
 
+
 def bag_total(request):
     if request.user.is_authenticated:
         cart, created = ShoppingCart.objects.get_or_create(user=request.user)

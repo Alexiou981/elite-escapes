@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import ShoppingCart, ShoppingCartItem
 from home.models import Package
 
+
 def bag(request):
     if request.user.is_authenticated:
         # For authenticated users, retrieve items from the database
@@ -22,10 +23,10 @@ def bag(request):
             items.append({
                 'package': package,
                 'quantity': quantity,
-                'get_total_price': lambda p: p.price * quantity,  # Create a lambda for total price per item
+                'get_total_price': lambda p: p.price * quantity,
                 'package_id': package_id,  # Add package_id for URL referencing
             })
-    
+
     # Calculate the overall total for authenticated users
     if request.user.is_authenticated:
         total = sum(item.get_total_price() for item in items)
@@ -35,26 +36,30 @@ def bag(request):
         'total': total,
     })
 
+
 def add_to_bag(request, package_id):
     package = get_object_or_404(Package, id=package_id)
 
     if request.user.is_authenticated:
         # For authenticated users
         cart, created = ShoppingCart.objects.get_or_create(user=request.user)
-        
+
         # Delete any existing items from the bag
         cart.items.all().delete()
 
         # Add item to cart or update quantity if it exists
-        item, item_created = ShoppingCartItem.objects.get_or_create(cart=cart, package=package)
+        item, item_created = ShoppingCartItem.objects.get_or_create(
+            cart=cart, package=package
+            )
         if not item_created:
             item.quantity += 1
             item.save()
     else:
         # Clear session-based cart for non-authenticated users
         request.session['bag'] = {str(package_id): {'quantity': 1}}
-        
+
     return redirect('bag')
+
 
 def update_bag_quantity(request, package_id):
     if request.user.is_authenticated:
@@ -63,7 +68,11 @@ def update_bag_quantity(request, package_id):
         cart = get_object_or_404(ShoppingCart, user=request.user)
 
         # Get the specific item from the cart
-        item = get_object_or_404(ShoppingCartItem, package_id=package_id, cart=cart)
+        item = get_object_or_404(
+            ShoppingCartItem,
+            package_id=package_id,
+            cart=cart
+            )
 
         # Get the quantity from the form data and validate it
         try:
@@ -81,7 +90,7 @@ def update_bag_quantity(request, package_id):
         messages.success(request, "Quantity updated successfully!")
     else:
         # Non-authenticated user handling
-        cart = request.session.get('bag', {})  # Use the same session key as before
+        cart = request.session.get('bag', {})
         if str(package_id) in cart:
             try:
                 new_quantity = int(request.POST.get('quantity', 1))
