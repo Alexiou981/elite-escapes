@@ -110,14 +110,17 @@
         const quantityInputs = document.querySelectorAll('input[name="quantity"]');
 
         quantityInputs.forEach(input => {
-            const originalQuantity = input.dataset.original;
-            const updateButton = input.closest('form').querySelector('.update-button');
+            const form = input.closest('form');
+            const updateButton = form.querySelector('button[type="submit"]'); // Correctly reference the button
+            const originalQuantity = parseInt(input.dataset.original, 10);
 
             input.addEventListener('input', () => {
-                if (input.value !== originalQuantity) {
-                    updateButton.disabled = false;
+                const newQuantity = parseInt(input.value, 10);
+
+                if (!isNaN(newQuantity) && newQuantity !== originalQuantity) {
+                    updateButton.removeAttribute('disabled'); // Enable button
                 } else {
-                    updateButton.disabled = true;
+                    updateButton.setAttribute('disabled', 'true'); // Disable button
                 }
             });
         });
