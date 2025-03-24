@@ -4,10 +4,11 @@ from .models import Review
 from .forms import ReviewForm
 from home.models import Package
 
+
 @login_required
 def add_review(request, package_id):
     package = get_object_or_404(Package, id=package_id)
-    
+
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -19,4 +20,6 @@ def add_review(request, package_id):
     else:
         form = ReviewForm()
 
-    return render(request, 'reviews/add_review.html', {'form': form, 'package': package})
+    return render(
+        request, 'reviews/add_review.html', {'form': form, 'package': package}
+    )
