@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 UserModel = get_user_model()
 
+
 class EmailOrUsernameModelBackend(ModelBackend):
     """
     Custom authentication backend that allows users to log in using either
@@ -13,7 +14,10 @@ class EmailOrUsernameModelBackend(ModelBackend):
             return None
 
         # Check if user exists by email or username
-        user = UserModel.objects.filter(email=username).first() or UserModel.objects.filter(username=username).first()
+        user = (
+            UserModel.objects.filter(email=username).first() or
+            UserModel.objects.filter(username=username).first()
+        )
 
         if user and user.check_password(password):
             return user
