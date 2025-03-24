@@ -2,39 +2,44 @@
 
 {% block meta %}
 <meta name="description" content="View your upcoming and past bookings with Elite Escapes. Manage your travel itinerary easily.">
-{% endblock %}
+{% endblock meta %}
 
 {% block content %}
-<div class="container-fluid my-5">
+<div class="container mt-5 pt-5">
     <div class="row justify-content-center">
-        <!-- On mobile: full width; on md and up: 10/12; on lg and up: 8/12 -->
-        <div class="col-12 col-md-10 col-lg-8">
+        <div class="col-md-8">
             <div class="card shadow-lg border-0 rounded-2">
-                <div class="card-header bg-white text-center border-0">
+                <!-- Match the Personal Details template header style -->
+                <div class="pt-2 text-center border-0">
                     <h2 class="h4 font-weight-bold text-gold">Your Bookings</h2>
                 </div>
-                <div class="card-body">
+                <!-- Card body with text-white (assuming your site uses a dark background) -->
+                <div class="card-body text-white">
                     {% if bookings %}
+                        <!-- Row of individual booking cards -->
                         <div class="row">
                             {% for booking in bookings %}
-                                <div class="col-12 col-lg-6 mb-4">
-                                    <div class="card shadow-sm border-0 rounded-2">
-                                        <div class="card-body">
+                                <div class="col-12 mb-4">
+                                    <!-- Nested card for each booking -->
+                                    <div class="card shadow-lg border-0 rounded-2">
+                                        <div class="card-body text-white">
                                             <h5 class="card-title font-weight-bold text-gold">
                                                 {{ booking.package.name }}
                                             </h5>
-                                            <p class="mb-1">
-                                                <strong>Amount:</strong> ${{ booking.amount }}
+                                            <p>
+                                                <strong class="text-gold">Amount:</strong>
+                                                ${{ booking.amount }}
                                             </p>
-                                            <p class="mb-1">
-                                                <strong>Booked on:</strong> {{ booking.created_at|date:"Y-m-d" }}
+                                            <p>
+                                                <strong class="text-gold">Booked on:</strong>
+                                                {{ booking.created_at|date:"Y-m-d" }}
                                             </p>
-                                            <p class="mb-1">
-                                                <strong>Departure Date:</strong>
+                                            <p>
+                                                <strong class="text-gold">Departure Date:</strong>
                                                 {{ booking.package.date|date:"F j, Y" }}
                                             </p>
-                                            <p class="mb-1">
-                                                <strong>Duration:</strong>
+                                            <p>
+                                                <strong class="text-gold">Duration:</strong>
                                                 {{ booking.package.holiday_duration }} days
                                             </p>
                                         </div>
@@ -43,7 +48,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        <div class="alert alert-warning text-center">
+                        <div class="alert alert-warning text-center mt-3">
                             No bookings found.
                         </div>
                     {% endif %}
@@ -52,5 +57,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
