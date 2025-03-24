@@ -11,14 +11,19 @@
     <div class="hero-background container-fluid">
         <div class="row h-100">
             <div class="col-12 text-center my-auto bg-dark-transparent">
-                <h1 class="display-4 logo-font">
+                <!-- Desktop: larger heading -->
+                <h1 class="d-none d-md-block display-4 logo-font">
+                    New holiday packages have arrived
+                </h1>
+                <!-- Mobile: smaller heading -->
+                <h1 class="d-block d-md-none display-5 logo-font">
                     New holiday packages have arrived
                 </h1>
             </div>
         </div>
     </div>
     <div class="package-list">
-        <h1 class="text-white">Our Packages</h1>
+        <h1 class="text-gold mt-2">Our Packages</h1>
         <div class="row mt-2">
             {% for package in packages %}
                 <div class="col-md-4">
