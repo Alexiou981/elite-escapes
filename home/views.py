@@ -6,13 +6,14 @@ from .models import Package
 from .forms import NewsletterSignupForm
 # Create your views here.
 
+
 def index(request):
     """ A view to return the index page and packages """
     packages = Package.objects.all()
     return render(request, 'home/index.html', {
         'packages': packages,
         'MEDIA_URL': settings.MEDIA_URL
-        })
+    })
 
 
 def package_details(request, package_id):
@@ -22,7 +23,7 @@ def package_details(request, package_id):
     return render(request, 'home/package_details.html', {
         'package': package,
         'MEDIA_URL': settings.MEDIA_URL
-        })
+    })
 
 
 def newsletter_signup(request):
@@ -34,13 +35,21 @@ def newsletter_signup(request):
             # Send confirmation email
             send_mail(
                 subject="Thank You for Subscribing!",
-                message="You have successfully subscribed to our newsletter. Stay tuned for updates!",
-                from_email="your-email@gmail.com",  # Use the email configured in settings.py
+                message=(
+                    "You have successfully subscribed to our newsletter. "
+                    "Stay tuned for updates!"
+                ),
+                # Use the email configured in settings.py
+                from_email="your-email@gmail.com",
                 recipient_list=[subscriber.email],
                 fail_silently=False,
             )
 
-            messages.success(request, "Thank you for signing up! A confirmation email has been sent to your inbox.")
+            messages.success(
+                request,
+                "Thank you for signing up! A confirmation email has been sent "
+                "to your inbox."
+            )
             return redirect("home")  # Redirect back to home page
 
     else:
