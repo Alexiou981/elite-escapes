@@ -25,15 +25,18 @@ class StripeWH_Handler:
         print("Payment Intent:", intent)  # Debug log
 
         # Check the structure
-        customer_email = intent.get('charges', {}).get('data', [{}])[0].get('billing_details', {}).get('email', None)
-        print("Customer Email:", customer_email)
+        customer_email = (
+            intent.get('charges', {})
+            .get('data', [{}])[0]
+            .get('billing_details', {})
+            .get('email', None)
+        )
 
         # Add further logic here
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200
         )
-
 
     def handle_payment_intent_payment_failed(self, event):
         """
@@ -42,7 +45,7 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
-    
+
     def send_booking_confirmation_email(user_email, package_name, total_price):
         subject = "Your Elite Escapes Booking Confirmation"
         message = (
