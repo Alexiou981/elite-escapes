@@ -1,119 +1,146 @@
-# The Food Frontier
+# Elite Escapes
 
-Elite Escapes is a full-featured travel booking platform that allows users to browse and book exclusive holiday packages. Users can sign up, manage their bookings, and leave reviews. The application includes an integrated checkout system with Stripe for secure payments.
+**Elite Escapes** is a full-stack e-commerce website offering curated travel packages, built using Django and PostgreSQL.
+
+---
+
 ## Table of Contents
-+ [Business Model](#business-model "Business Model")
-+ [UX](#ux "UX")
-+ [User Stories](#user-stories "User Stories")
-+ [Design](#design "Design")
-+ [Features](#features "Features")
-+ [Testing](#testing "Testing")
-+ [Technologies Used](#technologies-used "Technologies Used")
-+ [Deployment](#deployment "Deployment")
-+ [Credits](#credits "Credits")
 
-## E-Commerce Business Model
+- [Overview](#overview)
+- [User Experience (UX)](#user-experience-ux)
+  - [Strategy](#strategy)
+  - [Scope](#scope)
+  - [Structure](#structure)
+  - [Skeleton](#skeleton)
+  - [Surface](#surface)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Database Schema](#database-schema)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Local Development & Installation](#local-development--installation)
+- [Credits](#credits)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-### **Business Overview**
-Elite Escapes is an online travel booking platform that provides luxury holiday packages to customers worldwide. Our platform allows users to browse, book, and customize travel experiences, ensuring a seamless and hassle-free vacation planning process.
+---
 
-### **Revenue Model**
-Elite Escapes generates revenue through:
-- **Direct Sales:** Customers purchase vacation packages directly from the platform.
-- **Affiliate Partnerships:** Collaborations with hotels, airlines, and travel agencies to offer bundled deals.
-- **Premium Memberships (Future Scope):** Exclusive offers for repeat customers and premium users.
+## Overview
 
-### **Target Customers**
-Our target audience includes:
-- **Luxury Travelers:** People looking for high-end travel experiences.
-- **Couples & Honeymooners:** Romantic getaway seekers.
-- **Adventure Enthusiasts:** Travelers interested in curated adventure trips.
-- **Families & Groups:** Customizable vacation packages for family holidays.
+*(Brief introduction about Elite Escapes, describing its purpose, main audience, and the value provided to its users.)*
 
-### **E-Commerce Model**
-Elite Escapes operates under the **Business-to-Consumer (B2C) model**, where travel packages are directly sold to customers through an interactive online platform.
+## User Experience (UX)
 
-### **Payment & Fulfillment Process**
-- Customers select a package and proceed to checkout.
-- Secure payments are processed using **Stripe**.
-- Upon successful payment, customers receive a confirmation email with booking details.
-- Additional customer support is available via chat or email for any modifications or cancellations.
+### Strategy
 
+*(Define the purpose, target audience, and user goals.)*
 
-## UX
+### Scope
 
-### Site Purpose:
+*(Describe features, project goals, and user needs.)*
 
-### Audience:
+### Structure
 
-### Navigation:
+*(Outline how the application is structured, navigation paths, and information hierarchy.)*
 
-## User Stories
+### Skeleton
 
-#### As an admin:
+*(Include wireframes or mock-ups of your website.)*
 
-#### As a user:
+### Surface
 
-## Design 
-### Wireframes:
+*(Explain your chosen visual design elements, color scheme, typography, etc.)*
 
-#### Entity-Relationship Diagram:
+---
 
-#### Home Page:
+## Features
 
-#### Post Detail Page:
+*(Detailed description or list of features offered by the site, such as:)*
 
-#### Recipes Page:
+- User authentication
+- Package browsing and searching
+- Booking and payment functionality
+- Customer profile management
+- Newsletter subscriptions
 
-#### Recipes Detail Page:
-
-#### Recipe Form:
-
-#### About Page:
-
-#### Login Page:
-
-#### Register Page
-
-### Colour Palette:
-
-### Typography:
-
-### Images:
-
-## Features:
-### Existing Features:
-
-### Future Features:
-
-## Testing
-
-### Responsiveness
-
-### CRUD 
-
-### Features
-
-### Authentication
-
-### Unfixed Bugs
-- Non applicable.
+---
 
 ## Technologies Used
 
-### Languages:
-- HTML5
-- CSS3
-- Javascript
-- Python    
-- Django
-- SQL - Postgres
+- **Languages:**
+  - Python
+  - HTML5
+  - CSS3
+  - JavaScript
+  
+- **Frameworks & Libraries:**
+  - Django
+  - Bootstrap
+  - jQuery
+  - FontAwesome
+  - TinyMCE
 
-### Installed packages:
+- **Databases:**
+  - PostgreSQL (production)
+  - SQLite (development)
 
-## Deployment:
+- **Hosting & Deployment:**
+  - Heroku
+  - AWS S3 (for static/media files)
 
-### On Heroku:
+- **Payment Integration:**
+  - Stripe
+
+- **Other Tools:**
+  - Git and GitHub
+  - Django-Allauth (for authentication)
+  - Django-Storages (AWS integration)
+
+---
+
+## Database Schema
+
+*(Include a brief description or diagram (ERD) outlining the database models and their relationships.)*
+
+---
+
+## Testing
+
+*(Explain your testing procedures, such as manual testing, automated tests, and responsiveness tests. Include steps or scenarios tested.)*
+
+---
+
+## Deployment
+
+*(Comprehensive step-by-step instructions on how to deploy the project, including configuring Heroku, AWS S3 bucket setup, database setup, and Stripe integration.)*
+
+---
+
+## Local Development & Installation
+
+*(Guide users on how to clone the repository and run the project locally.)*
+
+Example:
+
+```bash
+# Clone the repository
+git clone https://github.com/Alexiou981/elite-escapes.git
+
+# Change directory
+cd elite-escapes
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set environment variables
+Create a `.env` file based on the provided `.env.example`
+
+# Apply database migrations
+python manage.py migrate
+
+# Run development server
+python manage.py runserver
+
 
 ## Credits
 
