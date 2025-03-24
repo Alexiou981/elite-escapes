@@ -26,11 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'elite-escapes-6cd7f36ee2af.herokuapp.com', 
+    'elite-escapes-6cd7f36ee2af.herokuapp.com',
     '127.0.0.1',
     '.herokuapp.com',
     'localhost',
-    ]
+]
 
 # Application definition
 
@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'bookings',
     'reviews',
     'contact',
-    'admin_panel', 
+    'admin_panel',
 ]
 
 ACCOUNT_FORMS = {
@@ -91,10 +91,10 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # required by allatuth
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'bag.context_processors.bag_total', # custom context processor
+                'bag.context_processors.bag_total',  # custom context processor
             ],
         },
     },
@@ -102,7 +102,7 @@ TEMPLATES = [
 
 AUTHENTICATION_BACKENDS = [
     # Custom backend for email/username login
-    'customers.backends.EmailOrUsernameModelBackend',  
+    'customers.backends.EmailOrUsernameModelBackend',
 
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
@@ -125,7 +125,6 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
 
 # Settings boutique_ado/settings.py by ckz8780
 # https://github.com/Code-Institute-Solutions/boutique_ado_v1/blob/ea7fe2688a0d97db4e469b672d5cb35e5835ff69/boutique_ado/settings.py
-#ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
@@ -134,16 +133,18 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_SIGNUP_REDIRECT_URL = "/accounts/confirm-email/"  
+ACCOUNT_SIGNUP_REDIRECT_URL = "/accounts/confirm-email/"
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "/"
-AUTH_USER_MODEL = 'customers.CustomUser'  # Ensure this matches the app and model name
+AUTH_USER_MODEL = 'customers.CustomUser'
 
 WSGI_APPLICATION = 'elite_escapes.wsgi.application'
 
 # Trused urls for csrf authorisation
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-alexiou981-eliteescapes-2scg4syfday.ws.codeinstitute-ide.net',
-    'https://elite-escapes-6cd7f36ee2af.herokuapp.com',]
+    'https://8000-alexiou981-eliteescapes-2scg4syfday.'
+    'ws.codeinstitute-ide.net',
+    'https://elite-escapes-6cd7f36ee2af.herokuapp.com',
+]
 
 
 # Database
@@ -157,7 +158,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
@@ -167,16 +168,28 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'MinimumLengthValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'CommonPasswordValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'NumericPasswordValidator'
+        ),
     },
 ]
 
@@ -240,11 +253,16 @@ TINYMCE_DEFAULT_CONFIG = {
     'height': 400,
     'width': '100%',
     'menubar': True,
-    'plugins': 'advlist autolink lists link image charmap print preview anchor',
-    'toolbar': 'undo redo | formatselect | bold italic underline | \
-                alignleft aligncenter alignright | bullist numlist outdent indent | removeformat',
+    'plugins': (
+        'advlist autolink lists link image charmap print preview anchor'
+    ),
+    'toolbar': (
+        'undo redo | formatselect | bold italic underline | '
+        'alignleft aligncenter alignright | '
+        'bullist numlist outdent indent | removeformat'
+    ),
     'branding': False,
     'content_style': "body { font-family:Arial, sans-serif; font-size:14px }",
     'promotion': False,
-    'apiKey': os.environ.get('TINYMCE_API', default=''), 
+    'apiKey': os.environ.get('TINYMCE_API', default=''),
 }
