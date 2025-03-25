@@ -27,7 +27,17 @@
 
 ## Overview
 
-*(Brief introduction about Elite Escapes, describing its purpose, main audience, and the value provided to its users.)*
+Elite Escapes is a full-stack e-commerce web application designed to provide users with an intuitive platform to explore and book exclusive travel packages conveniently online.
+
+The website enables users to browse through a selection of curated holiday packages, view detailed itineraries, and securely complete bookings through Stripe's integrated payment system. Registered users can store personal details such as contact information and billing addresses, simplifying and speeding up future transactions.
+
+Users have the option to subscribe to a newsletter for updates on new packages and special promotions. Automated email confirmations are sent following successful bookings, newsletter subscriptions and account registrations, enhancing user interaction and overall experience.
+
+Administrative users have comprehensive control, with capabilities to add, update, or remove travel packages, manage customer accounts, and oversee website content efficiently.
+
+Elite Escapes showcases practical skills in Django web development, PostgreSQL database management, secure online payments, responsive web design, and cloud-based deployment with Heroku and AWS S3, delivering a robust and engaging experience for both customers and administrators alike.
+
+Deployed website: [Elite Escapes](https://elite-escapes-6cd7f36ee2af.herokuapp.com/)
 
 ## User Experience (UX)
 
