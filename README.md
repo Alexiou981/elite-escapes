@@ -47,23 +47,100 @@ Deployed website: [Elite Escapes](https://elite-escapes-6cd7f36ee2af.herokuapp.c
 
 *(Define the purpose, target audience, and user goals.)*
 
+Elite Escapes was designed to offer users a seamless online experience for exploring and booking exclusive travel packages. The website aims to simplify the booking process, provide clear information about available packages, and enable easy management of user bookings and personal information. The target audience includes travelers seeking convenient and trustworthy online booking services for premium holiday experiences.
+
 ### Scope
 
 *(Describe features, project goals, and user needs.)*
+
+The key features of Elite Escapes were carefully selected to meet user expectations and enhance the overall booking experience:
+
+- Browse through curated holiday packages.
+
+- Securely book holidays online with integrated payment processing.
+
+- Save personal details for faster and easier bookings in the future.
+
+- Receive email updates for order confirmations and newsletter subscriptions.
+
+- Efficient administrative management for packages and registered users.
 
 ### Structure
 
 *(Outline how the application is structured, navigation paths, and information hierarchy.)*
 
+The website is structured intuitively to support effortless navigation and user interaction:
+
+- Home/Holiday Packages: Allows users to browse available holiday options easily.
+
+- Package Details: Provides in-depth information about each package.
+
+- Bookings: Enables users to manage their bookings and personal details conveniently.
+
+- Checkout: Seamless and secure payment process via Stripe integration.
+
+- Admin Dashboard: Allows site administrators to manage content and users efficiently.
+
 ### Skeleton
 
-*(Include wireframes or mock-ups of your website.)*
+The visual layout and structure of Elite Escapes were initially developed through wireframes and mock-ups, focusing on responsiveness, clarity, and usability. Key pages designed include:
+
+- Homepage and Package Listing wireframe
+  
+![homepage-wireframe](static/images/readme-images/wireframes/home.png)
+
+
+- Package Details wirefrarme 
+
+![package-details-wf](static/images/readme-images/wireframes/package-details.png)
+
+- Customer Information form wireframe
+
+![customer-info-form-wf](static/images/readme-images/wireframes/customer-details-form.png)
+
+- Personal Information wireframe
+
+![personal-info-wf](static/images/readme-images/wireframes/personal-info.png)
+
+- Bookings page for users wireframe
+
+![personal-bookings-wf](static/images/readme-images/wireframes/presonal-bookings.png)
+
+- Shopping bag wireframe
+
+![shopping-bag-wf](static/images/readme-images/wireframes/shopping-bag.png)
+
+- Order Overview wireframe
+
+![order-overview-wf](static/images/readme-images/wireframes/order-overview.png)
+
+- Contact Us wireframe
+
+![contact-us-wf](static/images/readme-images/wireframes/contact-us.png)
+
+- Admin Dashboard wireframe
+
+![admin-dashboard-wf](static/images/readme-images/wireframes/admin-dashboard.png)
+
+- Admin Dashboard Add/Edit Package wireframe
+
+![add_edit-package-admin-wf](static/images/readme-images/wireframes/add_edit-package-admin.png)
+
+- Dropdown options wireframe
+
+![dropdown](static/images/readme-images/wireframes/dropdown.png)
 
 ### Surface
 
 *(Explain your chosen visual design elements, color scheme, typography, etc.)*
 
----
+A clean, professional aesthetic was chosen for Elite Escapes, emphasizing simplicity and readability. Specific design elements include:
+
+- Typography: Clear, modern fonts for easy readability.
+
+- Color Scheme: Carefully selected colors to convey luxury, professionalism, and trustworthiness (e.g., gold, dark blue, white).
+
+- Imagery: High-quality, visually engaging images to inspire and attract users.
 
 ## Features
 
