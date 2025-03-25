@@ -47,11 +47,9 @@ Deployed website: [Elite Escapes](https://elite-escapes-6cd7f36ee2af.herokuapp.c
 
 *(Define the purpose, target audience, and user goals.)*
 
-Elite Escapes was designed to offer users a seamless online experience for exploring and booking exclusive travel packages. The website aims to simplify the booking process, provide clear information about available packages, and enable easy management of user bookings and personal information. The target audience includes travelers seeking convenient and trustworthy online booking services for premium holiday experiences.
+Elite Escapes was designed to offer users a seamless online experience for exploring and booking exclusive travel packages. The website aims to simplify the booking process, provide clear information about available packages, and enable easy management of user bookings and personal information. The target audience includes both solo travelers but also families seeking convenient and trustworthy online booking services for premium and unforgetable holiday experiences.
 
 ### Scope
-
-*(Describe features, project goals, and user needs.)*
 
 The key features of Elite Escapes were carefully selected to meet user expectations and enhance the overall booking experience:
 
@@ -65,94 +63,182 @@ The key features of Elite Escapes were carefully selected to meet user expectati
 
 - Efficient administrative management for packages and registered users.
 
+
+#### User Flows
+
+![user-flows-wf](static/images/readme-images/wireframes/user-flows.png)
+
 ### Structure
 
-*(Outline how the application is structured, navigation paths, and information hierarchy.)*
-
 The website is structured intuitively to support effortless navigation and user interaction:
+
+#### Landing Page
 
 - Home/Holiday Packages: Allows users to browse available holiday options easily.
 
 - Package Details: Provides in-depth information about each package.
 
+#### Header | User Profile Icon Dropdown
+
 - Bookings: Enables users to manage their bookings and personal details conveniently.
 
 - Checkout: Seamless and secure payment process via Stripe integration.
 
-- Admin Dashboard: Allows site administrators to manage content and users efficiently.
+- Admin Dashboard: Allows site administrators exclusively to manage packages, bookings and users efficiently.
+
+- Personal Details: Provides the ability to store user details for future bookings and allows editing or deletion of the details as well.
+
+- Contact Us: Offers a communication bridge between Customers and Elite Escapes.
+
+#### Footer 
+
+- Newsletter: Allows user to stay up to date with any new package arrivals and price drops or deals.
 
 ### Skeleton
 
 The visual layout and structure of Elite Escapes were initially developed through wireframes and mock-ups, focusing on responsiveness, clarity, and usability. Key pages designed include:
 
-- Homepage and Package Listing wireframe
+#### Homepage and Package Listing wireframe
   
 ![homepage-wireframe](static/images/readme-images/wireframes/home.png)
 
-
-- Package Details wirefrarme 
+#### Package Details wirefrarme 
 
 ![package-details-wf](static/images/readme-images/wireframes/package-details.png)
 
-- Customer Information form wireframe
+#### Customer Information form wireframe
 
 ![customer-info-form-wf](static/images/readme-images/wireframes/customer-details-form.png)
 
-- Personal Information wireframe
+#### Personal Information wireframe
 
 ![personal-info-wf](static/images/readme-images/wireframes/personal-info.png)
 
-- Bookings page for users wireframe
+#### Bookings page for users wireframe
 
 ![personal-bookings-wf](static/images/readme-images/wireframes/presonal-bookings.png)
 
-- Shopping bag wireframe
+#### Shopping bag wireframe
 
 ![shopping-bag-wf](static/images/readme-images/wireframes/shopping-bag.png)
 
-- Order Overview wireframe
+#### Order Overview wireframe
 
 ![order-overview-wf](static/images/readme-images/wireframes/order-overview.png)
 
-- Contact Us wireframe
+#### Contact Us wireframe
 
 ![contact-us-wf](static/images/readme-images/wireframes/contact-us.png)
 
-- Admin Dashboard wireframe
+#### Admin Dashboard wireframe
 
 ![admin-dashboard-wf](static/images/readme-images/wireframes/admin-dashboard.png)
 
-- Admin Dashboard Add/Edit Package wireframe
+#### Admin Dashboard Add/Edit Package wireframe
 
 ![add_edit-package-admin-wf](static/images/readme-images/wireframes/add_edit-package-admin.png)
 
-- Dropdown options wireframe
+#### Dropdown options wireframe
 
 ![dropdown](static/images/readme-images/wireframes/dropdown.png)
 
 ### Surface
 
-*(Explain your chosen visual design elements, color scheme, typography, etc.)*
-
 A clean, professional aesthetic was chosen for Elite Escapes, emphasizing simplicity and readability. Specific design elements include:
 
 - Typography: Clear, modern fonts for easy readability.
+  - Lato
 
-- Color Scheme: Carefully selected colors to convey luxury, professionalism, and trustworthiness (e.g., gold, dark blue, white).
+- Color Palette: Carefully selected colors to convey luxury, professionalism, and trustworthiness (e.g., gold, dark blue, white).
 
-- Imagery: High-quality, visually engaging images to inspire and attract users.
+  ![coolors](static/images/readme-images/coolors.png)
+
+- Imagery: High-quality, visually engaging images and features such as the carousel, to inspire and attract users.
 
 ## Features
+### User authentication
+#### Login
 
-*(Detailed description or list of features offered by the site, such as:)*
+![login](static/images/readme-images/features/user-authentication/login.png)
 
-- User authentication
-- Package browsing and searching
-- Booking and payment functionality
-- Customer profile management
-- Newsletter subscriptions
+#### Register
 
----
+![register](static/images/readme-images/features/user-authentication/register.png)
+
+#### Logout
+
+![logout](static/images/readme-images/features/user-authentication/logout.png)
+
+### Main Features
+#### Hero Image
+
+![hero](static/images/readme-images/features/main-features/hero-image.png)
+
+#### Our Packages
+
+![our-packages](static/images/readme-images/features/main-features/our-packages.png)
+
+#### Package Details
+
+![package-details](static/images/readme-images/features/main-features/package-details.png)
+
+#### Reviews - Newsletter section
+
+![reviews](static/images/readme-images/features/main-features/reviews-newsletter.png)
+
+#### Shopping Bag - Booking Overview
+
+![bag](static/images/readme-images/features/main-features/bag.png)
+
+#### Order Overview
+
+![order-overview](static/images/readme-images/features/main-features/order-overview.png)
+
+#### Checkout
+- This is done externally on Stripe hence not include in features
+
+#### Bookings
+
+![bookings](static/images/readme-images/features/main-features/bookings.png)
+
+#### Personal Details
+
+![personal-details](static/images/readme-images/features/main-features/personal-details.png)
+
+#### Customer Details Form
+
+![customer-details](static/images/readme-images/features/main-features/customer-details-form.png)
+
+#### Delete Customers Details
+
+![delete-customer-details](static/images/readme-images/features/main-features/delete-customer-details.png)
+
+#### Contact Us
+
+![contact-us](static/images/readme-images/features/main-features/contact-us.png)
+
+### Admin Frontend
+#### Admin Dashboard
+
+![admin-dashboard](static/images/readme-images/features/admin-frontend/admin-dashboard.png)
+
+#### Add Package
+
+![add-package](static/images/readme-images/features/admin-frontend/add-package.png)
+
+#### Edit Package
+
+![edit-package](static/images/readme-images/features/admin-frontend/edit-package.png)
+
+#### Delete Package
+
+![delete-package](static/images/readme-images/features/admin-frontend/delete-package.png)
+
+
+### Facebook Page
+
+![fb-desk](static/images/readme-images/features/main-features/fb-desk.png)
+
 
 ## Technologies Used
 
