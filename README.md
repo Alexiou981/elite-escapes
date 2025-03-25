@@ -39,6 +39,8 @@ Elite Escapes showcases practical skills in Django web development, PostgreSQL d
 
 Deployed website: [Elite Escapes](https://elite-escapes-6cd7f36ee2af.herokuapp.com/)
 
+![amiresponsive](static/images/readme-images/amiresponsive.png)
+
 ## User Experience (UX)
 
 ### Strategy
