@@ -275,9 +275,141 @@ A clean, professional aesthetic was chosen for Elite Escapes, emphasizing simpli
 
 ## Database Schema
 
-*(Include a brief description or diagram (ERD) outlining the database models and their relationships.)*
+### 1. `customers` App
+
+#### **CustomUser** (extends `AbstractUser`)
+| Field        | Type                   | Relationships / Constraints      |
+|--------------|------------------------|----------------------------------|
+| **id**       | AutoField (pk)        | Primary Key (from AbstractUser)  |
+| **username** | CharField             | Unique (from AbstractUser)       |
+| **email**    | EmailField            | Required (from AbstractUser)     |
+| **role**     | CharField(10)         | Choices: `('admin', 'user')`     |
+| **password** | CharField             | From `AbstractUser`              |
 
 ---
+
+#### **Customer**
+| Field              | Type                | Relationships / Constraints                 |
+|--------------------|---------------------|---------------------------------------------|
+| **id**             | AutoField (pk)      | Primary Key                                 |
+| **user**           | ForeignKey          | to `CustomUser` (nullable, blank)           |
+| **first_name**     | CharField(50)       | —                                           |
+| **last_name**      | CharField(50)       | —                                           |
+| **email**          | EmailField          | Unique                                      |
+| **phone**          | CharField(16)       | Validated by `RegexValidator`              |
+| **address**        | TextField           | Non-null                                    |
+| **city**           | CharField(50)       | —                                           |
+| **country**        | CharField(50)       | —                                           |
+| **postal_code**    | CharField(10)       | —                                           |
+| **date_of_birth**  | DateField           | —                                           |
+| **gender**         | CharField(25)       | Choices: `('Male', 'Female', 'Prefer not to say', 'Other')` |
+
+---
+
+### 2. `home` App
+
+#### **Package**
+| Field                   | Type                        | Relationships / Constraints                      |
+|-------------------------|-----------------------------|-------------------------------------------------|
+| **id**                  | AutoField (pk)             | Primary Key                                     |
+| **name**                | CharField(255)             | —                                               |
+| **brief_description**   | TextField                  | —                                               |
+| **detailed_description**| HTMLField (TinyMCE)        | Blank allowed                                   |
+| **getaway_highlights**  | HTMLField (TinyMCE)        | Blank allowed                                   |
+| **included**            | HTMLField (TinyMCE)        | Blank allowed                                   |
+| **price**               | DecimalField               | max_digits=10, decimal_places=2                 |
+| **holiday_duration**    | PositiveIntegerField        | —                                               |
+| **date**                | DateField                  | —                                               |
+| **image**               | ImageField                 | null=True, blank=True, uploads to `package_images/` |
+| **holiday_type**        | CharField(25)              | Choices (Adventure, Relaxation, Cultural, etc.) |
+| **females_only**        | BooleanField               | default=False                                   |
+| **created_at**          | DateTimeField              | auto_now_add=True                               |
+| **updated_at**          | DateTimeField              | auto_now=True                                   |
+
+---
+
+#### **PackageImages**
+| Field       | Type          | Relationships / Constraints                      |
+|-------------|--------------|--------------------------------------------------|
+| **id**      | AutoField (pk)| Primary Key                                      |
+| **package** | ForeignKey    | to `Package`, `related_name='images'`            |
+| **image**   | ImageField    | uploads to `package_images/`                     |
+
+---
+
+#### **NewsletterSubscriber**
+| Field          | Type              | Relationships / Constraints |
+|----------------|-------------------|-----------------------------|
+| **id**         | AutoField (pk)    | Primary Key                 |
+| **email**      | EmailField        | Unique                      |
+| **subscribed_at** | DateTimeField  | auto_now_add=True           |
+
+---
+
+### 3. `bag` App
+
+#### **ShoppingCart**
+| Field        | Type               | Relationships / Constraints                |
+|--------------|--------------------|--------------------------------------------|
+| **id**       | AutoField (pk)     | Primary Key                                |
+| **user**     | ForeignKey         | to `CustomUser` (nullable, blank=True)     |
+| **created_at**| DateTimeField     | auto_now_add=True                          |
+
+---
+
+#### **ShoppingCartItem**
+| Field       | Type                | Relationships / Constraints                   |
+|-------------|---------------------|-----------------------------------------------|
+| **id**      | AutoField (pk)      | Primary Key                                   |
+| **cart**    | ForeignKey          | to `ShoppingCart`, `related_name='items'`     |
+| **package** | ForeignKey          | to `Package`                                  |
+| **quantity**| PositiveIntegerField| default=1                                     |
+
+---
+
+### 4. `bookings` App
+
+#### **Booking**
+| Field        | Type                  | Relationships / Constraints                   |
+|--------------|-----------------------|-----------------------------------------------|
+| **id**       | AutoField (pk)       | Primary Key                                   |
+| **user**     | ForeignKey           | to `CustomUser`, `related_name='bookings'`    |
+| **package**  | ForeignKey           | to `Package`, `related_name='bookings'`       |
+| **amount**   | DecimalField         | max_digits=10, decimal_places=2               |
+| **created_at**| DateTimeField       | auto_now_add=True                              |
+
+---
+
+### 5. `contact` App
+
+#### **ContactMessage**
+| Field        | Type            | Relationships / Constraints | 
+|--------------|-----------------|-----------------------------|
+| **id**       | AutoField (pk)  | Primary Key                 |
+| **name**     | CharField(255)  | —                           |
+| **email**    | EmailField      | —                           |
+| **subject**  | CharField(255)  | —                           |
+| **message**  | TextField       | —                           |
+| **created_at**| DateTimeField  | auto_now_add=True           |
+
+---
+
+### 6. `reviews` App
+
+#### **Review**
+| Field        | Type               | Relationships / Constraints                  |
+|--------------|--------------------|----------------------------------------------|
+| **id**       | AutoField (pk)     | Primary Key                                  |
+| **user**     | ForeignKey         | to `CustomUser`                              |
+| **package**  | ForeignKey         | to `Package`, `related_name='reviews'`       |
+| **rating**   | IntegerField       | choices=[(i, i) for i in range(1,6)]         |
+| **comment**  | TextField          | —                                            |
+| **created_at**| DateTimeField     | auto_now_add=True                            |
+| **updated_at**| DateTimeField     | auto_now=True                                |
+
+---
+
+
 
 ## Testing
 
@@ -286,9 +418,6 @@ A clean, professional aesthetic was chosen for Elite Escapes, emphasizing simpli
 ---
 
 ## Deployment
-
-*(Comprehensive step-by-step instructions on how to deploy the project, including configuring Heroku, AWS S3 bucket setup, database setup, and Stripe integration.)*
-
 ## Deployment on Heroku
 
 The following steps explain how to deploy **Elite Escapes** on Heroku using **Python 3.12.8**.
@@ -361,44 +490,111 @@ In your Heroku dashboard:
 
       - **EMAIL_HOST_PASSWORD:**	Your email password or app password
 
-  ### 5. Add ProsteSQL Database
-  1. Navigate to Resources in your Heroku app dashboard.
+### 5. Add ProsteSQL Database
+1. Navigate to Resources in your Heroku app dashboard.
 
-  2. Under Add-ons, search for Heroku Postgres.
+2. Under Add-ons, search for Heroku Postgres.
 
-  3. Select the Hobby Dev (free) plan and click Provision.
+3. Select the Hobby Dev (free) plan and click Provision.
 
-  4. A DATABASE_URL variable is now added under Config Vars.
-  ---
+4. A DATABASE_URL variable is now added under Config Vars.
+---
 
-  ### 6. Deploy to Heroku
-  ```bash
-  git push heroku main
-  ```
+### 6. Deploy to Heroku
+```bash
+git push heroku main
+```
 
-  Apply migrations:  
-  ```bash
-  heroku run python manage.py migrate
-  ```
+Apply migrations:  
+```bash
+heroku run python manage.py migrate
+```
 
-  Create superuser:
-  ```bash
-  heroku run python manage.py createsuperuser
-  ```
+Create superuser:
+```bash
+heroku run python manage.py createsuperuser
+```
 
-  ### 7. Set Up Static Files
-  ```bash
-  heroku run python manage.py collectstatic
-  ```
+### 7. Set Up Static Files
+```bash
+heroku run python manage.py collectstatic
+```
 
-  ### 8. Access Deployed site
-  
-  Navigate to: https://elite-escapes-6cd7f36ee2af.herokuapp.com/
-  If all went well the page should be up and runnning
-  
-## Local Development & Installation
+### 8. Access Deployed site
 
-*(Guide users on how to clone the repository and run the project locally.)*
+Navigate to: https://elite-escapes-6cd7f36ee2af.herokuapp.com/
+If all went well the page should be up and runnning
+
+
+## AWS S3 Configuration
+
+Follow these steps to store static and media files on AWS S3:
+
+### 1. Create or Log in to Your AWS Account
+
+1. Visit [AWS](https://aws.amazon.com/) and create an account, or log in if you already have one.
+2. Once logged in, navigate to the **AWS Management Console**.
+
+---
+
+### 2. Create an S3 Bucket
+
+1. In the AWS Console, search for **S3** and select **Amazon S3**.
+2. Click **Create bucket**.
+3. Provide a **unique bucket name** (e.g., `elite-escapes-bucket`) and select a region close to your users.
+4. Keep **Block all public access** checked if you plan on making files private by default (recommended for media files).  
+   - If you need public files (like images in your static files), you can configure the appropriate bucket policies or use CloudFront. For now, you can leave public access blocked and use signed URLs if needed.
+5. Click **Create bucket**.
+
+---
+
+### 3. Generate AWS Credentials (IAM User)
+
+1. Go to **IAM** (Identity and Access Management) in the AWS Console.
+2. Click **Users** in the sidebar, then **Add users**.
+3. Enter a username (e.g., `elite-escapes-user`), and under **Access type**, choose **Programmatic access**.
+4. Click **Next** to set permissions.  
+   - Either attach the existing policy `AmazonS3FullAccess` **(for testing/development)** or create a custom policy for tighter access control.
+5. Complete the steps to **Create user**.
+6. Copy or download the **Access key ID** and **Secret access key**—you’ll need these for your environment variables.
+
+---
+
+### 4. Install and Configure `boto3`,`django-storages` and update settings
+
+1. In your Django project, install the required packages:
+   ```bash
+   pip install boto3 django-storages
+   ```
+
+2. Add 'storages' to INSTALLED_APPS in settings.py.
+
+3. Finally add any required variables from AWS onto your workspace using a .env file and accessing through settings.
+
+### 5. Set Environment Variables
+
+Both in your .env file and in Heroku (Config Vars) add these:
+
+  - **AWS_ACCESS_KEY_ID:** Your AWS access key ID
+
+  - **AWS_SECRET_ACCESS_KEY:**	Your AWS secret access key
+
+  - **AWS_STORAGE_BUCKET_NAME:**	The name of your S3 bucket
+
+  - **AWS_S3_REGION_NAME	The:** region you selected (e.g., eu-north-1)
+
+
+### 6. Collect Static Files
+```bash
+heroku run python manage.py collectstatic
+```
+
+## Database
+
+The database was created using the CI Database Maker.
+
+
+### Local Deployment
 
 Example:
 
@@ -420,6 +616,7 @@ python manage.py migrate
 
 # Run development server
 python manage.py runserver
+```
 
 
 ## Credits
