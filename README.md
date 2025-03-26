@@ -45,8 +45,6 @@ Deployed website: [Elite Escapes](https://elite-escapes-6cd7f36ee2af.herokuapp.c
 
 ### Strategy
 
-*(Define the purpose, target audience, and user goals.)*
-
 Elite Escapes was designed to offer users a seamless online experience for exploring and booking exclusive travel packages. The website aims to simplify the booking process, provide clear information about available packages, and enable easy management of user bookings and personal information. The target audience includes both solo travelers but also families seeking convenient and trustworthy online booking services for premium and unforgetable holiday experiences.
 
 ### Scope
@@ -412,10 +410,118 @@ A clean, professional aesthetic was chosen for Elite Escapes, emphasizing simpli
 
 
 ## Testing
+## Testing
 
-*(Explain your testing procedures, such as manual testing, automated tests, and responsiveness tests. Include steps or scenarios tested.)*
+### 1. Responsiveness Testing
+
+Ensuring that **Elite Escapes** is fully responsive was a primary goal. Each page was tested across various screen sizes and devices to verify that the layout and functionality remain consistent and user-friendly.
 
 ---
+
+#### 1.1 Methodology & Tools
+
+- **Chrome DevTools** – Simulated multiple device widths (e.g., iPhone SE, iPad, Pixel 5).
+- **Firefox Responsive Design Mode** – Confirmed layout consistency across breakpoints.
+- **Physical Devices** (where available) – Verified real-world mobile and tablet responsiveness.
+- **[Am I Responsive?](http://ami.responsivedesign.is/)** – Visualized the site in common device frames.
+
+---
+
+#### 1.2 Breakpoints & Screen Sizes
+
+- **Mobile:** Up to 425px wide  
+- **Tablet:** 426px to 768px wide  
+- **Desktop:** 769px and above  
+
+
+#### 1.3 Pages Tested
+
+| **Page**                  | **Mobile** (e.g., 375px)        | **Tablet** (e.g., 768px)         | **Desktop** (e.g., 1366px)         | **Result**                                         |
+|---------------------------|----------------------------------|----------------------------------|------------------------------------|-----------------------------------------------------|
+| **Home (index)**          | Hero section scales properly     | Nav alignment checks             | Full-width hero                    | Passed                              |
+| **Packages (listing)**    | Cards stack vertically           | 3-column layout (cards)          | 3-column layout                  | Passed                             |
+| **Package Details**       | Images/text scale and reflow     | Responsive columns for details   | Larger hero image, spaced layout   | Passed                              |
+| **Cart (bag)**            | Items in direction column              | Table-like layout on Tablet     | Table-like layout on larger screens| Passed                              |                            |
+| **Bookings**              | Single column of booking cards   | Single column for tablet screens     | Single column for desktop  | Passed                               |
+| **Personal Details**      | Single column    |  Single column - button direction row              | Centered content, more whitespace  | Passed                               |
+| **Admin Dashboard**       | Table direction column and smaller size     | Columns adjust for tablet - direction row        | Full table layout with more whitespace| Passed                              |
+| **Contact**               | Single column form, easy to fill | Centered form        | Extra whitespace, centered layout  | Passed                               |
+
+> **Tip:** In the **Result** column, you can note whether each page “Passed” or describe minor layout issues and how they were fixed.
+
+---
+
+#### 1.4 Notable Findings & Fixes
+
+- **Navigation Bar:** Confirmed that the navbar direction changes to column in mobile screens.
+- **Images:** Ensured that images are set to `max-width: 100%; height: auto;` to avoid horizontal scrolling.
+- **Text Overflow:** Verified headings and button text do not overflow at smaller breakpoints.
+- **Buttons & Links:** Checked that touch targets (buttons, links) remain sufficiently large on mobile.
+- **Modals / Pop-ups (if any):** Confirmed they render properly on small screens without overflowing.
+
+---
+
+
+### 2. Validation Testing
+### Templates validation:
+#### Admin Dashboard
+  ![admin-dashboard](static/images/readme-images/validation/templates/admin-panel/admin-dashboard-validator.png)
+
+#### Add a new package
+  ![add-pkg-admin](static/images/readme-images/validation/templates/admin-panel/add-pkg-validator.png)
+
+#### Edit a pakcage
+  ![edit-pkg](static/images/readme-images/validation/templates/admin-panel/edit-pkg-validator.png)
+
+#### Delete a pakcage
+  ![delete-pkg](static/images/readme-images/validation/templates/admin-panel/del-pkg-validator.png)
+
+#### Shopping Bag
+  ![bag](static/images/readme-images/validation/templates/bag/bag-validator.png)
+
+#### Bookings page
+  ![bookings](static/images/readme-images/validation/templates/bookings/bookings-validator.png)
+
+#### Contact Us
+  ![contact](static/images/readme-images/validation/templates/contact/contact-validator.png)
+
+#### Customer Details Form
+  ![customer-details-frm](static/images/readme-images/validation/templates/customers/customer-details-validator.png)
+
+#### Personal Details
+  ![personal-details](static/images/readme-images/validation/templates/customers/personal-details-validator.png)
+
+#### Order Overview
+  ![order-overview](static/images/readme-images/validation/templates/customers/order-overview-validator.png)
+
+#### Edit Personal Details
+  ![edit-details](static/images/readme-images/validation/templates/customers/edit-details-validator.png)
+
+#### Delete Personal Details 
+  ![del-details](static/images/readme-images/validation/templates/customers/delete-pdetails-validator.png)
+
+#### Home Page 
+  ![home-page-validation](static/images/readme-images/validation/templates/home/base-home-validator.png)
+  
+#### Package Details Page 
+  ![pkg-details-validation](static/images/readme-images/validation/templates/home/pkg-details-validator.png)
+
+You can expand the testing section to cover:
+
+- **2.1 Browser Compatibility**  
+- **2.2 Functionality Testing**  
+- **2.3 Automated Testing (if applicable)**  
+- **2.4 Known Bugs or Issues**  
+- **2.5 Future Enhancements**
+
+---
+
+*(Use bullet points to list out any specific findings or screenshots.)*
+
+---
+
+This **Responsiveness Testing** framework can be directly copied into your README. Fill in actual results, screenshots, or notes about any fixes you implemented to ensure the site looks great on all devices.
+
 
 ## Deployment
 ## Deployment on Heroku
