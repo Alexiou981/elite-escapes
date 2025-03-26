@@ -289,8 +289,113 @@ A clean, professional aesthetic was chosen for Elite Escapes, emphasizing simpli
 
 *(Comprehensive step-by-step instructions on how to deploy the project, including configuring Heroku, AWS S3 bucket setup, database setup, and Stripe integration.)*
 
+## Deployment on Heroku
+
+The following steps explain how to deploy **Elite Escapes** on Heroku using **Python 3.12.8**.
+
+### 1. Create a Heroku App
+
+1. Sign up or log in at [Heroku](https://www.heroku.com/).
+2. Click **New** > **Create new app**.
+3. Enter a unique app name (e.g., `elite-escapes`) and select a region (e.g., Europe), then click **Create app**.
+
 ---
 
+### 2. Prepare the Project for Deployment
+
+From your project's root directory, create or update the following files:
+
+1. **`requirements.txt`** – contains Python dependencies.
+2. **`Procfile`** – instructs Heroku how to run your app.
+3. **`runtime.txt`** – specifies the Python runtime version.
+
+Run these commands in your terminal:
+
+```bash
+pip freeze > requirements.txt
+echo web: gunicorn elite_escapes.wsgi:application > Procfile
+echo python-3.12.8 > runtime.txt
+```
+
+### 3. Initialize Git and Connect to Heroku
+
+Run these commands in your terminal:
+
+```bash
+git init
+git add .
+git commit -m "Initial commit for Heroku deployment"
+```
+
+To link local repository to heroku run:
+
+```bash
+heroku git:remote -a elite-escapes
+```
+
+### 4. Configure Heroku Settings (Config Vars)
+
+In your Heroku dashboard:
+
+  1. Go to Settings.
+
+  2. Click Reveal Config Vars.
+
+  3. Add the following variables (adjust as needed):
+
+      - **SECRET_KEY:**	A random, secure Django secret key
+
+      - **AWS_ACCESS_KEY_ID:**	Your AWS S3 access key
+
+      - **AWS_SECRET_ACCESS_KEY:**	Your AWS S3 secret key
+
+      - **AWS_STORAGE_BUCKET_NAME:**	Your AWS S3 bucket name
+
+      - **STRIPE_TEST_PUBLIC_KEY:**	Your Stripe public key (test mode)
+
+      - **STRIPE_TEST_SECRET_KEY:**	Your Stripe secret key (test mode)
+      
+      - **STRIPE_WH_SECRET:**	Your Stripe webhook secret
+
+      - **EMAIL_HOST_USER:**	Your email (SMTP)
+
+      - **EMAIL_HOST_PASSWORD:**	Your email password or app password
+
+  ### 5. Add ProsteSQL Database
+  1. Navigate to Resources in your Heroku app dashboard.
+
+  2. Under Add-ons, search for Heroku Postgres.
+
+  3. Select the Hobby Dev (free) plan and click Provision.
+
+  4. A DATABASE_URL variable is now added under Config Vars.
+  ---
+
+  ### 6. Deploy to Heroku
+  ```bash
+  git push heroku main
+  ```
+
+  Apply migrations:  
+  ```bash
+  heroku run python manage.py migrate
+  ```
+
+  Create superuser:
+  ```bash
+  heroku run python manage.py createsuperuser
+  ```
+
+  ### 7. Set Up Static Files
+  ```bash
+  heroku run python manage.py collectstatic
+  ```
+
+  ### 8. Access Deployed site
+  
+  Navigate to: https://elite-escapes-6cd7f36ee2af.herokuapp.com/
+  If all went well the page should be up and runnning
+  
 ## Local Development & Installation
 
 *(Guide users on how to clone the repository and run the project locally.)*
