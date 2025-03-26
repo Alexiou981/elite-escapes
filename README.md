@@ -407,9 +407,6 @@ A clean, professional aesthetic was chosen for Elite Escapes, emphasizing simpli
 
 ---
 
-
-
-## Testing
 ## Testing
 
 ### 1. Responsiveness Testing
@@ -506,22 +503,183 @@ Ensuring that **Elite Escapes** is fully responsive was a primary goal. Each pag
 #### Package Details Page 
   ![pkg-details-validation](static/images/readme-images/validation/templates/home/pkg-details-validator.png)
 
-You can expand the testing section to cover:
+### CSS Validation
+  ![css-validation](static/images/readme-images/validation/css/css-validator.png)
 
-- **2.1 Browser Compatibility**  
+### Python Files testing - PEP8
+#### Admin Panel
+  - #### apps
+    ![apps](static/images/readme-images/validation/python-files/admin-panel/apps.png)
+
+  - #### forms
+    ![forms](static/images/readme-images/validation/python-files/admin-panel/forms.png)
+  
+  - #### urls
+    ![urls](static/images/readme-images/validation/python-files/admin-panel/urls.png)
+  
+  - #### views
+    ![views](static/images/readme-images/validation/python-files/admin-panel/views.png)
+  
+#### Bag App
+  - #### admin
+    ![admin](static/images/readme-images/validation/python-files/bag/admin.png)
+
+  - #### apps
+    ![apps](static/images/readme-images/validation/python-files/bag/apps.png)
+
+  - #### context-processors
+    ![context-processors](static/images/readme-images/validation/python-files/bag/context-processors.png)
+
+  - #### models
+    ![models](static/images/readme-images/validation/python-files/bag/models.png)
+
+  - #### urls
+    ![urls](static/images/readme-images/validation/python-files/bag/urls.png)
+
+  - #### views
+    ![views](static/images/readme-images/validation/python-files/bag/views.png)
+
+#### Bookings
+  - #### admin
+  ![admin](static/images/readme-images/validation/python-files/bookings/admin.png)
+
+  - #### apps
+  ![apps](static/images/readme-images/validation/python-files/bookings/apps.png)
+
+  - #### models
+  ![models](static/images/readme-images/validation/python-files/bookings/models.png)
+
+  - #### urls
+  ![urls](static/images/readme-images/validation/python-files/bookings/urls.png)
+  
+  - #### views
+  ![views](static/images/readme-images/validation/python-files/bookings/views.png)
+
+
+#### Checkout
+  - #### apps
+  ![apps](static/images/readme-images/validation/python-files/checkout/apps.png)
+
+  - #### urls
+  ![urls](static/images/readme-images/validation/python-files/checkout/urls.png)
+
+  - #### utils
+  ![utils](static/images/readme-images/validation/python-files/checkout/utils.png)
+
+  - #### views
+  ![views](static/images/readme-images/validation/python-files/checkout/views.png)
+
+  - #### webhook-handler
+  ![webhook-handler](static/images/readme-images/validation/python-files/checkout/webhook_handler.png)
+
+  - #### webhooks
+  ![webhooks](static/images/readme-images/validation/python-files/checkout/webhooks.png)
+
+
+#### Contact
+  - #### admin
+  ![admin](static/images/readme-images/validation/python-files/contact/admin.png)
+
+  - #### apps
+  ![apps](static/images/readme-images/validation/python-files/contact/apps.png)
+
+  - #### forms
+  ![forms](static/images/readme-images/validation/python-files/contact/forms.png)
+
+  - #### models
+  ![models](static/images/readme-images/validation/python-files/contact/models.png)
+
+  - #### urls
+  ![urls](static/images/readme-images/validation/python-files/contact/urls.png)
+
+  - #### views
+  ![views](static/images/readme-images/validation/python-files/contact/views.png)
+
+#### Customers
+  - #### admin
+    ![admin](static/images/readme-images/validation/python-files/customers/admin.png)
+
+  - #### apps
+    ![apps](static/images/readme-images/validation/python-files/customers/apps.png)
+
+  - #### backends
+    ![backends](static/images/readme-images/validation/python-files/customers/backends.png)
+  
+  - #### form
+    ![form](static/images/readme-images/validation/python-files/customers/form.png)
+
+  - #### models
+    ![models](static/images/readme-images/validation/python-files/customers/models.png)
+
+  - #### urls
+    ![urls](static/images/readme-images/validation/python-files/customers/urls.png)
+
+  - #### views
+    ![views](static/images/readme-images/validation/python-files/customers/views.png)
+
+#### Elite-Escapes
+  - #### asgi
+    ![asgi](static/images/readme-images/validation/python-files/elite-escapes/asgi.png)
+
+  - #### settings
+    ![settings](static/images/readme-images/validation/python-files/elite-escapes/settings.png)
+
+  - #### urls
+    ![urls](static/images/readme-images/validation/python-files/elite-escapes/urls.png)
+
+  - #### views
+    ![views](static/images/readme-images/validation/python-files/elite-escapes/views.png)
+
+  - #### wsgi
+    ![wsgi](static/images/readme-images/validation/python-files/elite-escapes/wsgi.png)
+
+#### Home 
+  - #### admin
+  ![admin](static/images/readme-images/validation/python-files/home/admin.png)
+
+  - #### apps
+  ![apps](static/images/readme-images/validation/python-files/home/apps.png)
+
+  - #### forms
+  ![forms](static/images/readme-images/validation/python-files/home/forms.png)
+
+  - #### models
+  ![models](static/images/readme-images/validation/python-files/home/models.png)
+
+  - #### sitemaps
+  ![sitemaps](static/images/readme-images/validation/python-files/home/sitemaps.png)
+
+  - #### urls
+  ![urls](static/images/readme-images/validation/python-files/home/urls.png)
+
+  - #### views
+  ![views](static/images/readme-images/validation/python-files/home/views.png)
+
+
+#### Reviews
+  - #### admin 
+  ![admin](static/images/readme-images/validation/python-files/reviews/admin.png)
+
+  - #### apps 
+  ![apps](static/images/readme-images/validation/python-files/reviews/apps.png)
+
+  - #### forms 
+  ![forms](static/images/readme-images/validation/python-files/reviews/forms.png)
+
+  - #### models 
+  ![models](static/images/readme-images/validation/python-files/reviews/models.png)
+
+  - #### urls 
+  ![urls](static/images/readme-images/validation/python-files/reviews/urls.png)
+
+  - #### views 
+  ![views](static/images/readme-images/validation/python-files/reviews/views.png)
+
+
+ 
 - **2.2 Functionality Testing**  
-- **2.3 Automated Testing (if applicable)**  
 - **2.4 Known Bugs or Issues**  
 - **2.5 Future Enhancements**
-
----
-
-*(Use bullet points to list out any specific findings or screenshots.)*
-
----
-
-This **Responsiveness Testing** framework can be directly copied into your README. Fill in actual results, screenshots, or notes about any fixes you implemented to ensure the site looks great on all devices.
-
 
 ## Deployment
 ## Deployment on Heroku
