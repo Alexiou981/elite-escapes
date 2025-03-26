@@ -676,10 +676,148 @@ Ensuring that **Elite Escapes** is fully responsive was a primary goal. Each pag
   ![views](static/images/readme-images/validation/python-files/reviews/views.png)
 
 
- 
-- **2.2 Functionality Testing**  
-- **2.4 Known Bugs or Issues**  
-- **2.5 Future Enhancements**
+### 3. Functionality Testing
+### <ins>Authentication Manual Tesing
+### <strong>Login
+#### Expected:
+- As a user I should have access to a Login page so that I can add my details and login succcesfully
+
+#### Testing:
+- Navigate to deployed site, click on the Account icon and choose Login, add your account details and click login.
+
+#### Result:
+- User gets redirected to home page where they can browse and book.
+
+Works as Expected ✅
+
+
+### <strong>Register
+#### Expected:
+- As a user I should have access to a Register page so that I can add my details and create an account.
+
+#### Testing:
+- Navigate to deployed site, click on the Account icon and choose Register, add your account details and click Sign Up.
+
+#### Result:
+- User gets redirected to the confirm your account page, the user receives a link via email where they can activate their account, upon succesful submission of the signup form the user is automatically signed in.
+
+Works as Expected ✅
+
+### <strong>Sign Out
+#### Expected:
+- As a logged-in user I should have access to a Logout page so that I can sign out whenever I need to.
+
+#### Testing:
+- Navigate to deployed site, click on the Account icon and choose Logout, when promted if you're are sure about logging out click Sing Out
+
+#### Result:
+- User gets redirected to home page and the account icon changes to My Account and displays only Login and Register options.
+
+Works as Expected ✅
+
+### <ins>Navbar and Contact Us Buttons Functionality
+#### Expected:
+- All buttons available on the navbar must be clickable and redirect to the appropriate url when clicked.
+
+#### Testing:
+- Test each button individually by loggin in and having access to all feature of the website.
+
+#### Result:
+- Every button is clickable and works as expected, when clicked the user gets redirected to the appropriate page.
+
+Works as Expected ✅
+
+### <ins>Contact Us Form Functionality
+#### Expected:
+- As a logged in user I can fill in the Contact form and get in touch with Elite Escapes.
+
+#### Testing:
+- Filled in all required fields of the forms and clicked Send Message.
+
+#### Result:
+- User receives a confirmation message and the admin can access the email either on the admin panel under Contact messages, the email succesfully gets sent to elite escapes email address.
+
+Works as Expected ✅
+
+
+
+### <ins>Accessing a Package
+#### Expected:
+- As a logged in user I should be able to access a package by clicking on it and getting redirected to the package details page.
+
+#### Testing:
+- Log in as a user, browse through packages, pick any packageand click on View Details.
+
+#### Result:
+- User gets successfully take to the Package Details page.
+
+
+Works as Expected ✅
+
+
+### <ins>Book Now Button
+#### Expected:
+- As a logged in user I should be able to book a package by clicking at the Book Now button, and moving onto the next step of the process.
+
+#### Testing:
+- As a logged in user, go to any Package Details page and click Book Now button.
+
+#### Result:
+- User gets taken to the Booking Overview - Shopping Bag page, with the package added onto it.
+
+
+Works as Expected ✅
+
+
+### <ins>Update Travelers Button
+#### Expected:
+- As a logged in user I should be able to udpate the number of travellers by changing the number in the box and clicking update.
+
+#### Testing:
+- As a logged in user, I changed the number to -1, it didn't allow me to do it, I then changed it to 3 anc clicked update.
+
+#### Result:
+- The Number of Travellers and Total Price got updated successfully, form validation in place for not accepting negative integers.
+
+
+Works as Expected ✅
+
+### <ins>Continue to Customer Details
+#### Expected:
+- As a logged in user, located at the bag page and by clicking on the Continue to Customer Details button the user should be redirected to the Customer details form, if no Personal Details exist and order overview otherwise.
+
+#### Testing:
+- As a logged in user, wihtout having previously saved my Personal Details, I clicked on the Continue to Customer Details button inside the bag page.
+- As a logged in user and having previously saved my Personal Details, I clicked on the Continue to Customer Details button inside the bag page.
+
+#### Result:
+- The first instance took me to the Customer Details form and after filling it in I got redirected to the Order Overview Page.
+- The second instance redirected me to the Order Overview directly.
+
+
+Works as Expected ✅
+
+### <ins>Proceed to Checkout
+#### Expected:
+- As a logged in user, located in the order overview page I should be able to move to checkout by clickin on the Proceed to Checkout button.
+
+#### Testing:
+- As a logged in user, I checked my details verified they were correct and click on Proceed to Checkout button.
+
+#### Result:
+- I got redirected to Stripe checkout page where I filled in the test card details and completed the booking, I then got redirected to the booking confirmation page and back to the Home.
+
+
+Works as Expected ✅
+
+
+## Known Bugs or Issues 
+- Non Applicable 
+
+## Future Enhancements
+- Add a search bar for more refined filtering of packages.
+- Allow user to add packages to wishlist for future bookings.
+- Add live chat support for user facing issues.
 
 ## Deployment
 ## Deployment on Heroku
@@ -1162,5 +1300,17 @@ https://pixabay.com/photos/man-skier-ski-skiing-snow-slopes-498473/
 Banff_7 was uploaded by gsibergerin, source:
 https://pixabay.com/photos/nature-winter-snow-ski-vorarlberg-4046557/
 
-## Tutorials and Walkthroughs:
+Kenya_1 was uploaded by Pixabay, source:https://pixabay.com/photos/zebras-pair-couple-stripes-striped-1883654/
+
+Kenya_2 was uploaded by Lucka1313, source:https://pixabay.com/photos/elephants-animal-africa-safari-7533472/
+
+Kenya_3 was uploaded by Alpcem, source:https://pixabay.com/photos/birds-flamingo-ornithology-flock-4644652/
+
+Kenya_4 was uploaded by Foto-Rabe, source:https://pixabay.com/photos/lion-lioness-felines-predator-4366887/
+
+Kenya_5 was uploaded by herbert2512, source:
+https://pixabay.com/photos/africa-kenya-ape-safari-nature-4049052/
+
+## References
+- A special thank you to Code Institute and my mentor Lauren Popich for the help and support to finish this project.
 
